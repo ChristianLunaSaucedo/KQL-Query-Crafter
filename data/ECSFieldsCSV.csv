@@ -1,0 +1,1781 @@
+Field_Set,Field,Type,Example,Description
+base,@timestamp,date,2016-05-23T08:05:34.853Z,Date/time when the event originated.
+base,labels,object,"{""application"": ""foo-bar"", ""env"": ""production""}",Custom key/value pairs.
+base,message,match_only_text,Hello World,Log message optimized for viewing in a log viewer.
+base,tags,keyword,"[""production"", ""env2""]",List of keywords used to tag each event.
+agent,agent.build.original,keyword,"metricbeat version 7.6.0 (amd64), libbeat 7.6.0 [6a23e8f8f30f5001ba344e4e54d8d9cb82cb107c built 2020-02-05 23:10:10 +0000 UTC]",Extended build information for the agent.
+agent,agent.ephemeral_id,keyword,8a4f500f,Ephemeral identifier of this agent.
+agent,agent.id,keyword,8a4f500d,Unique identifier of this agent.
+agent,agent.name,keyword,foo,Custom name of the agent.
+agent,agent.type,keyword,filebeat,Type of the agent.
+agent,agent.version,keyword,6.0.0-rc2,Version of the agent.
+client,client.address,keyword,,Client network address.
+client,client.as.number,long,15169,Unique number allocated to the autonomous system.
+client,client.as.organization.name,keyword,Google LLC,Organization name.
+client,client.as.organization.name.text,match_only_text,Google LLC,Organization name.
+client,client.bytes,long,184,Bytes sent from the client to the server.
+client,client.domain,keyword,foo.example.com,The domain name of the client.
+client,client.geo.city_name,keyword,Montreal,City name.
+client,client.geo.continent_code,keyword,NA,Continent code.
+client,client.geo.continent_name,keyword,North America,Name of the continent.
+client,client.geo.country_iso_code,keyword,CA,Country ISO code.
+client,client.geo.country_name,keyword,Canada,Country name.
+client,client.geo.location,geo_point,"{ ""lon"": -73.614830, ""lat"": 45.505918 }",Longitude and latitude.
+client,client.geo.name,keyword,boston-dc,User-defined description of a location.
+client,client.geo.postal_code,keyword,94040,Postal code.
+client,client.geo.region_iso_code,keyword,CA-QC,Region ISO code.
+client,client.geo.region_name,keyword,Quebec,Region name.
+client,client.geo.timezone,keyword,America/Argentina/Buenos_Aires,Time zone.
+client,client.ip,ip,,IP address of the client.
+client,client.mac,keyword,00-00-5E-00-53-23,MAC address of the client.
+client,client.nat.ip,ip,,Client NAT ip address
+client,client.nat.port,long,,Client NAT port
+client,client.packets,long,12,Packets sent from the client to the server.
+client,client.port,long,,Port of the client.
+client,client.registered_domain,keyword,example.com,"The highest registered client domain, stripped of the subdomain."
+client,client.subdomain,keyword,east,The subdomain of the domain.
+client,client.top_level_domain,keyword,co.uk,"The effective top level domain (com, org, net, co.uk)."
+client,client.user.domain,keyword,,Name of the directory the user is a member of.
+client,client.user.email,keyword,,User email address.
+client,client.user.full_name,keyword,Albert Einstein,"User's full name, if available."
+client,client.user.full_name.text,match_only_text,Albert Einstein,"User's full name, if available."
+client,client.user.group.domain,keyword,,Name of the directory the group is a member of.
+client,client.user.group.id,keyword,,Unique identifier for the group on the system/platform.
+client,client.user.group.name,keyword,,Name of the group.
+client,client.user.hash,keyword,,Unique user hash to correlate information for a user in anonymized form.
+client,client.user.id,keyword,S-1-5-21-202424912787-2692429404-2351956786-1000,Unique identifier of the user.
+client,client.user.name,keyword,a.einstein,Short name or login of the user.
+client,client.user.name.text,match_only_text,a.einstein,Short name or login of the user.
+client,client.user.roles,keyword,"[""kibana_admin"", ""reporting_user""]",Array of user roles at the time of the event.
+cloud,cloud.account.id,keyword,666777888999,The cloud account or organization id.
+cloud,cloud.account.name,keyword,elastic-dev,The cloud account name.
+cloud,cloud.availability_zone,keyword,us-east-1c,"Availability zone in which this host, resource, or service is located."
+cloud,cloud.instance.id,keyword,i-1234567890abcdef0,Instance ID of the host machine.
+cloud,cloud.instance.name,keyword,,Instance name of the host machine.
+cloud,cloud.machine.type,keyword,t2.medium,Machine type of the host machine.
+cloud,cloud.origin.account.id,keyword,666777888999,The cloud account or organization id.
+cloud,cloud.origin.account.name,keyword,elastic-dev,The cloud account name.
+cloud,cloud.origin.availability_zone,keyword,us-east-1c,"Availability zone in which this host, resource, or service is located."
+cloud,cloud.origin.instance.id,keyword,i-1234567890abcdef0,Instance ID of the host machine.
+cloud,cloud.origin.instance.name,keyword,,Instance name of the host machine.
+cloud,cloud.origin.machine.type,keyword,t2.medium,Machine type of the host machine.
+cloud,cloud.origin.project.id,keyword,my-project,The cloud project id.
+cloud,cloud.origin.project.name,keyword,my project,The cloud project name.
+cloud,cloud.origin.provider,keyword,aws,Name of the cloud provider.
+cloud,cloud.origin.region,keyword,us-east-1,"Region in which this host, resource, or service is located."
+cloud,cloud.origin.service.name,keyword,lambda,The cloud service name.
+cloud,cloud.project.id,keyword,my-project,The cloud project id.
+cloud,cloud.project.name,keyword,my project,The cloud project name.
+cloud,cloud.provider,keyword,aws,Name of the cloud provider.
+cloud,cloud.region,keyword,us-east-1,"Region in which this host, resource, or service is located."
+cloud,cloud.service.name,keyword,lambda,The cloud service name.
+cloud,cloud.target.account.id,keyword,666777888999,The cloud account or organization id.
+cloud,cloud.target.account.name,keyword,elastic-dev,The cloud account name.
+cloud,cloud.target.availability_zone,keyword,us-east-1c,"Availability zone in which this host, resource, or service is located."
+cloud,cloud.target.instance.id,keyword,i-1234567890abcdef0,Instance ID of the host machine.
+cloud,cloud.target.instance.name,keyword,,Instance name of the host machine.
+cloud,cloud.target.machine.type,keyword,t2.medium,Machine type of the host machine.
+cloud,cloud.target.project.id,keyword,my-project,The cloud project id.
+cloud,cloud.target.project.name,keyword,my project,The cloud project name.
+cloud,cloud.target.provider,keyword,aws,Name of the cloud provider.
+cloud,cloud.target.region,keyword,us-east-1,"Region in which this host, resource, or service is located."
+cloud,cloud.target.service.name,keyword,lambda,The cloud service name.
+container,container.cpu.usage,scaled_float,,"Percent CPU used, between 0 and 1."
+container,container.disk.read.bytes,long,,The number of bytes read by all disks.
+container,container.disk.write.bytes,long,,The number of bytes written on all disks.
+container,container.id,keyword,,Unique container id.
+container,container.image.hash.all,keyword,[sha256:f8fefc80e3273dc756f288a63945820d6476ad64883892c771b5e2ece6bf1b26],An array of digests of the image the container was built on.
+container,container.image.name,keyword,,Name of the image the container was built on.
+container,container.image.tag,keyword,,Container image tags.
+container,container.labels,object,,Image labels.
+container,container.memory.usage,scaled_float,,"Percent memory used, between 0 and 1."
+container,container.name,keyword,,Container name.
+container,container.network.egress.bytes,long,,The number of bytes sent on all network interfaces.
+container,container.network.ingress.bytes,long,,The number of bytes received on all network interfaces.
+container,container.runtime,keyword,docker,Runtime managing this container.
+container,container.security_context.privileged,boolean,,Indicates whether the container is running in privileged mode.
+data_stream,data_stream.dataset,constant_keyword,nginx.access,The field can contain anything that makes sense to signify the source of the data.
+data_stream,data_stream.namespace,constant_keyword,production,A user defined namespace. Namespaces are useful to allow grouping of data.
+data_stream,data_stream.type,constant_keyword,logs,An overarching type for the data stream.
+destination,destination.address,keyword,,Destination network address.
+destination,destination.as.number,long,15169,Unique number allocated to the autonomous system.
+destination,destination.as.organization.name,keyword,Google LLC,Organization name.
+destination,destination.as.organization.name.text,match_only_text,Google LLC,Organization name.
+destination,destination.bytes,long,184,Bytes sent from the destination to the source.
+destination,destination.domain,keyword,foo.example.com,The domain name of the destination.
+destination,destination.geo.city_name,keyword,Montreal,City name.
+destination,destination.geo.continent_code,keyword,NA,Continent code.
+destination,destination.geo.continent_name,keyword,North America,Name of the continent.
+destination,destination.geo.country_iso_code,keyword,CA,Country ISO code.
+destination,destination.geo.country_name,keyword,Canada,Country name.
+destination,destination.geo.location,geo_point,"{ ""lon"": -73.614830, ""lat"": 45.505918 }",Longitude and latitude.
+destination,destination.geo.name,keyword,boston-dc,User-defined description of a location.
+destination,destination.geo.postal_code,keyword,94040,Postal code.
+destination,destination.geo.region_iso_code,keyword,CA-QC,Region ISO code.
+destination,destination.geo.region_name,keyword,Quebec,Region name.
+destination,destination.geo.timezone,keyword,America/Argentina/Buenos_Aires,Time zone.
+destination,destination.ip,ip,,IP address of the destination.
+destination,destination.mac,keyword,00-00-5E-00-53-23,MAC address of the destination.
+destination,destination.nat.ip,ip,,Destination NAT ip
+destination,destination.nat.port,long,,Destination NAT Port
+destination,destination.packets,long,12,Packets sent from the destination to the source.
+destination,destination.port,long,,Port of the destination.
+destination,destination.registered_domain,keyword,example.com,"The highest registered destination domain, stripped of the subdomain."
+destination,destination.subdomain,keyword,east,The subdomain of the domain.
+destination,destination.top_level_domain,keyword,co.uk,"The effective top level domain (com, org, net, co.uk)."
+destination,destination.user.domain,keyword,,Name of the directory the user is a member of.
+destination,destination.user.email,keyword,,User email address.
+destination,destination.user.full_name,keyword,Albert Einstein,"User's full name, if available."
+destination,destination.user.full_name.text,match_only_text,Albert Einstein,"User's full name, if available."
+destination,destination.user.group.domain,keyword,,Name of the directory the group is a member of.
+destination,destination.user.group.id,keyword,,Unique identifier for the group on the system/platform.
+destination,destination.user.group.name,keyword,,Name of the group.
+destination,destination.user.hash,keyword,,Unique user hash to correlate information for a user in anonymized form.
+destination,destination.user.id,keyword,S-1-5-21-202424912787-2692429404-2351956786-1000,Unique identifier of the user.
+destination,destination.user.name,keyword,a.einstein,Short name or login of the user.
+destination,destination.user.name.text,match_only_text,a.einstein,Short name or login of the user.
+destination,destination.user.roles,keyword,"[""kibana_admin"", ""reporting_user""]",Array of user roles at the time of the event.
+device,device.id,keyword,00000000-54b3-e7c7-0000-000046bffd97,The unique identifier of a device.
+device,device.manufacturer,keyword,Samsung,The vendor name of the device manufacturer.
+device,device.model.identifier,keyword,SM-G920F,The machine readable identifier of the device model.
+device,device.model.name,keyword,Samsung Galaxy S6,The human readable marketing name of the device model.
+device,device.serial_number,keyword,DJGAQS4CW5,Serial Number of the device
+dll,dll.code_signature.digest_algorithm,keyword,sha256,Hashing algorithm used to sign the process.
+dll,dll.code_signature.exists,boolean,TRUE,Boolean to capture if a signature is present.
+dll,dll.code_signature.flags,keyword,570522385,Code signing flags of the process
+dll,dll.code_signature.signing_id,keyword,com.apple.xpc.proxy,The identifier used to sign the process.
+dll,dll.code_signature.status,keyword,ERROR_UNTRUSTED_ROOT,Additional information about the certificate status.
+dll,dll.code_signature.subject_name,keyword,Microsoft Corporation,Subject name of the code signer
+dll,dll.code_signature.team_id,keyword,EQHXZ8M8AV,The team identifier used to sign the process.
+dll,dll.code_signature.timestamp,date,2021-01-01T12:10:30Z,When the signature was generated and signed.
+dll,dll.code_signature.trusted,boolean,TRUE,Stores the trust status of the certificate chain.
+dll,dll.code_signature.valid,boolean,TRUE,Boolean to capture if the digital signature is verified against the binary content.
+dll,dll.hash.cdhash,keyword,3783b4052fd474dbe30676b45c329e7a6d44acd9,The Code Directory (CD) hash of an executable.
+dll,dll.hash.md5,keyword,,MD5 hash.
+dll,dll.hash.sha1,keyword,,SHA1 hash.
+dll,dll.hash.sha256,keyword,,SHA256 hash.
+dll,dll.hash.sha384,keyword,,SHA384 hash.
+dll,dll.hash.sha512,keyword,,SHA512 hash.
+dll,dll.hash.ssdeep,keyword,,SSDEEP hash.
+dll,dll.hash.tlsh,keyword,,TLSH hash.
+dll,dll.name,keyword,kernel32.dll,Name of the library.
+dll,dll.path,keyword,C:\Windows\System32\kernel32.dll,Full file path of the library.
+dll,dll.pe.architecture,keyword,x64,CPU architecture target for the file.
+dll,dll.pe.company,keyword,Microsoft Corporation,"Internal company name of the file, provided at compile-time."
+dll,dll.pe.description,keyword,Paint,"Internal description of the file, provided at compile-time."
+dll,dll.pe.file_version,keyword,6.3.9600.17415,Process name.
+dll,dll.pe.go_import_hash,keyword,10bddcb4cee42080f76c88d9ff964491,A hash of the Go language imports in a PE file.
+dll,dll.pe.go_imports,flattened,,List of imported Go language element names and types.
+dll,dll.pe.go_imports_names_entropy,long,,Shannon entropy calculation from the list of Go imports.
+dll,dll.pe.go_imports_names_var_entropy,long,,Variance for Shannon entropy calculation from the list of Go imports.
+dll,dll.pe.go_stripped,boolean,,Whether the file is a stripped or obfuscated Go executable.
+dll,dll.pe.imphash,keyword,0c6803c4e922103c4dca5963aad36ddf,A hash of the imports in a PE file.
+dll,dll.pe.import_hash,keyword,d41d8cd98f00b204e9800998ecf8427e,A hash of the imports in a PE file.
+dll,dll.pe.imports,flattened,,List of imported element names and types.
+dll,dll.pe.imports_names_entropy,long,,Shannon entropy calculation from the list of imported element names and types.
+dll,dll.pe.imports_names_var_entropy,long,,Variance for Shannon entropy calculation from the list of imported element names and types.
+dll,dll.pe.original_file_name,keyword,MSPAINT.EXE,"Internal name of the file, provided at compile-time."
+dll,dll.pe.pehash,keyword,73ff189b63cd6be375a7ff25179a38d347651975,A hash of the PE header and data from one or more PE sections.
+dll,dll.pe.product,keyword,Microsoft® Windows® Operating System,"Internal product name of the file, provided at compile-time."
+dll,dll.pe.sections,nested,,Section information of the PE file.
+dll,dll.pe.sections.entropy,long,,Shannon entropy calculation from the section.
+dll,dll.pe.sections.name,keyword,,PE Section List name.
+dll,dll.pe.sections.physical_size,long,,PE Section List physical size.
+dll,dll.pe.sections.var_entropy,long,,Variance for Shannon entropy calculation from the section.
+dll,dll.pe.sections.virtual_size,long,,PE Section List virtual size. This is always the same as `physical_size`.
+dns,dns.answers,object,,Array of DNS answers.
+dns,dns.answers.class,keyword,IN,The class of DNS data contained in this resource record.
+dns,dns.answers.data,keyword,10.10.10.10,The data describing the resource.
+dns,dns.answers.name,keyword,www.example.com,The domain name to which this resource record pertains.
+dns,dns.answers.ttl,long,180,The time interval in seconds that this resource record may be cached before it should be discarded.
+dns,dns.answers.type,keyword,CNAME,The type of data contained in this resource record.
+dns,dns.header_flags,keyword,"[""RD"", ""RA""]",Array of DNS header flags.
+dns,dns.id,keyword,62111,The DNS packet identifier assigned by the program that generated the query. The identifier is copied to the response.
+dns,dns.op_code,keyword,QUERY,The DNS operation code that specifies the kind of query in the message.
+dns,dns.question.class,keyword,IN,The class of records being queried.
+dns,dns.question.name,keyword,www.example.com,The name being queried.
+dns,dns.question.registered_domain,keyword,example.com,"The highest registered domain, stripped of the subdomain."
+dns,dns.question.subdomain,keyword,www,The subdomain of the domain.
+dns,dns.question.top_level_domain,keyword,co.uk,"The effective top level domain (com, org, net, co.uk)."
+dns,dns.question.type,keyword,AAAA,The type of record being queried.
+dns,dns.resolved_ip,ip,"[""10.10.10.10"", ""10.10.10.11""]",Array containing all IPs seen in answers.data
+dns,dns.response_code,keyword,NOERROR,The DNS response code.
+dns,dns.type,keyword,answer,"The type of DNS event captured, query or answer."
+ecs,ecs.version,keyword,1.0.0,ECS version this event conforms to.
+email,email.attachments,nested,,List of objects describing the attachments.
+email,email.attachments.file.extension,keyword,txt,Attachment file extension.
+email,email.attachments.file.hash.cdhash,keyword,3783b4052fd474dbe30676b45c329e7a6d44acd9,The Code Directory (CD) hash of an executable.
+email,email.attachments.file.hash.md5,keyword,,MD5 hash.
+email,email.attachments.file.hash.sha1,keyword,,SHA1 hash.
+email,email.attachments.file.hash.sha256,keyword,,SHA256 hash.
+email,email.attachments.file.hash.sha384,keyword,,SHA384 hash.
+email,email.attachments.file.hash.sha512,keyword,,SHA512 hash.
+email,email.attachments.file.hash.ssdeep,keyword,,SSDEEP hash.
+email,email.attachments.file.hash.tlsh,keyword,,TLSH hash.
+email,email.attachments.file.mime_type,keyword,text/plain,MIME type of the attachment file.
+email,email.attachments.file.name,keyword,attachment.txt,Name of the attachment file.
+email,email.attachments.file.size,long,64329,Attachment file size.
+email,email.bcc.address,keyword,bcc.user1@example.com,Email address of BCC recipient
+email,email.cc.address,keyword,cc.user1@example.com,Email address of CC recipient
+email,email.content_type,keyword,text/plain,MIME type of the email message.
+email,email.delivery_timestamp,date,2020-11-10T22:12:34.8196921Z,Date and time when message was delivered.
+email,email.direction,keyword,inbound,Direction of the message.
+email,email.from.address,keyword,sender@example.com,The sender's email address.
+email,email.local_id,keyword,c26dbea0-80d5-463b-b93c-4e8b708219ce,Unique identifier given by the source.
+email,email.message_id,wildcard,81ce15$8r2j59@mail01.example.com,Value from the Message-ID header.
+email,email.origination_timestamp,date,2020-11-10T22:12:34.8196921Z,Date and time the email was composed.
+email,email.reply_to.address,keyword,reply.here@example.com,Address replies should be delivered to.
+email,email.sender.address,keyword,,Address of the message sender.
+email,email.subject,keyword,Please see this important message.,The subject of the email message.
+email,email.subject.text,match_only_text,Please see this important message.,The subject of the email message.
+email,email.to.address,keyword,user1@example.com,Email address of recipient
+email,email.x_mailer,keyword,Spambot v2.5,Application that drafted email.
+error,error.code,keyword,,Error code describing the error.
+error,error.id,keyword,,Unique identifier for the error.
+error,error.message,match_only_text,,Error message.
+error,error.stack_trace,wildcard,,The stack trace of this error in plain text.
+error,error.stack_trace.text,match_only_text,,The stack trace of this error in plain text.
+error,error.type,keyword,java.lang.NullPointerException,"The type of the error, for example the class name of the exception."
+event,event.action,keyword,user-password-change,The action captured by the event.
+event,event.agent_id_status,keyword,verified,Validation status of the event's agent.id field.
+event,event.category,keyword,authentication,Event category. The second categorization field in the hierarchy.
+event,event.code,keyword,4648,Identification code for this event.
+event,event.created,date,2016-05-23T08:05:34.857Z,Time when the event was first read by an agent or by your pipeline.
+event,event.dataset,keyword,apache.access,Name of the dataset.
+event,event.duration,long,,Duration of the event in nanoseconds.
+event,event.end,date,,`event.end` contains the date when the event ended or when the activity was last observed.
+event,event.hash,keyword,123456789012345678901234567890ABCD,Hash (perhaps logstash fingerprint) of raw field to be able to demonstrate log integrity.
+event,event.id,keyword,8a4f500d,Unique ID to describe the event.
+event,event.ingested,date,2016-05-23T08:05:35.101Z,Timestamp when an event arrived in the central data store.
+event,event.kind,keyword,alert,The kind of the event. The highest categorization field in the hierarchy.
+event,event.module,keyword,apache,Name of the module this data is coming from.
+event,event.original,keyword,Sep 19 08:26:10 host CEF:0&#124;Security&#124; threatmanager&#124;1.0&#124;100&#124; worm successfully stopped&#124;10&#124;src=10.0.0.1 dst=2.1.2.2spt=1232,Raw text message of entire event.
+event,event.outcome,keyword,success,The outcome of the event. The lowest level categorization field in the hierarchy.
+event,event.provider,keyword,kernel,Source of the event.
+event,event.reason,keyword,Terminated an unexpected process,"Reason why this event happened, according to the source"
+event,event.reference,keyword,https://system.example.com/event/#0001234,Event reference URL
+event,event.risk_score,float,,Risk score or priority of the event (e.g. security solutions). Use your system's original value here.
+event,event.risk_score_norm,float,,Normalized risk score or priority of the event (0-100).
+event,event.sequence,long,,Sequence number of the event.
+event,event.severity,long,7,Numeric severity of the event.
+event,event.start,date,,`event.start` contains the date when the event started or when the activity was first observed.
+event,event.timezone,keyword,,Event time zone.
+event,event.type,keyword,,Event type. The third categorization field in the hierarchy.
+event,event.url,keyword,https://mysystem.example.com/alert/5271dedb-f5b0-4218-87f0-4ac4870a38fe,Event investigation URL
+faas,faas.coldstart,boolean,,Boolean value indicating a cold start of a function.
+faas,faas.execution,keyword,af9d5aa4-a685-4c5f-a22b-444f80b3cc28,The execution ID of the current function execution.
+faas,faas.id,keyword,arn:aws:lambda:us-west-2:123456789012:function:my-function,The unique identifier of a serverless function.
+faas,faas.name,keyword,my-function,The name of a serverless function.
+faas,faas.trigger.request_id,keyword,123456789,"The ID of the trigger request , message, event, etc."
+faas,faas.trigger.type,keyword,http,The trigger for the function execution.
+faas,faas.version,keyword,123,The version of a serverless function.
+file,file.accessed,date,,Last time the file was accessed.
+file,file.attributes,keyword,"[""readonly"", ""system""]",Array of file attributes.
+file,file.code_signature.digest_algorithm,keyword,sha256,Hashing algorithm used to sign the process.
+file,file.code_signature.exists,boolean,TRUE,Boolean to capture if a signature is present.
+file,file.code_signature.flags,keyword,570522385,Code signing flags of the process
+file,file.code_signature.signing_id,keyword,com.apple.xpc.proxy,The identifier used to sign the process.
+file,file.code_signature.status,keyword,ERROR_UNTRUSTED_ROOT,Additional information about the certificate status.
+file,file.code_signature.subject_name,keyword,Microsoft Corporation,Subject name of the code signer
+file,file.code_signature.team_id,keyword,EQHXZ8M8AV,The team identifier used to sign the process.
+file,file.code_signature.timestamp,date,2021-01-01T12:10:30Z,When the signature was generated and signed.
+file,file.code_signature.trusted,boolean,TRUE,Stores the trust status of the certificate chain.
+file,file.code_signature.valid,boolean,TRUE,Boolean to capture if the digital signature is verified against the binary content.
+file,file.created,date,,File creation time.
+file,file.ctime,date,,Last time the file attributes or metadata changed.
+file,file.device,keyword,sda,Device that is the source of the file.
+file,file.directory,keyword,/home/alice,Directory where the file is located.
+file,file.drive_letter,keyword,C,Drive letter where the file is located.
+file,file.elf.architecture,keyword,x86-64,Machine architecture of the ELF file.
+file,file.elf.byte_order,keyword,Little Endian,Byte sequence of ELF file.
+file,file.elf.cpu_type,keyword,Intel,CPU type of the ELF file.
+file,file.elf.creation_date,date,,Build or compile date.
+file,file.elf.exports,flattened,,List of exported element names and types.
+file,file.elf.go_import_hash,keyword,10bddcb4cee42080f76c88d9ff964491,A hash of the Go language imports in an ELF file.
+file,file.elf.go_imports,flattened,,List of imported Go language element names and types.
+file,file.elf.go_imports_names_entropy,long,,Shannon entropy calculation from the list of Go imports.
+file,file.elf.go_imports_names_var_entropy,long,,Variance for Shannon entropy calculation from the list of Go imports.
+file,file.elf.go_stripped,boolean,,Whether the file is a stripped or obfuscated Go executable.
+file,file.elf.header.abi_version,keyword,,Version of the ELF Application Binary Interface (ABI).
+file,file.elf.header.class,keyword,,Header class of the ELF file.
+file,file.elf.header.data,keyword,,Data table of the ELF header.
+file,file.elf.header.entrypoint,long,,Header entrypoint of the ELF file.
+file,file.elf.header.object_version,keyword,,"""0x1"" for original ELF files."
+file,file.elf.header.os_abi,keyword,,Application Binary Interface (ABI) of the Linux OS.
+file,file.elf.header.type,keyword,,Header type of the ELF file.
+file,file.elf.header.version,keyword,,Version of the ELF header.
+file,file.elf.import_hash,keyword,d41d8cd98f00b204e9800998ecf8427e,A hash of the imports in an ELF file.
+file,file.elf.imports,flattened,,List of imported element names and types.
+file,file.elf.imports_names_entropy,long,,Shannon entropy calculation from the list of imported element names and types.
+file,file.elf.imports_names_var_entropy,long,,Variance for Shannon entropy calculation from the list of imported element names and types.
+file,file.elf.sections,nested,,Section information of the ELF file.
+file,file.elf.sections.chi2,long,,Chi-square probability distribution of the section.
+file,file.elf.sections.entropy,long,,Shannon entropy calculation from the section.
+file,file.elf.sections.flags,keyword,,ELF Section List flags.
+file,file.elf.sections.name,keyword,,ELF Section List name.
+file,file.elf.sections.physical_offset,keyword,,ELF Section List offset.
+file,file.elf.sections.physical_size,long,,ELF Section List physical size.
+file,file.elf.sections.type,keyword,,ELF Section List type.
+file,file.elf.sections.var_entropy,long,,Variance for Shannon entropy calculation from the section.
+file,file.elf.sections.virtual_address,long,,ELF Section List virtual address.
+file,file.elf.sections.virtual_size,long,,ELF Section List virtual size.
+file,file.elf.segments,nested,,ELF object segment list.
+file,file.elf.segments.sections,keyword,,ELF object segment sections.
+file,file.elf.segments.type,keyword,,ELF object segment type.
+file,file.elf.shared_libraries,keyword,,List of shared libraries used by this ELF object.
+file,file.elf.telfhash,keyword,,telfhash hash for ELF file.
+file,file.extension,keyword,png,"File extension, excluding the leading dot."
+file,file.fork_name,keyword,Zone.Identifer,A fork is additional data associated with a filesystem object.
+file,file.gid,keyword,1001,Primary group ID (GID) of the file.
+file,file.group,keyword,alice,Primary group name of the file.
+file,file.hash.cdhash,keyword,3783b4052fd474dbe30676b45c329e7a6d44acd9,The Code Directory (CD) hash of an executable.
+file,file.hash.md5,keyword,,MD5 hash.
+file,file.hash.sha1,keyword,,SHA1 hash.
+file,file.hash.sha256,keyword,,SHA256 hash.
+file,file.hash.sha384,keyword,,SHA384 hash.
+file,file.hash.sha512,keyword,,SHA512 hash.
+file,file.hash.ssdeep,keyword,,SSDEEP hash.
+file,file.hash.tlsh,keyword,,TLSH hash.
+file,file.inode,keyword,256383,Inode representing the file in the filesystem.
+file,file.macho.go_import_hash,keyword,10bddcb4cee42080f76c88d9ff964491,A hash of the Go language imports in a Mach-O file.
+file,file.macho.go_imports,flattened,,List of imported Go language element names and types.
+file,file.macho.go_imports_names_entropy,long,,Shannon entropy calculation from the list of Go imports.
+file,file.macho.go_imports_names_var_entropy,long,,Variance for Shannon entropy calculation from the list of Go imports.
+file,file.macho.go_stripped,boolean,,Whether the file is a stripped or obfuscated Go executable.
+file,file.macho.import_hash,keyword,d41d8cd98f00b204e9800998ecf8427e,A hash of the imports in a Mach-O file.
+file,file.macho.imports,flattened,,List of imported element names and types.
+file,file.macho.imports_names_entropy,long,,Shannon entropy calculation from the list of imported element names and types.
+file,file.macho.imports_names_var_entropy,long,,Variance for Shannon entropy calculation from the list of imported element names and types.
+file,file.macho.sections,nested,,Section information of the Mach-O file.
+file,file.macho.sections.entropy,long,,Shannon entropy calculation from the section.
+file,file.macho.sections.name,keyword,,Mach-O Section List name.
+file,file.macho.sections.physical_size,long,,Mach-O Section List physical size.
+file,file.macho.sections.var_entropy,long,,Variance for Shannon entropy calculation from the section.
+file,file.macho.sections.virtual_size,long,,Mach-O Section List virtual size. This is always the same as `physical_size`.
+file,file.macho.symhash,keyword,d3ccf195b62a9279c3c19af1080497ec,A hash of the imports in a Mach-O file.
+file,file.mime_type,keyword,,"Media type of file, document, or arrangement of bytes."
+file,file.mode,keyword,640,Mode of the file in octal representation.
+file,file.mtime,date,,Last time the file content was modified.
+file,file.name,keyword,example.png,"Name of the file including the extension, without the directory."
+file,file.owner,keyword,alice,File owner's username.
+file,file.path,keyword,/home/alice/example.png,"Full path to the file, including the file name."
+file,file.path.text,match_only_text,/home/alice/example.png,"Full path to the file, including the file name."
+file,file.pe.architecture,keyword,x64,CPU architecture target for the file.
+file,file.pe.company,keyword,Microsoft Corporation,"Internal company name of the file, provided at compile-time."
+file,file.pe.description,keyword,Paint,"Internal description of the file, provided at compile-time."
+file,file.pe.file_version,keyword,6.3.9600.17415,Process name.
+file,file.pe.go_import_hash,keyword,10bddcb4cee42080f76c88d9ff964491,A hash of the Go language imports in a PE file.
+file,file.pe.go_imports,flattened,,List of imported Go language element names and types.
+file,file.pe.go_imports_names_entropy,long,,Shannon entropy calculation from the list of Go imports.
+file,file.pe.go_imports_names_var_entropy,long,,Variance for Shannon entropy calculation from the list of Go imports.
+file,file.pe.go_stripped,boolean,,Whether the file is a stripped or obfuscated Go executable.
+file,file.pe.imphash,keyword,0c6803c4e922103c4dca5963aad36ddf,A hash of the imports in a PE file.
+file,file.pe.import_hash,keyword,d41d8cd98f00b204e9800998ecf8427e,A hash of the imports in a PE file.
+file,file.pe.imports,flattened,,List of imported element names and types.
+file,file.pe.imports_names_entropy,long,,Shannon entropy calculation from the list of imported element names and types.
+file,file.pe.imports_names_var_entropy,long,,Variance for Shannon entropy calculation from the list of imported element names and types.
+file,file.pe.original_file_name,keyword,MSPAINT.EXE,"Internal name of the file, provided at compile-time."
+file,file.pe.pehash,keyword,73ff189b63cd6be375a7ff25179a38d347651975,A hash of the PE header and data from one or more PE sections.
+file,file.pe.product,keyword,Microsoft® Windows® Operating System,"Internal product name of the file, provided at compile-time."
+file,file.pe.sections,nested,,Section information of the PE file.
+file,file.pe.sections.entropy,long,,Shannon entropy calculation from the section.
+file,file.pe.sections.name,keyword,,PE Section List name.
+file,file.pe.sections.physical_size,long,,PE Section List physical size.
+file,file.pe.sections.var_entropy,long,,Variance for Shannon entropy calculation from the section.
+file,file.pe.sections.virtual_size,long,,PE Section List virtual size. This is always the same as `physical_size`.
+file,file.size,long,16384,File size in bytes.
+file,file.target_path,keyword,,Target path for symlinks.
+file,file.target_path.text,match_only_text,,Target path for symlinks.
+file,file.type,keyword,file,"File type (file, dir, or symlink)."
+file,file.uid,keyword,1001,The user ID (UID) or security identifier (SID) of the file owner.
+file,file.x509.alternative_names,keyword,*.elastic.co,List of subject alternative names (SAN).
+file,file.x509.issuer.common_name,keyword,Example SHA2 High Assurance Server CA,List of common name (CN) of issuing certificate authority.
+file,file.x509.issuer.country,keyword,US,List of country \(C) codes
+file,file.x509.issuer.distinguished_name,keyword,"C=US, O=Example Inc, OU=www.example.com, CN=Example SHA2 High Assurance Server CA",Distinguished name (DN) of issuing certificate authority.
+file,file.x509.issuer.locality,keyword,Mountain View,List of locality names (L)
+file,file.x509.issuer.organization,keyword,Example Inc,List of organizations (O) of issuing certificate authority.
+file,file.x509.issuer.organizational_unit,keyword,www.example.com,List of organizational units (OU) of issuing certificate authority.
+file,file.x509.issuer.state_or_province,keyword,California,"List of state or province names (ST, S, or P)"
+file,file.x509.not_after,date,2020-07-16T03:15:39Z,Time at which the certificate is no longer considered valid.
+file,file.x509.not_before,date,2019-08-16T01:40:25Z,Time at which the certificate is first considered valid.
+file,file.x509.public_key_algorithm,keyword,RSA,Algorithm used to generate the public key.
+file,file.x509.public_key_curve,keyword,nistp521,The curve used by the elliptic curve public key algorithm. This is algorithm specific.
+file,file.x509.public_key_exponent,long,65537,Exponent used to derive the public key. This is algorithm specific.
+file,file.x509.public_key_size,long,2048,The size of the public key space in bits.
+file,file.x509.serial_number,keyword,55FBB9C7DEBF09809D12CCAA,Unique serial number issued by the certificate authority.
+file,file.x509.signature_algorithm,keyword,SHA256-RSA,Identifier for certificate signature algorithm.
+file,file.x509.subject.common_name,keyword,shared.global.example.net,List of common names (CN) of subject.
+file,file.x509.subject.country,keyword,US,List of country \(C) code
+file,file.x509.subject.distinguished_name,keyword,"C=US, ST=California, L=San Francisco, O=Example, Inc., CN=shared.global.example.net",Distinguished name (DN) of the certificate subject entity.
+file,file.x509.subject.locality,keyword,San Francisco,List of locality names (L)
+file,file.x509.subject.organization,keyword,"Example, Inc.",List of organizations (O) of subject.
+file,file.x509.subject.organizational_unit,keyword,,List of organizational units (OU) of subject.
+file,file.x509.subject.state_or_province,keyword,California,"List of state or province names (ST, S, or P)"
+file,file.x509.version_number,keyword,3,Version of x509 format.
+group,group.domain,keyword,,Name of the directory the group is a member of.
+group,group.id,keyword,,Unique identifier for the group on the system/platform.
+group,group.name,keyword,,Name of the group.
+host,host.architecture,keyword,x86_64,Operating system architecture.
+host,host.boot.id,keyword,88a1f0ed-5ae5-41ee-af6b-41921c311872,Linux boot uuid taken from /proc/sys/kernel/random/boot_id
+host,host.cpu.usage,scaled_float,,"Percent CPU used, between 0 and 1."
+host,host.disk.read.bytes,long,,The number of bytes read by all disks.
+host,host.disk.write.bytes,long,,The number of bytes written on all disks.
+host,host.domain,keyword,CONTOSO,Name of the directory the group is a member of.
+host,host.geo.city_name,keyword,Montreal,City name.
+host,host.geo.continent_code,keyword,NA,Continent code.
+host,host.geo.continent_name,keyword,North America,Name of the continent.
+host,host.geo.country_iso_code,keyword,CA,Country ISO code.
+host,host.geo.country_name,keyword,Canada,Country name.
+host,host.geo.location,geo_point,"{ ""lon"": -73.614830, ""lat"": 45.505918 }",Longitude and latitude.
+host,host.geo.name,keyword,boston-dc,User-defined description of a location.
+host,host.geo.postal_code,keyword,94040,Postal code.
+host,host.geo.region_iso_code,keyword,CA-QC,Region ISO code.
+host,host.geo.region_name,keyword,Quebec,Region name.
+host,host.geo.timezone,keyword,America/Argentina/Buenos_Aires,Time zone.
+host,host.hostname,keyword,,Hostname of the host.
+host,host.id,keyword,,Unique host id.
+host,host.ip,ip,,Host ip addresses.
+host,host.mac,keyword,"[""00-00-5E-00-53-23"", ""00-00-5E-00-53-24""]",Host MAC addresses.
+host,host.name,keyword,,Name of the host.
+host,host.network.egress.bytes,long,,The number of bytes sent on all network interfaces.
+host,host.network.egress.packets,long,,The number of packets sent on all network interfaces.
+host,host.network.ingress.bytes,long,,The number of bytes received on all network interfaces.
+host,host.network.ingress.packets,long,,The number of packets received on all network interfaces.
+host,host.os.family,keyword,debian,"OS family (such as redhat, debian, freebsd, windows)."
+host,host.os.full,keyword,Mac OS Mojave,"Operating system name, including the version or code name."
+host,host.os.full.text,match_only_text,Mac OS Mojave,"Operating system name, including the version or code name."
+host,host.os.kernel,keyword,4.4.0-112-generic,Operating system kernel version as a raw string.
+host,host.os.name,keyword,Mac OS X,"Operating system name, without the version."
+host,host.os.name.text,match_only_text,Mac OS X,"Operating system name, without the version."
+host,host.os.platform,keyword,darwin,"Operating system platform (such centos, ubuntu, windows)."
+host,host.os.type,keyword,macos,"Which commercial OS family (one of: linux, macos, unix, windows, ios or android)."
+host,host.os.version,keyword,10.14.1,Operating system version as a raw string.
+host,host.pid_ns_ino,keyword,256383,Pid namespace inode
+host,host.risk.calculated_level,keyword,High,A risk classification level calculated by an internal system as part of entity analytics and entity risk scoring.
+host,host.risk.calculated_score,float,880.73,A risk classification score calculated by an internal system as part of entity analytics and entity risk scoring.
+host,host.risk.calculated_score_norm,float,88.73,A normalized risk score calculated by an internal system.
+host,host.risk.static_level,keyword,High,"A risk classification level obtained from outside the system, such as from some external Threat Intelligence Platform."
+host,host.risk.static_score,float,830,"A risk classification score obtained from outside the system, such as from some external Threat Intelligence Platform."
+host,host.risk.static_score_norm,float,83,A normalized risk score calculated by an external system.
+host,host.type,keyword,,Type of host.
+host,host.uptime,long,1325,Seconds the host has been up.
+http,http.request.body.bytes,long,887,Size in bytes of the request body.
+http,http.request.body.content,wildcard,Hello world,The full HTTP request body.
+http,http.request.body.content.text,match_only_text,Hello world,The full HTTP request body.
+http,http.request.bytes,long,1437,Total size in bytes of the request (body and headers).
+http,http.request.id,keyword,123e4567-e89b-12d3-a456-426614174000,HTTP request ID.
+http,http.request.method,keyword,POST,HTTP request method.
+http,http.request.mime_type,keyword,image/gif,Mime type of the body of the request.
+http,http.request.referrer,keyword,https://blog.example.com/,Referrer for this HTTP request.
+http,http.response.body.bytes,long,887,Size in bytes of the response body.
+http,http.response.body.content,wildcard,Hello world,The full HTTP response body.
+http,http.response.body.content.text,match_only_text,Hello world,The full HTTP response body.
+http,http.response.bytes,long,1437,Total size in bytes of the response (body and headers).
+http,http.response.mime_type,keyword,image/gif,Mime type of the body of the response.
+http,http.response.status_code,long,404,HTTP response status code.
+http,http.version,keyword,1.1,HTTP version.
+log,log.file.path,keyword,/var/log/fun-times.log,Full path to the log file this event came from.
+log,log.level,keyword,error,Log level of the log event.
+log,log.logger,keyword,org.elasticsearch.bootstrap.Bootstrap,Name of the logger.
+log,log.origin.file.line,long,42,The line number of the file which originated the log event.
+log,log.origin.file.name,keyword,Bootstrap.java,The code file which originated the log event.
+log,log.origin.function,keyword,init,The function which originated the log event.
+log,log.syslog,object,,Syslog metadata
+log,log.syslog.appname,keyword,sshd,The device or application that originated the Syslog message.
+log,log.syslog.facility.code,long,23,Syslog numeric facility of the event.
+log,log.syslog.facility.name,keyword,local7,Syslog text-based facility of the event.
+log,log.syslog.hostname,keyword,example-host,The host that originated the Syslog message.
+log,log.syslog.msgid,keyword,ID47,An identifier for the type of Syslog message.
+log,log.syslog.priority,long,135,Syslog priority of the event.
+log,log.syslog.procid,keyword,12345,The process name or ID that originated the Syslog message.
+log,log.syslog.severity.code,long,3,Syslog numeric severity of the event.
+log,log.syslog.severity.name,keyword,Error,Syslog text-based severity of the event.
+log,log.syslog.structured_data,flattened,,Structured data expressed in RFC 5424 messages.
+log,log.syslog.version,keyword,1,Syslog protocol version.
+network,network.application,keyword,aim,Application level protocol name.
+network,network.bytes,long,368,Total bytes transferred in both directions.
+network,network.community_id,keyword,1:hO+sN4H+MG5MY/8hIrXPqc4ZQz0=,A hash of source and destination IPs and ports.
+network,network.direction,keyword,inbound,Direction of the network traffic.
+network,network.forwarded_ip,ip,192.1.1.2,Host IP address when the source IP address is the proxy.
+network,network.iana_number,keyword,6,IANA Protocol Number.
+network,network.inner,object,,Inner VLAN tag information
+network,network.inner.vlan.id,keyword,10,VLAN ID as reported by the observer.
+network,network.inner.vlan.name,keyword,outside,Optional VLAN name as reported by the observer.
+network,network.name,keyword,Guest Wifi,Name given by operators to sections of their network.
+network,network.packets,long,24,Total packets transferred in both directions.
+network,network.protocol,keyword,http,Application protocol name.
+network,network.transport,keyword,tcp,Protocol Name corresponding to the field `iana_number`.
+network,network.type,keyword,ipv4,"In the OSI Model this would be the Network Layer. ipv4, ipv6, ipsec, pim, etc"
+network,network.vlan.id,keyword,10,VLAN ID as reported by the observer.
+network,network.vlan.name,keyword,outside,Optional VLAN name as reported by the observer.
+observer,observer.egress,object,,Object field for egress information
+observer,observer.egress.interface.alias,keyword,outside,Interface alias
+observer,observer.egress.interface.id,keyword,10,Interface ID
+observer,observer.egress.interface.name,keyword,eth0,Interface name
+observer,observer.egress.vlan.id,keyword,10,VLAN ID as reported by the observer.
+observer,observer.egress.vlan.name,keyword,outside,Optional VLAN name as reported by the observer.
+observer,observer.egress.zone,keyword,Public_Internet,Observer Egress zone
+observer,observer.geo.city_name,keyword,Montreal,City name.
+observer,observer.geo.continent_code,keyword,NA,Continent code.
+observer,observer.geo.continent_name,keyword,North America,Name of the continent.
+observer,observer.geo.country_iso_code,keyword,CA,Country ISO code.
+observer,observer.geo.country_name,keyword,Canada,Country name.
+observer,observer.geo.location,geo_point,"{ ""lon"": -73.614830, ""lat"": 45.505918 }",Longitude and latitude.
+observer,observer.geo.name,keyword,boston-dc,User-defined description of a location.
+observer,observer.geo.postal_code,keyword,94040,Postal code.
+observer,observer.geo.region_iso_code,keyword,CA-QC,Region ISO code.
+observer,observer.geo.region_name,keyword,Quebec,Region name.
+observer,observer.geo.timezone,keyword,America/Argentina/Buenos_Aires,Time zone.
+observer,observer.hostname,keyword,,Hostname of the observer.
+observer,observer.ingress,object,,Object field for ingress information
+observer,observer.ingress.interface.alias,keyword,outside,Interface alias
+observer,observer.ingress.interface.id,keyword,10,Interface ID
+observer,observer.ingress.interface.name,keyword,eth0,Interface name
+observer,observer.ingress.vlan.id,keyword,10,VLAN ID as reported by the observer.
+observer,observer.ingress.vlan.name,keyword,outside,Optional VLAN name as reported by the observer.
+observer,observer.ingress.zone,keyword,DMZ,Observer ingress zone
+observer,observer.ip,ip,,IP addresses of the observer.
+observer,observer.mac,keyword,"[""00-00-5E-00-53-23"", ""00-00-5E-00-53-24""]",MAC addresses of the observer.
+observer,observer.name,keyword,1_proxySG,Custom name of the observer.
+observer,observer.os.family,keyword,debian,"OS family (such as redhat, debian, freebsd, windows)."
+observer,observer.os.full,keyword,Mac OS Mojave,"Operating system name, including the version or code name."
+observer,observer.os.full.text,match_only_text,Mac OS Mojave,"Operating system name, including the version or code name."
+observer,observer.os.kernel,keyword,4.4.0-112-generic,Operating system kernel version as a raw string.
+observer,observer.os.name,keyword,Mac OS X,"Operating system name, without the version."
+observer,observer.os.name.text,match_only_text,Mac OS X,"Operating system name, without the version."
+observer,observer.os.platform,keyword,darwin,"Operating system platform (such centos, ubuntu, windows)."
+observer,observer.os.type,keyword,macos,"Which commercial OS family (one of: linux, macos, unix, windows, ios or android)."
+observer,observer.os.version,keyword,10.14.1,Operating system version as a raw string.
+observer,observer.product,keyword,s200,The product name of the observer.
+observer,observer.serial_number,keyword,,Observer serial number.
+observer,observer.type,keyword,firewall,The type of the observer the data is coming from.
+observer,observer.vendor,keyword,Symantec,Vendor name of the observer.
+observer,observer.version,keyword,,Observer version.
+orchestrator,orchestrator.api_version,keyword,v1beta1,API version being used to carry out the action
+orchestrator,orchestrator.cluster.id,keyword,,Unique ID of the cluster.
+orchestrator,orchestrator.cluster.name,keyword,,Name of the cluster.
+orchestrator,orchestrator.cluster.url,keyword,,URL of the API used to manage the cluster.
+orchestrator,orchestrator.cluster.version,keyword,,The version of the cluster.
+orchestrator,orchestrator.namespace,keyword,kube-system,Namespace in which the action is taking place.
+orchestrator,orchestrator.organization,keyword,elastic,Organization affected by the event (for multi-tenant orchestrator setups).
+orchestrator,orchestrator.resource.annotation,keyword,"['key1:value1', 'key2:value2', 'key3:value3']",The list of annotations added to the resource.
+orchestrator,orchestrator.resource.id,keyword,,Unique ID of the resource being acted upon.
+orchestrator,orchestrator.resource.ip,ip,,IP address assigned to the resource associated with the event being observed.
+orchestrator,orchestrator.resource.label,keyword,"['key1:value1', 'key2:value2', 'key3:value3']",The list of labels added to the resource.
+orchestrator,orchestrator.resource.name,keyword,test-pod-cdcws,Name of the resource being acted upon.
+orchestrator,orchestrator.resource.parent.type,keyword,DaemonSet,Type or kind of the parent resource associated with the event being observed.
+orchestrator,orchestrator.resource.type,keyword,service,Type of resource being acted upon.
+orchestrator,orchestrator.type,keyword,kubernetes,"Orchestrator cluster type (e.g. kubernetes, nomad or cloudfoundry)."
+organization,organization.id,keyword,,Unique identifier for the organization.
+organization,organization.name,keyword,,Organization name.
+organization,organization.name.text,match_only_text,,Organization name.
+package,package.architecture,keyword,x86_64,Package architecture.
+package,package.build_version,keyword,36f4f7e89dd61b0988b12ee000b98966867710cd,Build version information
+package,package.checksum,keyword,68b329da9893e34099c7d8ad5cb9c940,Checksum of the installed package for verification.
+package,package.description,keyword,Open source programming language to build simple/reliable/efficient software.,Description of the package.
+package,package.install_scope,keyword,global,"Indicating how the package was installed, e.g. user-local, global."
+package,package.installed,date,,Time when package was installed.
+package,package.license,keyword,Apache License 2.0,Package license
+package,package.name,keyword,go,Package name
+package,package.path,keyword,/usr/local/Cellar/go/1.12.9/,Path where the package is installed.
+package,package.reference,keyword,https://golang.org,Package home page or reference URL
+package,package.size,long,62231,Package size in bytes.
+package,package.type,keyword,rpm,Package type
+package,package.version,keyword,1.12.9,Package version
+process,process.args,keyword,"[""/usr/bin/ssh"", ""-l"", ""user"", ""10.0.0.16""]",Array of process arguments.
+process,process.args_count,long,4,Length of the process.args array.
+process,process.code_signature.digest_algorithm,keyword,sha256,Hashing algorithm used to sign the process.
+process,process.code_signature.exists,boolean,TRUE,Boolean to capture if a signature is present.
+process,process.code_signature.flags,keyword,570522385,Code signing flags of the process
+process,process.code_signature.signing_id,keyword,com.apple.xpc.proxy,The identifier used to sign the process.
+process,process.code_signature.status,keyword,ERROR_UNTRUSTED_ROOT,Additional information about the certificate status.
+process,process.code_signature.subject_name,keyword,Microsoft Corporation,Subject name of the code signer
+process,process.code_signature.team_id,keyword,EQHXZ8M8AV,The team identifier used to sign the process.
+process,process.code_signature.timestamp,date,2021-01-01T12:10:30Z,When the signature was generated and signed.
+process,process.code_signature.trusted,boolean,TRUE,Stores the trust status of the certificate chain.
+process,process.code_signature.valid,boolean,TRUE,Boolean to capture if the digital signature is verified against the binary content.
+process,process.command_line,wildcard,/usr/bin/ssh -l user 10.0.0.16,Full command line that started the process.
+process,process.command_line.text,match_only_text,/usr/bin/ssh -l user 10.0.0.16,Full command line that started the process.
+process,process.elf.architecture,keyword,x86-64,Machine architecture of the ELF file.
+process,process.elf.byte_order,keyword,Little Endian,Byte sequence of ELF file.
+process,process.elf.cpu_type,keyword,Intel,CPU type of the ELF file.
+process,process.elf.creation_date,date,,Build or compile date.
+process,process.elf.exports,flattened,,List of exported element names and types.
+process,process.elf.go_import_hash,keyword,10bddcb4cee42080f76c88d9ff964491,A hash of the Go language imports in an ELF file.
+process,process.elf.go_imports,flattened,,List of imported Go language element names and types.
+process,process.elf.go_imports_names_entropy,long,,Shannon entropy calculation from the list of Go imports.
+process,process.elf.go_imports_names_var_entropy,long,,Variance for Shannon entropy calculation from the list of Go imports.
+process,process.elf.go_stripped,boolean,,Whether the file is a stripped or obfuscated Go executable.
+process,process.elf.header.abi_version,keyword,,Version of the ELF Application Binary Interface (ABI).
+process,process.elf.header.class,keyword,,Header class of the ELF file.
+process,process.elf.header.data,keyword,,Data table of the ELF header.
+process,process.elf.header.entrypoint,long,,Header entrypoint of the ELF file.
+process,process.elf.header.object_version,keyword,,"""0x1"" for original ELF files."
+process,process.elf.header.os_abi,keyword,,Application Binary Interface (ABI) of the Linux OS.
+process,process.elf.header.type,keyword,,Header type of the ELF file.
+process,process.elf.header.version,keyword,,Version of the ELF header.
+process,process.elf.import_hash,keyword,d41d8cd98f00b204e9800998ecf8427e,A hash of the imports in an ELF file.
+process,process.elf.imports,flattened,,List of imported element names and types.
+process,process.elf.imports_names_entropy,long,,Shannon entropy calculation from the list of imported element names and types.
+process,process.elf.imports_names_var_entropy,long,,Variance for Shannon entropy calculation from the list of imported element names and types.
+process,process.elf.sections,nested,,Section information of the ELF file.
+process,process.elf.sections.chi2,long,,Chi-square probability distribution of the section.
+process,process.elf.sections.entropy,long,,Shannon entropy calculation from the section.
+process,process.elf.sections.flags,keyword,,ELF Section List flags.
+process,process.elf.sections.name,keyword,,ELF Section List name.
+process,process.elf.sections.physical_offset,keyword,,ELF Section List offset.
+process,process.elf.sections.physical_size,long,,ELF Section List physical size.
+process,process.elf.sections.type,keyword,,ELF Section List type.
+process,process.elf.sections.var_entropy,long,,Variance for Shannon entropy calculation from the section.
+process,process.elf.sections.virtual_address,long,,ELF Section List virtual address.
+process,process.elf.sections.virtual_size,long,,ELF Section List virtual size.
+process,process.elf.segments,nested,,ELF object segment list.
+process,process.elf.segments.sections,keyword,,ELF object segment sections.
+process,process.elf.segments.type,keyword,,ELF object segment type.
+process,process.elf.shared_libraries,keyword,,List of shared libraries used by this ELF object.
+process,process.elf.telfhash,keyword,,telfhash hash for ELF file.
+process,process.end,date,2016-05-23T08:05:34.853Z,The time the process ended.
+process,process.entity_id,keyword,c2c455d9f99375d,Unique identifier for the process.
+process,process.entry_leader.args,keyword,"[""/usr/bin/ssh"", ""-l"", ""user"", ""10.0.0.16""]",Array of process arguments.
+process,process.entry_leader.args_count,long,4,Length of the process.args array.
+process,process.entry_leader.attested_groups.name,keyword,,Name of the group.
+process,process.entry_leader.attested_user.id,keyword,S-1-5-21-202424912787-2692429404-2351956786-1000,Unique identifier of the user.
+process,process.entry_leader.attested_user.name,keyword,a.einstein,Short name or login of the user.
+process,process.entry_leader.attested_user.name.text,match_only_text,a.einstein,Short name or login of the user.
+process,process.entry_leader.command_line,wildcard,/usr/bin/ssh -l user 10.0.0.16,Full command line that started the process.
+process,process.entry_leader.command_line.text,match_only_text,/usr/bin/ssh -l user 10.0.0.16,Full command line that started the process.
+process,process.entry_leader.entity_id,keyword,c2c455d9f99375d,Unique identifier for the process.
+process,process.entry_leader.entry_meta.source.ip,ip,,IP address of the source.
+process,process.entry_leader.entry_meta.type,keyword,,The entry type for the entry session leader.
+process,process.entry_leader.executable,keyword,/usr/bin/ssh,Absolute path to the process executable.
+process,process.entry_leader.executable.text,match_only_text,/usr/bin/ssh,Absolute path to the process executable.
+process,process.entry_leader.group.id,keyword,,Unique identifier for the group on the system/platform.
+process,process.entry_leader.group.name,keyword,,Name of the group.
+process,process.entry_leader.interactive,boolean,TRUE,Whether the process is connected to an interactive shell.
+process,process.entry_leader.name,keyword,ssh,Process name.
+process,process.entry_leader.name.text,match_only_text,ssh,Process name.
+process,process.entry_leader.parent.entity_id,keyword,c2c455d9f99375d,Unique identifier for the process.
+process,process.entry_leader.parent.pid,long,4242,Process id.
+process,process.entry_leader.parent.session_leader.entity_id,keyword,c2c455d9f99375d,Unique identifier for the process.
+process,process.entry_leader.parent.session_leader.pid,long,4242,Process id.
+process,process.entry_leader.parent.session_leader.start,date,2016-05-23T08:05:34.853Z,The time the process started.
+process,process.entry_leader.parent.session_leader.vpid,long,4242,Virtual process id.
+process,process.entry_leader.parent.start,date,2016-05-23T08:05:34.853Z,The time the process started.
+process,process.entry_leader.parent.vpid,long,4242,Virtual process id.
+process,process.entry_leader.pid,long,4242,Process id.
+process,process.entry_leader.real_group.id,keyword,,Unique identifier for the group on the system/platform.
+process,process.entry_leader.real_group.name,keyword,,Name of the group.
+process,process.entry_leader.real_user.id,keyword,S-1-5-21-202424912787-2692429404-2351956786-1000,Unique identifier of the user.
+process,process.entry_leader.real_user.name,keyword,a.einstein,Short name or login of the user.
+process,process.entry_leader.real_user.name.text,match_only_text,a.einstein,Short name or login of the user.
+process,process.entry_leader.same_as_process,boolean,TRUE,This boolean is used to identify if a leader process is the same as the top level process.
+process,process.entry_leader.saved_group.id,keyword,,Unique identifier for the group on the system/platform.
+process,process.entry_leader.saved_group.name,keyword,,Name of the group.
+process,process.entry_leader.saved_user.id,keyword,S-1-5-21-202424912787-2692429404-2351956786-1000,Unique identifier of the user.
+process,process.entry_leader.saved_user.name,keyword,a.einstein,Short name or login of the user.
+process,process.entry_leader.saved_user.name.text,match_only_text,a.einstein,Short name or login of the user.
+process,process.entry_leader.start,date,2016-05-23T08:05:34.853Z,The time the process started.
+process,process.entry_leader.supplemental_groups.id,keyword,,Unique identifier for the group on the system/platform.
+process,process.entry_leader.supplemental_groups.name,keyword,,Name of the group.
+process,process.entry_leader.tty,object,,Information about the controlling TTY device.
+process,process.entry_leader.tty.char_device.major,long,4,The TTY character device's major number.
+process,process.entry_leader.tty.char_device.minor,long,1,The TTY character device's minor number.
+process,process.entry_leader.user.id,keyword,S-1-5-21-202424912787-2692429404-2351956786-1000,Unique identifier of the user.
+process,process.entry_leader.user.name,keyword,a.einstein,Short name or login of the user.
+process,process.entry_leader.user.name.text,match_only_text,a.einstein,Short name or login of the user.
+process,process.entry_leader.vpid,long,4242,Virtual process id.
+process,process.entry_leader.working_directory,keyword,/home/alice,The working directory of the process.
+process,process.entry_leader.working_directory.text,match_only_text,/home/alice,The working directory of the process.
+process,process.env_vars,keyword,"[""PATH=/usr/local/bin:/usr/bin"", ""USER=ubuntu""]",Array of environment variable bindings.
+process,process.executable,keyword,/usr/bin/ssh,Absolute path to the process executable.
+process,process.executable.text,match_only_text,/usr/bin/ssh,Absolute path to the process executable.
+process,process.exit_code,long,137,The exit code of the process.
+process,process.group.id,keyword,,Unique identifier for the group on the system/platform.
+process,process.group.name,keyword,,Name of the group.
+process,process.group_leader.args,keyword,"[""/usr/bin/ssh"", ""-l"", ""user"", ""10.0.0.16""]",Array of process arguments.
+process,process.group_leader.args_count,long,4,Length of the process.args array.
+process,process.group_leader.command_line,wildcard,/usr/bin/ssh -l user 10.0.0.16,Full command line that started the process.
+process,process.group_leader.command_line.text,match_only_text,/usr/bin/ssh -l user 10.0.0.16,Full command line that started the process.
+process,process.group_leader.entity_id,keyword,c2c455d9f99375d,Unique identifier for the process.
+process,process.group_leader.executable,keyword,/usr/bin/ssh,Absolute path to the process executable.
+process,process.group_leader.executable.text,match_only_text,/usr/bin/ssh,Absolute path to the process executable.
+process,process.group_leader.group.id,keyword,,Unique identifier for the group on the system/platform.
+process,process.group_leader.group.name,keyword,,Name of the group.
+process,process.group_leader.interactive,boolean,TRUE,Whether the process is connected to an interactive shell.
+process,process.group_leader.name,keyword,ssh,Process name.
+process,process.group_leader.name.text,match_only_text,ssh,Process name.
+process,process.group_leader.pid,long,4242,Process id.
+process,process.group_leader.real_group.id,keyword,,Unique identifier for the group on the system/platform.
+process,process.group_leader.real_group.name,keyword,,Name of the group.
+process,process.group_leader.real_user.id,keyword,S-1-5-21-202424912787-2692429404-2351956786-1000,Unique identifier of the user.
+process,process.group_leader.real_user.name,keyword,a.einstein,Short name or login of the user.
+process,process.group_leader.real_user.name.text,match_only_text,a.einstein,Short name or login of the user.
+process,process.group_leader.same_as_process,boolean,TRUE,This boolean is used to identify if a leader process is the same as the top level process.
+process,process.group_leader.saved_group.id,keyword,,Unique identifier for the group on the system/platform.
+process,process.group_leader.saved_group.name,keyword,,Name of the group.
+process,process.group_leader.saved_user.id,keyword,S-1-5-21-202424912787-2692429404-2351956786-1000,Unique identifier of the user.
+process,process.group_leader.saved_user.name,keyword,a.einstein,Short name or login of the user.
+process,process.group_leader.saved_user.name.text,match_only_text,a.einstein,Short name or login of the user.
+process,process.group_leader.start,date,2016-05-23T08:05:34.853Z,The time the process started.
+process,process.group_leader.supplemental_groups.id,keyword,,Unique identifier for the group on the system/platform.
+process,process.group_leader.supplemental_groups.name,keyword,,Name of the group.
+process,process.group_leader.tty,object,,Information about the controlling TTY device.
+process,process.group_leader.tty.char_device.major,long,4,The TTY character device's major number.
+process,process.group_leader.tty.char_device.minor,long,1,The TTY character device's minor number.
+process,process.group_leader.user.id,keyword,S-1-5-21-202424912787-2692429404-2351956786-1000,Unique identifier of the user.
+process,process.group_leader.user.name,keyword,a.einstein,Short name or login of the user.
+process,process.group_leader.user.name.text,match_only_text,a.einstein,Short name or login of the user.
+process,process.group_leader.vpid,long,4242,Virtual process id.
+process,process.group_leader.working_directory,keyword,/home/alice,The working directory of the process.
+process,process.group_leader.working_directory.text,match_only_text,/home/alice,The working directory of the process.
+process,process.hash.cdhash,keyword,3783b4052fd474dbe30676b45c329e7a6d44acd9,The Code Directory (CD) hash of an executable.
+process,process.hash.md5,keyword,,MD5 hash.
+process,process.hash.sha1,keyword,,SHA1 hash.
+process,process.hash.sha256,keyword,,SHA256 hash.
+process,process.hash.sha384,keyword,,SHA384 hash.
+process,process.hash.sha512,keyword,,SHA512 hash.
+process,process.hash.ssdeep,keyword,,SSDEEP hash.
+process,process.hash.tlsh,keyword,,TLSH hash.
+process,process.interactive,boolean,TRUE,Whether the process is connected to an interactive shell.
+process,process.io,object,,A chunk of input or output (IO) from a single process.
+process,process.io.bytes_skipped,object,,An array of byte offsets and lengths denoting where IO data has been skipped.
+process,process.io.bytes_skipped.length,long,,The length of bytes skipped.
+process,process.io.bytes_skipped.offset,long,,The byte offset into this event's io.text (or io.bytes in the future) where length bytes were skipped.
+process,process.io.max_bytes_per_process_exceeded,boolean,,"If true, the process producing the output has exceeded the max_kilobytes_per_process configuration setting."
+process,process.io.text,wildcard,,A chunk of output or input sanitized to UTF-8.
+process,process.io.total_bytes_captured,long,,The total number of bytes captured in this event.
+process,process.io.total_bytes_skipped,long,,The total number of bytes that were not captured due to implementation restrictions such as buffer size limits.
+process,process.io.type,keyword,,The type of object on which the IO action (read or write) was taken.
+process,process.macho.go_import_hash,keyword,10bddcb4cee42080f76c88d9ff964491,A hash of the Go language imports in a Mach-O file.
+process,process.macho.go_imports,flattened,,List of imported Go language element names and types.
+process,process.macho.go_imports_names_entropy,long,,Shannon entropy calculation from the list of Go imports.
+process,process.macho.go_imports_names_var_entropy,long,,Variance for Shannon entropy calculation from the list of Go imports.
+process,process.macho.go_stripped,boolean,,Whether the file is a stripped or obfuscated Go executable.
+process,process.macho.import_hash,keyword,d41d8cd98f00b204e9800998ecf8427e,A hash of the imports in a Mach-O file.
+process,process.macho.imports,flattened,,List of imported element names and types.
+process,process.macho.imports_names_entropy,long,,Shannon entropy calculation from the list of imported element names and types.
+process,process.macho.imports_names_var_entropy,long,,Variance for Shannon entropy calculation from the list of imported element names and types.
+process,process.macho.sections,nested,,Section information of the Mach-O file.
+process,process.macho.sections.entropy,long,,Shannon entropy calculation from the section.
+process,process.macho.sections.name,keyword,,Mach-O Section List name.
+process,process.macho.sections.physical_size,long,,Mach-O Section List physical size.
+process,process.macho.sections.var_entropy,long,,Variance for Shannon entropy calculation from the section.
+process,process.macho.sections.virtual_size,long,,Mach-O Section List virtual size. This is always the same as `physical_size`.
+process,process.macho.symhash,keyword,d3ccf195b62a9279c3c19af1080497ec,A hash of the imports in a Mach-O file.
+process,process.name,keyword,ssh,Process name.
+process,process.name.text,match_only_text,ssh,Process name.
+process,process.parent.args,keyword,"[""/usr/bin/ssh"", ""-l"", ""user"", ""10.0.0.16""]",Array of process arguments.
+process,process.parent.args_count,long,4,Length of the process.args array.
+process,process.parent.code_signature.digest_algorithm,keyword,sha256,Hashing algorithm used to sign the process.
+process,process.parent.code_signature.exists,boolean,TRUE,Boolean to capture if a signature is present.
+process,process.parent.code_signature.flags,keyword,570522385,Code signing flags of the process
+process,process.parent.code_signature.signing_id,keyword,com.apple.xpc.proxy,The identifier used to sign the process.
+process,process.parent.code_signature.status,keyword,ERROR_UNTRUSTED_ROOT,Additional information about the certificate status.
+process,process.parent.code_signature.subject_name,keyword,Microsoft Corporation,Subject name of the code signer
+process,process.parent.code_signature.team_id,keyword,EQHXZ8M8AV,The team identifier used to sign the process.
+process,process.parent.code_signature.timestamp,date,2021-01-01T12:10:30Z,When the signature was generated and signed.
+process,process.parent.code_signature.trusted,boolean,TRUE,Stores the trust status of the certificate chain.
+process,process.parent.code_signature.valid,boolean,TRUE,Boolean to capture if the digital signature is verified against the binary content.
+process,process.parent.command_line,wildcard,/usr/bin/ssh -l user 10.0.0.16,Full command line that started the process.
+process,process.parent.command_line.text,match_only_text,/usr/bin/ssh -l user 10.0.0.16,Full command line that started the process.
+process,process.parent.elf.architecture,keyword,x86-64,Machine architecture of the ELF file.
+process,process.parent.elf.byte_order,keyword,Little Endian,Byte sequence of ELF file.
+process,process.parent.elf.cpu_type,keyword,Intel,CPU type of the ELF file.
+process,process.parent.elf.creation_date,date,,Build or compile date.
+process,process.parent.elf.exports,flattened,,List of exported element names and types.
+process,process.parent.elf.go_import_hash,keyword,10bddcb4cee42080f76c88d9ff964491,A hash of the Go language imports in an ELF file.
+process,process.parent.elf.go_imports,flattened,,List of imported Go language element names and types.
+process,process.parent.elf.go_imports_names_entropy,long,,Shannon entropy calculation from the list of Go imports.
+process,process.parent.elf.go_imports_names_var_entropy,long,,Variance for Shannon entropy calculation from the list of Go imports.
+process,process.parent.elf.go_stripped,boolean,,Whether the file is a stripped or obfuscated Go executable.
+process,process.parent.elf.header.abi_version,keyword,,Version of the ELF Application Binary Interface (ABI).
+process,process.parent.elf.header.class,keyword,,Header class of the ELF file.
+process,process.parent.elf.header.data,keyword,,Data table of the ELF header.
+process,process.parent.elf.header.entrypoint,long,,Header entrypoint of the ELF file.
+process,process.parent.elf.header.object_version,keyword,,"""0x1"" for original ELF files."
+process,process.parent.elf.header.os_abi,keyword,,Application Binary Interface (ABI) of the Linux OS.
+process,process.parent.elf.header.type,keyword,,Header type of the ELF file.
+process,process.parent.elf.header.version,keyword,,Version of the ELF header.
+process,process.parent.elf.import_hash,keyword,d41d8cd98f00b204e9800998ecf8427e,A hash of the imports in an ELF file.
+process,process.parent.elf.imports,flattened,,List of imported element names and types.
+process,process.parent.elf.imports_names_entropy,long,,Shannon entropy calculation from the list of imported element names and types.
+process,process.parent.elf.imports_names_var_entropy,long,,Variance for Shannon entropy calculation from the list of imported element names and types.
+process,process.parent.elf.sections,nested,,Section information of the ELF file.
+process,process.parent.elf.sections.chi2,long,,Chi-square probability distribution of the section.
+process,process.parent.elf.sections.entropy,long,,Shannon entropy calculation from the section.
+process,process.parent.elf.sections.flags,keyword,,ELF Section List flags.
+process,process.parent.elf.sections.name,keyword,,ELF Section List name.
+process,process.parent.elf.sections.physical_offset,keyword,,ELF Section List offset.
+process,process.parent.elf.sections.physical_size,long,,ELF Section List physical size.
+process,process.parent.elf.sections.type,keyword,,ELF Section List type.
+process,process.parent.elf.sections.var_entropy,long,,Variance for Shannon entropy calculation from the section.
+process,process.parent.elf.sections.virtual_address,long,,ELF Section List virtual address.
+process,process.parent.elf.sections.virtual_size,long,,ELF Section List virtual size.
+process,process.parent.elf.segments,nested,,ELF object segment list.
+process,process.parent.elf.segments.sections,keyword,,ELF object segment sections.
+process,process.parent.elf.segments.type,keyword,,ELF object segment type.
+process,process.parent.elf.shared_libraries,keyword,,List of shared libraries used by this ELF object.
+process,process.parent.elf.telfhash,keyword,,telfhash hash for ELF file.
+process,process.parent.end,date,2016-05-23T08:05:34.853Z,The time the process ended.
+process,process.parent.entity_id,keyword,c2c455d9f99375d,Unique identifier for the process.
+process,process.parent.executable,keyword,/usr/bin/ssh,Absolute path to the process executable.
+process,process.parent.executable.text,match_only_text,/usr/bin/ssh,Absolute path to the process executable.
+process,process.parent.exit_code,long,137,The exit code of the process.
+process,process.parent.group.id,keyword,,Unique identifier for the group on the system/platform.
+process,process.parent.group.name,keyword,,Name of the group.
+process,process.parent.group_leader.entity_id,keyword,c2c455d9f99375d,Unique identifier for the process.
+process,process.parent.group_leader.pid,long,4242,Process id.
+process,process.parent.group_leader.start,date,2016-05-23T08:05:34.853Z,The time the process started.
+process,process.parent.group_leader.vpid,long,4242,Virtual process id.
+process,process.parent.hash.cdhash,keyword,3783b4052fd474dbe30676b45c329e7a6d44acd9,The Code Directory (CD) hash of an executable.
+process,process.parent.hash.md5,keyword,,MD5 hash.
+process,process.parent.hash.sha1,keyword,,SHA1 hash.
+process,process.parent.hash.sha256,keyword,,SHA256 hash.
+process,process.parent.hash.sha384,keyword,,SHA384 hash.
+process,process.parent.hash.sha512,keyword,,SHA512 hash.
+process,process.parent.hash.ssdeep,keyword,,SSDEEP hash.
+process,process.parent.hash.tlsh,keyword,,TLSH hash.
+process,process.parent.interactive,boolean,TRUE,Whether the process is connected to an interactive shell.
+process,process.parent.macho.go_import_hash,keyword,10bddcb4cee42080f76c88d9ff964491,A hash of the Go language imports in a Mach-O file.
+process,process.parent.macho.go_imports,flattened,,List of imported Go language element names and types.
+process,process.parent.macho.go_imports_names_entropy,long,,Shannon entropy calculation from the list of Go imports.
+process,process.parent.macho.go_imports_names_var_entropy,long,,Variance for Shannon entropy calculation from the list of Go imports.
+process,process.parent.macho.go_stripped,boolean,,Whether the file is a stripped or obfuscated Go executable.
+process,process.parent.macho.import_hash,keyword,d41d8cd98f00b204e9800998ecf8427e,A hash of the imports in a Mach-O file.
+process,process.parent.macho.imports,flattened,,List of imported element names and types.
+process,process.parent.macho.imports_names_entropy,long,,Shannon entropy calculation from the list of imported element names and types.
+process,process.parent.macho.imports_names_var_entropy,long,,Variance for Shannon entropy calculation from the list of imported element names and types.
+process,process.parent.macho.sections,nested,,Section information of the Mach-O file.
+process,process.parent.macho.sections.entropy,long,,Shannon entropy calculation from the section.
+process,process.parent.macho.sections.name,keyword,,Mach-O Section List name.
+process,process.parent.macho.sections.physical_size,long,,Mach-O Section List physical size.
+process,process.parent.macho.sections.var_entropy,long,,Variance for Shannon entropy calculation from the section.
+process,process.parent.macho.sections.virtual_size,long,,Mach-O Section List virtual size. This is always the same as `physical_size`.
+process,process.parent.macho.symhash,keyword,d3ccf195b62a9279c3c19af1080497ec,A hash of the imports in a Mach-O file.
+process,process.parent.name,keyword,ssh,Process name.
+process,process.parent.name.text,match_only_text,ssh,Process name.
+process,process.parent.pe.architecture,keyword,x64,CPU architecture target for the file.
+process,process.parent.pe.company,keyword,Microsoft Corporation,"Internal company name of the file, provided at compile-time."
+process,process.parent.pe.description,keyword,Paint,"Internal description of the file, provided at compile-time."
+process,process.parent.pe.file_version,keyword,6.3.9600.17415,Process name.
+process,process.parent.pe.go_import_hash,keyword,10bddcb4cee42080f76c88d9ff964491,A hash of the Go language imports in a PE file.
+process,process.parent.pe.go_imports,flattened,,List of imported Go language element names and types.
+process,process.parent.pe.go_imports_names_entropy,long,,Shannon entropy calculation from the list of Go imports.
+process,process.parent.pe.go_imports_names_var_entropy,long,,Variance for Shannon entropy calculation from the list of Go imports.
+process,process.parent.pe.go_stripped,boolean,,Whether the file is a stripped or obfuscated Go executable.
+process,process.parent.pe.imphash,keyword,0c6803c4e922103c4dca5963aad36ddf,A hash of the imports in a PE file.
+process,process.parent.pe.import_hash,keyword,d41d8cd98f00b204e9800998ecf8427e,A hash of the imports in a PE file.
+process,process.parent.pe.imports,flattened,,List of imported element names and types.
+process,process.parent.pe.imports_names_entropy,long,,Shannon entropy calculation from the list of imported element names and types.
+process,process.parent.pe.imports_names_var_entropy,long,,Variance for Shannon entropy calculation from the list of imported element names and types.
+process,process.parent.pe.original_file_name,keyword,MSPAINT.EXE,"Internal name of the file, provided at compile-time."
+process,process.parent.pe.pehash,keyword,73ff189b63cd6be375a7ff25179a38d347651975,A hash of the PE header and data from one or more PE sections.
+process,process.parent.pe.product,keyword,Microsoft® Windows® Operating System,"Internal product name of the file, provided at compile-time."
+process,process.parent.pe.sections,nested,,Section information of the PE file.
+process,process.parent.pe.sections.entropy,long,,Shannon entropy calculation from the section.
+process,process.parent.pe.sections.name,keyword,,PE Section List name.
+process,process.parent.pe.sections.physical_size,long,,PE Section List physical size.
+process,process.parent.pe.sections.var_entropy,long,,Variance for Shannon entropy calculation from the section.
+process,process.parent.pe.sections.virtual_size,long,,PE Section List virtual size. This is always the same as `physical_size`.
+process,process.parent.pgid,long,,Deprecated identifier of the group of processes the process belongs to.
+process,process.parent.pid,long,4242,Process id.
+process,process.parent.real_group.id,keyword,,Unique identifier for the group on the system/platform.
+process,process.parent.real_group.name,keyword,,Name of the group.
+process,process.parent.real_user.id,keyword,S-1-5-21-202424912787-2692429404-2351956786-1000,Unique identifier of the user.
+process,process.parent.real_user.name,keyword,a.einstein,Short name or login of the user.
+process,process.parent.real_user.name.text,match_only_text,a.einstein,Short name or login of the user.
+process,process.parent.saved_group.id,keyword,,Unique identifier for the group on the system/platform.
+process,process.parent.saved_group.name,keyword,,Name of the group.
+process,process.parent.saved_user.id,keyword,S-1-5-21-202424912787-2692429404-2351956786-1000,Unique identifier of the user.
+process,process.parent.saved_user.name,keyword,a.einstein,Short name or login of the user.
+process,process.parent.saved_user.name.text,match_only_text,a.einstein,Short name or login of the user.
+process,process.parent.start,date,2016-05-23T08:05:34.853Z,The time the process started.
+process,process.parent.supplemental_groups.id,keyword,,Unique identifier for the group on the system/platform.
+process,process.parent.supplemental_groups.name,keyword,,Name of the group.
+process,process.parent.thread.capabilities.effective,keyword,"[""CAP_BPF"", ""CAP_SYS_ADMIN""]",Array of capabilities used for permission checks.
+process,process.parent.thread.capabilities.permitted,keyword,"[""CAP_BPF"", ""CAP_SYS_ADMIN""]",Array of capabilities a thread could assume.
+process,process.parent.thread.id,long,4242,Thread ID.
+process,process.parent.thread.name,keyword,thread-0,Thread name.
+process,process.parent.title,keyword,,Process title.
+process,process.parent.title.text,match_only_text,,Process title.
+process,process.parent.tty,object,,Information about the controlling TTY device.
+process,process.parent.tty.char_device.major,long,4,The TTY character device's major number.
+process,process.parent.tty.char_device.minor,long,1,The TTY character device's minor number.
+process,process.parent.uptime,long,1325,Seconds the process has been up.
+process,process.parent.user.id,keyword,S-1-5-21-202424912787-2692429404-2351956786-1000,Unique identifier of the user.
+process,process.parent.user.name,keyword,a.einstein,Short name or login of the user.
+process,process.parent.user.name.text,match_only_text,a.einstein,Short name or login of the user.
+process,process.parent.vpid,long,4242,Virtual process id.
+process,process.parent.working_directory,keyword,/home/alice,The working directory of the process.
+process,process.parent.working_directory.text,match_only_text,/home/alice,The working directory of the process.
+process,process.pe.architecture,keyword,x64,CPU architecture target for the file.
+process,process.pe.company,keyword,Microsoft Corporation,"Internal company name of the file, provided at compile-time."
+process,process.pe.description,keyword,Paint,"Internal description of the file, provided at compile-time."
+process,process.pe.file_version,keyword,6.3.9600.17415,Process name.
+process,process.pe.go_import_hash,keyword,10bddcb4cee42080f76c88d9ff964491,A hash of the Go language imports in a PE file.
+process,process.pe.go_imports,flattened,,List of imported Go language element names and types.
+process,process.pe.go_imports_names_entropy,long,,Shannon entropy calculation from the list of Go imports.
+process,process.pe.go_imports_names_var_entropy,long,,Variance for Shannon entropy calculation from the list of Go imports.
+process,process.pe.go_stripped,boolean,,Whether the file is a stripped or obfuscated Go executable.
+process,process.pe.imphash,keyword,0c6803c4e922103c4dca5963aad36ddf,A hash of the imports in a PE file.
+process,process.pe.import_hash,keyword,d41d8cd98f00b204e9800998ecf8427e,A hash of the imports in a PE file.
+process,process.pe.imports,flattened,,List of imported element names and types.
+process,process.pe.imports_names_entropy,long,,Shannon entropy calculation from the list of imported element names and types.
+process,process.pe.imports_names_var_entropy,long,,Variance for Shannon entropy calculation from the list of imported element names and types.
+process,process.pe.original_file_name,keyword,MSPAINT.EXE,"Internal name of the file, provided at compile-time."
+process,process.pe.pehash,keyword,73ff189b63cd6be375a7ff25179a38d347651975,A hash of the PE header and data from one or more PE sections.
+process,process.pe.product,keyword,Microsoft® Windows® Operating System,"Internal product name of the file, provided at compile-time."
+process,process.pe.sections,nested,,Section information of the PE file.
+process,process.pe.sections.entropy,long,,Shannon entropy calculation from the section.
+process,process.pe.sections.name,keyword,,PE Section List name.
+process,process.pe.sections.physical_size,long,,PE Section List physical size.
+process,process.pe.sections.var_entropy,long,,Variance for Shannon entropy calculation from the section.
+process,process.pe.sections.virtual_size,long,,PE Section List virtual size. This is always the same as `physical_size`.
+process,process.pgid,long,,Deprecated identifier of the group of processes the process belongs to.
+process,process.pid,long,4242,Process id.
+process,process.previous.args,keyword,"[""/usr/bin/ssh"", ""-l"", ""user"", ""10.0.0.16""]",Array of process arguments.
+process,process.previous.args_count,long,4,Length of the process.args array.
+process,process.previous.executable,keyword,/usr/bin/ssh,Absolute path to the process executable.
+process,process.previous.executable.text,match_only_text,/usr/bin/ssh,Absolute path to the process executable.
+process,process.real_group.id,keyword,,Unique identifier for the group on the system/platform.
+process,process.real_group.name,keyword,,Name of the group.
+process,process.real_user.id,keyword,S-1-5-21-202424912787-2692429404-2351956786-1000,Unique identifier of the user.
+process,process.real_user.name,keyword,a.einstein,Short name or login of the user.
+process,process.real_user.name.text,match_only_text,a.einstein,Short name or login of the user.
+process,process.saved_group.id,keyword,,Unique identifier for the group on the system/platform.
+process,process.saved_group.name,keyword,,Name of the group.
+process,process.saved_user.id,keyword,S-1-5-21-202424912787-2692429404-2351956786-1000,Unique identifier of the user.
+process,process.saved_user.name,keyword,a.einstein,Short name or login of the user.
+process,process.saved_user.name.text,match_only_text,a.einstein,Short name or login of the user.
+process,process.session_leader.args,keyword,"[""/usr/bin/ssh"", ""-l"", ""user"", ""10.0.0.16""]",Array of process arguments.
+process,process.session_leader.args_count,long,4,Length of the process.args array.
+process,process.session_leader.command_line,wildcard,/usr/bin/ssh -l user 10.0.0.16,Full command line that started the process.
+process,process.session_leader.command_line.text,match_only_text,/usr/bin/ssh -l user 10.0.0.16,Full command line that started the process.
+process,process.session_leader.entity_id,keyword,c2c455d9f99375d,Unique identifier for the process.
+process,process.session_leader.executable,keyword,/usr/bin/ssh,Absolute path to the process executable.
+process,process.session_leader.executable.text,match_only_text,/usr/bin/ssh,Absolute path to the process executable.
+process,process.session_leader.group.id,keyword,,Unique identifier for the group on the system/platform.
+process,process.session_leader.group.name,keyword,,Name of the group.
+process,process.session_leader.interactive,boolean,TRUE,Whether the process is connected to an interactive shell.
+process,process.session_leader.name,keyword,ssh,Process name.
+process,process.session_leader.name.text,match_only_text,ssh,Process name.
+process,process.session_leader.parent.entity_id,keyword,c2c455d9f99375d,Unique identifier for the process.
+process,process.session_leader.parent.pid,long,4242,Process id.
+process,process.session_leader.parent.session_leader.entity_id,keyword,c2c455d9f99375d,Unique identifier for the process.
+process,process.session_leader.parent.session_leader.pid,long,4242,Process id.
+process,process.session_leader.parent.session_leader.start,date,2016-05-23T08:05:34.853Z,The time the process started.
+process,process.session_leader.parent.session_leader.vpid,long,4242,Virtual process id.
+process,process.session_leader.parent.start,date,2016-05-23T08:05:34.853Z,The time the process started.
+process,process.session_leader.parent.vpid,long,4242,Virtual process id.
+process,process.session_leader.pid,long,4242,Process id.
+process,process.session_leader.real_group.id,keyword,,Unique identifier for the group on the system/platform.
+process,process.session_leader.real_group.name,keyword,,Name of the group.
+process,process.session_leader.real_user.id,keyword,S-1-5-21-202424912787-2692429404-2351956786-1000,Unique identifier of the user.
+process,process.session_leader.real_user.name,keyword,a.einstein,Short name or login of the user.
+process,process.session_leader.real_user.name.text,match_only_text,a.einstein,Short name or login of the user.
+process,process.session_leader.same_as_process,boolean,TRUE,This boolean is used to identify if a leader process is the same as the top level process.
+process,process.session_leader.saved_group.id,keyword,,Unique identifier for the group on the system/platform.
+process,process.session_leader.saved_group.name,keyword,,Name of the group.
+process,process.session_leader.saved_user.id,keyword,S-1-5-21-202424912787-2692429404-2351956786-1000,Unique identifier of the user.
+process,process.session_leader.saved_user.name,keyword,a.einstein,Short name or login of the user.
+process,process.session_leader.saved_user.name.text,match_only_text,a.einstein,Short name or login of the user.
+process,process.session_leader.start,date,2016-05-23T08:05:34.853Z,The time the process started.
+process,process.session_leader.supplemental_groups.id,keyword,,Unique identifier for the group on the system/platform.
+process,process.session_leader.supplemental_groups.name,keyword,,Name of the group.
+process,process.session_leader.tty,object,,Information about the controlling TTY device.
+process,process.session_leader.tty.char_device.major,long,4,The TTY character device's major number.
+process,process.session_leader.tty.char_device.minor,long,1,The TTY character device's minor number.
+process,process.session_leader.user.id,keyword,S-1-5-21-202424912787-2692429404-2351956786-1000,Unique identifier of the user.
+process,process.session_leader.user.name,keyword,a.einstein,Short name or login of the user.
+process,process.session_leader.user.name.text,match_only_text,a.einstein,Short name or login of the user.
+process,process.session_leader.vpid,long,4242,Virtual process id.
+process,process.session_leader.working_directory,keyword,/home/alice,The working directory of the process.
+process,process.session_leader.working_directory.text,match_only_text,/home/alice,The working directory of the process.
+process,process.start,date,2016-05-23T08:05:34.853Z,The time the process started.
+process,process.supplemental_groups.id,keyword,,Unique identifier for the group on the system/platform.
+process,process.supplemental_groups.name,keyword,,Name of the group.
+process,process.thread.capabilities.effective,keyword,"[""CAP_BPF"", ""CAP_SYS_ADMIN""]",Array of capabilities used for permission checks.
+process,process.thread.capabilities.permitted,keyword,"[""CAP_BPF"", ""CAP_SYS_ADMIN""]",Array of capabilities a thread could assume.
+process,process.thread.id,long,4242,Thread ID.
+process,process.thread.name,keyword,thread-0,Thread name.
+process,process.title,keyword,,Process title.
+process,process.title.text,match_only_text,,Process title.
+process,process.tty,object,,Information about the controlling TTY device.
+process,process.tty.char_device.major,long,4,The TTY character device's major number.
+process,process.tty.char_device.minor,long,1,The TTY character device's minor number.
+process,process.tty.columns,long,80,The number of character columns per line. e.g terminal width
+process,process.tty.rows,long,24,The number of character rows in the terminal. e.g terminal height
+process,process.uptime,long,1325,Seconds the process has been up.
+process,process.user.id,keyword,S-1-5-21-202424912787-2692429404-2351956786-1000,Unique identifier of the user.
+process,process.user.name,keyword,a.einstein,Short name or login of the user.
+process,process.user.name.text,match_only_text,a.einstein,Short name or login of the user.
+process,process.vpid,long,4242,Virtual process id.
+process,process.working_directory,keyword,/home/alice,The working directory of the process.
+process,process.working_directory.text,match_only_text,/home/alice,The working directory of the process.
+registry,registry.data.bytes,keyword,ZQBuAC0AVQBTAAAAZQBuAAAAAAA=,Original bytes written with base64 encoding.
+registry,registry.data.strings,wildcard,"[""C:\rta\red_ttp\bin\myapp.exe""]",List of strings representing what was written to the registry.
+registry,registry.data.type,keyword,REG_SZ,Standard registry type for encoding contents
+registry,registry.hive,keyword,HKLM,Abbreviated name for the hive.
+registry,registry.key,keyword,SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\winword.exe,Hive-relative path of keys.
+registry,registry.path,keyword,HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\winword.exe\Debugger,"Full path, including hive, key and value"
+registry,registry.value,keyword,Debugger,Name of the value written.
+related,related.hash,keyword,,All the hashes seen on your event.
+related,related.hosts,keyword,,All the host identifiers seen on your event.
+related,related.ip,ip,,All of the IPs seen on your event.
+related,related.user,keyword,,All the user names or other user identifiers seen on the event.
+rule,rule.author,keyword,"[""Star-Lord""]",Rule author
+rule,rule.category,keyword,Attempted Information Leak,Rule category
+rule,rule.description,keyword,Block requests to public DNS over HTTPS / TLS protocols,Rule description
+rule,rule.id,keyword,101,Rule ID
+rule,rule.license,keyword,Apache 2.0,Rule license
+rule,rule.name,keyword,BLOCK_DNS_over_TLS,Rule name
+rule,rule.reference,keyword,https://en.wikipedia.org/wiki/DNS_over_TLS,Rule reference URL
+rule,rule.ruleset,keyword,Standard_Protocol_Filters,Rule ruleset
+rule,rule.uuid,keyword,1100110011,Rule UUID
+rule,rule.version,keyword,1.1,Rule version
+server,server.address,keyword,,Server network address.
+server,server.as.number,long,15169,Unique number allocated to the autonomous system.
+server,server.as.organization.name,keyword,Google LLC,Organization name.
+server,server.as.organization.name.text,match_only_text,Google LLC,Organization name.
+server,server.bytes,long,184,Bytes sent from the server to the client.
+server,server.domain,keyword,foo.example.com,The domain name of the server.
+server,server.geo.city_name,keyword,Montreal,City name.
+server,server.geo.continent_code,keyword,NA,Continent code.
+server,server.geo.continent_name,keyword,North America,Name of the continent.
+server,server.geo.country_iso_code,keyword,CA,Country ISO code.
+server,server.geo.country_name,keyword,Canada,Country name.
+server,server.geo.location,geo_point,"{ ""lon"": -73.614830, ""lat"": 45.505918 }",Longitude and latitude.
+server,server.geo.name,keyword,boston-dc,User-defined description of a location.
+server,server.geo.postal_code,keyword,94040,Postal code.
+server,server.geo.region_iso_code,keyword,CA-QC,Region ISO code.
+server,server.geo.region_name,keyword,Quebec,Region name.
+server,server.geo.timezone,keyword,America/Argentina/Buenos_Aires,Time zone.
+server,server.ip,ip,,IP address of the server.
+server,server.mac,keyword,00-00-5E-00-53-23,MAC address of the server.
+server,server.nat.ip,ip,,Server NAT ip
+server,server.nat.port,long,,Server NAT port
+server,server.packets,long,12,Packets sent from the server to the client.
+server,server.port,long,,Port of the server.
+server,server.registered_domain,keyword,example.com,"The highest registered server domain, stripped of the subdomain."
+server,server.subdomain,keyword,east,The subdomain of the domain.
+server,server.top_level_domain,keyword,co.uk,"The effective top level domain (com, org, net, co.uk)."
+server,server.user.domain,keyword,,Name of the directory the user is a member of.
+server,server.user.email,keyword,,User email address.
+server,server.user.full_name,keyword,Albert Einstein,"User's full name, if available."
+server,server.user.full_name.text,match_only_text,Albert Einstein,"User's full name, if available."
+server,server.user.group.domain,keyword,,Name of the directory the group is a member of.
+server,server.user.group.id,keyword,,Unique identifier for the group on the system/platform.
+server,server.user.group.name,keyword,,Name of the group.
+server,server.user.hash,keyword,,Unique user hash to correlate information for a user in anonymized form.
+server,server.user.id,keyword,S-1-5-21-202424912787-2692429404-2351956786-1000,Unique identifier of the user.
+server,server.user.name,keyword,a.einstein,Short name or login of the user.
+server,server.user.name.text,match_only_text,a.einstein,Short name or login of the user.
+server,server.user.roles,keyword,"[""kibana_admin"", ""reporting_user""]",Array of user roles at the time of the event.
+service,service.address,keyword,172.26.0.2:5432,Address of this service.
+service,service.environment,keyword,production,Environment of the service.
+service,service.ephemeral_id,keyword,8a4f500f,Ephemeral identifier of this service.
+service,service.id,keyword,d37e5ebfe0ae6c4972dbe9f0174a1637bb8247f6,Unique identifier of the running service.
+service,service.name,keyword,elasticsearch-metrics,Name of the service.
+service,service.node.name,keyword,instance-0000000016,Name of the service node.
+service,service.node.role,keyword,background_tasks,Deprecated role (singular) of the service node.
+service,service.node.roles,keyword,"[""ui"", ""background_tasks""]",Roles of the service node.
+service,service.origin.address,keyword,172.26.0.2:5432,Address of this service.
+service,service.origin.environment,keyword,production,Environment of the service.
+service,service.origin.ephemeral_id,keyword,8a4f500f,Ephemeral identifier of this service.
+service,service.origin.id,keyword,d37e5ebfe0ae6c4972dbe9f0174a1637bb8247f6,Unique identifier of the running service.
+service,service.origin.name,keyword,elasticsearch-metrics,Name of the service.
+service,service.origin.node.name,keyword,instance-0000000016,Name of the service node.
+service,service.origin.node.role,keyword,background_tasks,Deprecated role (singular) of the service node.
+service,service.origin.node.roles,keyword,"[""ui"", ""background_tasks""]",Roles of the service node.
+service,service.origin.state,keyword,,Current state of the service.
+service,service.origin.type,keyword,elasticsearch,The type of the service.
+service,service.origin.version,keyword,3.2.4,Version of the service.
+service,service.state,keyword,,Current state of the service.
+service,service.target.address,keyword,172.26.0.2:5432,Address of this service.
+service,service.target.environment,keyword,production,Environment of the service.
+service,service.target.ephemeral_id,keyword,8a4f500f,Ephemeral identifier of this service.
+service,service.target.id,keyword,d37e5ebfe0ae6c4972dbe9f0174a1637bb8247f6,Unique identifier of the running service.
+service,service.target.name,keyword,elasticsearch-metrics,Name of the service.
+service,service.target.node.name,keyword,instance-0000000016,Name of the service node.
+service,service.target.node.role,keyword,background_tasks,Deprecated role (singular) of the service node.
+service,service.target.node.roles,keyword,"[""ui"", ""background_tasks""]",Roles of the service node.
+service,service.target.state,keyword,,Current state of the service.
+service,service.target.type,keyword,elasticsearch,The type of the service.
+service,service.target.version,keyword,3.2.4,Version of the service.
+service,service.type,keyword,elasticsearch,The type of the service.
+service,service.version,keyword,3.2.4,Version of the service.
+source,source.address,keyword,,Source network address.
+source,source.as.number,long,15169,Unique number allocated to the autonomous system.
+source,source.as.organization.name,keyword,Google LLC,Organization name.
+source,source.as.organization.name.text,match_only_text,Google LLC,Organization name.
+source,source.bytes,long,184,Bytes sent from the source to the destination.
+source,source.domain,keyword,foo.example.com,The domain name of the source.
+source,source.geo.city_name,keyword,Montreal,City name.
+source,source.geo.continent_code,keyword,NA,Continent code.
+source,source.geo.continent_name,keyword,North America,Name of the continent.
+source,source.geo.country_iso_code,keyword,CA,Country ISO code.
+source,source.geo.country_name,keyword,Canada,Country name.
+source,source.geo.location,geo_point,"{ ""lon"": -73.614830, ""lat"": 45.505918 }",Longitude and latitude.
+source,source.geo.name,keyword,boston-dc,User-defined description of a location.
+source,source.geo.postal_code,keyword,94040,Postal code.
+source,source.geo.region_iso_code,keyword,CA-QC,Region ISO code.
+source,source.geo.region_name,keyword,Quebec,Region name.
+source,source.geo.timezone,keyword,America/Argentina/Buenos_Aires,Time zone.
+source,source.ip,ip,,IP address of the source.
+source,source.mac,keyword,00-00-5E-00-53-23,MAC address of the source.
+source,source.nat.ip,ip,,Source NAT ip
+source,source.nat.port,long,,Source NAT port
+source,source.packets,long,12,Packets sent from the source to the destination.
+source,source.port,long,,Port of the source.
+source,source.registered_domain,keyword,example.com,"The highest registered source domain, stripped of the subdomain."
+source,source.subdomain,keyword,east,The subdomain of the domain.
+source,source.top_level_domain,keyword,co.uk,"The effective top level domain (com, org, net, co.uk)."
+source,source.user.domain,keyword,,Name of the directory the user is a member of.
+source,source.user.email,keyword,,User email address.
+source,source.user.full_name,keyword,Albert Einstein,"User's full name, if available."
+source,source.user.full_name.text,match_only_text,Albert Einstein,"User's full name, if available."
+source,source.user.group.domain,keyword,,Name of the directory the group is a member of.
+source,source.user.group.id,keyword,,Unique identifier for the group on the system/platform.
+source,source.user.group.name,keyword,,Name of the group.
+source,source.user.hash,keyword,,Unique user hash to correlate information for a user in anonymized form.
+source,source.user.id,keyword,S-1-5-21-202424912787-2692429404-2351956786-1000,Unique identifier of the user.
+source,source.user.name,keyword,a.einstein,Short name or login of the user.
+source,source.user.name.text,match_only_text,a.einstein,Short name or login of the user.
+source,source.user.roles,keyword,"[""kibana_admin"", ""reporting_user""]",Array of user roles at the time of the event.
+span,span.id,keyword,3ff9a8981b7ccd5a,Unique identifier of the span within the scope of its trace.
+threat,threat.enrichments,nested,,List of objects containing indicators enriching the event.
+threat,threat.enrichments.indicator,object,,Object containing indicators enriching the event.
+threat,threat.enrichments.indicator.as.number,long,15169,Unique number allocated to the autonomous system.
+threat,threat.enrichments.indicator.as.organization.name,keyword,Google LLC,Organization name.
+threat,threat.enrichments.indicator.as.organization.name.text,match_only_text,Google LLC,Organization name.
+threat,threat.enrichments.indicator.confidence,keyword,Medium,Indicator confidence rating
+threat,threat.enrichments.indicator.description,keyword,IP x.x.x.x was observed delivering the Angler EK.,Indicator description
+threat,threat.enrichments.indicator.email.address,keyword,phish@example.com,Indicator email address
+threat,threat.enrichments.indicator.file.accessed,date,,Last time the file was accessed.
+threat,threat.enrichments.indicator.file.attributes,keyword,"[""readonly"", ""system""]",Array of file attributes.
+threat,threat.enrichments.indicator.file.code_signature.digest_algorithm,keyword,sha256,Hashing algorithm used to sign the process.
+threat,threat.enrichments.indicator.file.code_signature.exists,boolean,TRUE,Boolean to capture if a signature is present.
+threat,threat.enrichments.indicator.file.code_signature.flags,keyword,570522385,Code signing flags of the process
+threat,threat.enrichments.indicator.file.code_signature.signing_id,keyword,com.apple.xpc.proxy,The identifier used to sign the process.
+threat,threat.enrichments.indicator.file.code_signature.status,keyword,ERROR_UNTRUSTED_ROOT,Additional information about the certificate status.
+threat,threat.enrichments.indicator.file.code_signature.subject_name,keyword,Microsoft Corporation,Subject name of the code signer
+threat,threat.enrichments.indicator.file.code_signature.team_id,keyword,EQHXZ8M8AV,The team identifier used to sign the process.
+threat,threat.enrichments.indicator.file.code_signature.timestamp,date,2021-01-01T12:10:30Z,When the signature was generated and signed.
+threat,threat.enrichments.indicator.file.code_signature.trusted,boolean,TRUE,Stores the trust status of the certificate chain.
+threat,threat.enrichments.indicator.file.code_signature.valid,boolean,TRUE,Boolean to capture if the digital signature is verified against the binary content.
+threat,threat.enrichments.indicator.file.created,date,,File creation time.
+threat,threat.enrichments.indicator.file.ctime,date,,Last time the file attributes or metadata changed.
+threat,threat.enrichments.indicator.file.device,keyword,sda,Device that is the source of the file.
+threat,threat.enrichments.indicator.file.directory,keyword,/home/alice,Directory where the file is located.
+threat,threat.enrichments.indicator.file.drive_letter,keyword,C,Drive letter where the file is located.
+threat,threat.enrichments.indicator.file.elf.architecture,keyword,x86-64,Machine architecture of the ELF file.
+threat,threat.enrichments.indicator.file.elf.byte_order,keyword,Little Endian,Byte sequence of ELF file.
+threat,threat.enrichments.indicator.file.elf.cpu_type,keyword,Intel,CPU type of the ELF file.
+threat,threat.enrichments.indicator.file.elf.creation_date,date,,Build or compile date.
+threat,threat.enrichments.indicator.file.elf.exports,flattened,,List of exported element names and types.
+threat,threat.enrichments.indicator.file.elf.go_import_hash,keyword,10bddcb4cee42080f76c88d9ff964491,A hash of the Go language imports in an ELF file.
+threat,threat.enrichments.indicator.file.elf.go_imports,flattened,,List of imported Go language element names and types.
+threat,threat.enrichments.indicator.file.elf.go_imports_names_entropy,long,,Shannon entropy calculation from the list of Go imports.
+threat,threat.enrichments.indicator.file.elf.go_imports_names_var_entropy,long,,Variance for Shannon entropy calculation from the list of Go imports.
+threat,threat.enrichments.indicator.file.elf.go_stripped,boolean,,Whether the file is a stripped or obfuscated Go executable.
+threat,threat.enrichments.indicator.file.elf.header.abi_version,keyword,,Version of the ELF Application Binary Interface (ABI).
+threat,threat.enrichments.indicator.file.elf.header.class,keyword,,Header class of the ELF file.
+threat,threat.enrichments.indicator.file.elf.header.data,keyword,,Data table of the ELF header.
+threat,threat.enrichments.indicator.file.elf.header.entrypoint,long,,Header entrypoint of the ELF file.
+threat,threat.enrichments.indicator.file.elf.header.object_version,keyword,,"""0x1"" for original ELF files."
+threat,threat.enrichments.indicator.file.elf.header.os_abi,keyword,,Application Binary Interface (ABI) of the Linux OS.
+threat,threat.enrichments.indicator.file.elf.header.type,keyword,,Header type of the ELF file.
+threat,threat.enrichments.indicator.file.elf.header.version,keyword,,Version of the ELF header.
+threat,threat.enrichments.indicator.file.elf.import_hash,keyword,d41d8cd98f00b204e9800998ecf8427e,A hash of the imports in an ELF file.
+threat,threat.enrichments.indicator.file.elf.imports,flattened,,List of imported element names and types.
+threat,threat.enrichments.indicator.file.elf.imports_names_entropy,long,,Shannon entropy calculation from the list of imported element names and types.
+threat,threat.enrichments.indicator.file.elf.imports_names_var_entropy,long,,Variance for Shannon entropy calculation from the list of imported element names and types.
+threat,threat.enrichments.indicator.file.elf.sections,nested,,Section information of the ELF file.
+threat,threat.enrichments.indicator.file.elf.sections.chi2,long,,Chi-square probability distribution of the section.
+threat,threat.enrichments.indicator.file.elf.sections.entropy,long,,Shannon entropy calculation from the section.
+threat,threat.enrichments.indicator.file.elf.sections.flags,keyword,,ELF Section List flags.
+threat,threat.enrichments.indicator.file.elf.sections.name,keyword,,ELF Section List name.
+threat,threat.enrichments.indicator.file.elf.sections.physical_offset,keyword,,ELF Section List offset.
+threat,threat.enrichments.indicator.file.elf.sections.physical_size,long,,ELF Section List physical size.
+threat,threat.enrichments.indicator.file.elf.sections.type,keyword,,ELF Section List type.
+threat,threat.enrichments.indicator.file.elf.sections.var_entropy,long,,Variance for Shannon entropy calculation from the section.
+threat,threat.enrichments.indicator.file.elf.sections.virtual_address,long,,ELF Section List virtual address.
+threat,threat.enrichments.indicator.file.elf.sections.virtual_size,long,,ELF Section List virtual size.
+threat,threat.enrichments.indicator.file.elf.segments,nested,,ELF object segment list.
+threat,threat.enrichments.indicator.file.elf.segments.sections,keyword,,ELF object segment sections.
+threat,threat.enrichments.indicator.file.elf.segments.type,keyword,,ELF object segment type.
+threat,threat.enrichments.indicator.file.elf.shared_libraries,keyword,,List of shared libraries used by this ELF object.
+threat,threat.enrichments.indicator.file.elf.telfhash,keyword,,telfhash hash for ELF file.
+threat,threat.enrichments.indicator.file.extension,keyword,png,"File extension, excluding the leading dot."
+threat,threat.enrichments.indicator.file.fork_name,keyword,Zone.Identifer,A fork is additional data associated with a filesystem object.
+threat,threat.enrichments.indicator.file.gid,keyword,1001,Primary group ID (GID) of the file.
+threat,threat.enrichments.indicator.file.group,keyword,alice,Primary group name of the file.
+threat,threat.enrichments.indicator.file.hash.cdhash,keyword,3783b4052fd474dbe30676b45c329e7a6d44acd9,The Code Directory (CD) hash of an executable.
+threat,threat.enrichments.indicator.file.hash.md5,keyword,,MD5 hash.
+threat,threat.enrichments.indicator.file.hash.sha1,keyword,,SHA1 hash.
+threat,threat.enrichments.indicator.file.hash.sha256,keyword,,SHA256 hash.
+threat,threat.enrichments.indicator.file.hash.sha384,keyword,,SHA384 hash.
+threat,threat.enrichments.indicator.file.hash.sha512,keyword,,SHA512 hash.
+threat,threat.enrichments.indicator.file.hash.ssdeep,keyword,,SSDEEP hash.
+threat,threat.enrichments.indicator.file.hash.tlsh,keyword,,TLSH hash.
+threat,threat.enrichments.indicator.file.inode,keyword,256383,Inode representing the file in the filesystem.
+threat,threat.enrichments.indicator.file.mime_type,keyword,,"Media type of file, document, or arrangement of bytes."
+threat,threat.enrichments.indicator.file.mode,keyword,640,Mode of the file in octal representation.
+threat,threat.enrichments.indicator.file.mtime,date,,Last time the file content was modified.
+threat,threat.enrichments.indicator.file.name,keyword,example.png,"Name of the file including the extension, without the directory."
+threat,threat.enrichments.indicator.file.owner,keyword,alice,File owner's username.
+threat,threat.enrichments.indicator.file.path,keyword,/home/alice/example.png,"Full path to the file, including the file name."
+threat,threat.enrichments.indicator.file.path.text,match_only_text,/home/alice/example.png,"Full path to the file, including the file name."
+threat,threat.enrichments.indicator.file.pe.architecture,keyword,x64,CPU architecture target for the file.
+threat,threat.enrichments.indicator.file.pe.company,keyword,Microsoft Corporation,"Internal company name of the file, provided at compile-time."
+threat,threat.enrichments.indicator.file.pe.description,keyword,Paint,"Internal description of the file, provided at compile-time."
+threat,threat.enrichments.indicator.file.pe.file_version,keyword,6.3.9600.17415,Process name.
+threat,threat.enrichments.indicator.file.pe.go_import_hash,keyword,10bddcb4cee42080f76c88d9ff964491,A hash of the Go language imports in a PE file.
+threat,threat.enrichments.indicator.file.pe.go_imports,flattened,,List of imported Go language element names and types.
+threat,threat.enrichments.indicator.file.pe.go_imports_names_entropy,long,,Shannon entropy calculation from the list of Go imports.
+threat,threat.enrichments.indicator.file.pe.go_imports_names_var_entropy,long,,Variance for Shannon entropy calculation from the list of Go imports.
+threat,threat.enrichments.indicator.file.pe.go_stripped,boolean,,Whether the file is a stripped or obfuscated Go executable.
+threat,threat.enrichments.indicator.file.pe.imphash,keyword,0c6803c4e922103c4dca5963aad36ddf,A hash of the imports in a PE file.
+threat,threat.enrichments.indicator.file.pe.import_hash,keyword,d41d8cd98f00b204e9800998ecf8427e,A hash of the imports in a PE file.
+threat,threat.enrichments.indicator.file.pe.imports,flattened,,List of imported element names and types.
+threat,threat.enrichments.indicator.file.pe.imports_names_entropy,long,,Shannon entropy calculation from the list of imported element names and types.
+threat,threat.enrichments.indicator.file.pe.imports_names_var_entropy,long,,Variance for Shannon entropy calculation from the list of imported element names and types.
+threat,threat.enrichments.indicator.file.pe.original_file_name,keyword,MSPAINT.EXE,"Internal name of the file, provided at compile-time."
+threat,threat.enrichments.indicator.file.pe.pehash,keyword,73ff189b63cd6be375a7ff25179a38d347651975,A hash of the PE header and data from one or more PE sections.
+threat,threat.enrichments.indicator.file.pe.product,keyword,Microsoft® Windows® Operating System,"Internal product name of the file, provided at compile-time."
+threat,threat.enrichments.indicator.file.pe.sections,nested,,Section information of the PE file.
+threat,threat.enrichments.indicator.file.pe.sections.entropy,long,,Shannon entropy calculation from the section.
+threat,threat.enrichments.indicator.file.pe.sections.name,keyword,,PE Section List name.
+threat,threat.enrichments.indicator.file.pe.sections.physical_size,long,,PE Section List physical size.
+threat,threat.enrichments.indicator.file.pe.sections.var_entropy,long,,Variance for Shannon entropy calculation from the section.
+threat,threat.enrichments.indicator.file.pe.sections.virtual_size,long,,PE Section List virtual size. This is always the same as `physical_size`.
+threat,threat.enrichments.indicator.file.size,long,16384,File size in bytes.
+threat,threat.enrichments.indicator.file.target_path,keyword,,Target path for symlinks.
+threat,threat.enrichments.indicator.file.target_path.text,match_only_text,,Target path for symlinks.
+threat,threat.enrichments.indicator.file.type,keyword,file,"File type (file, dir, or symlink)."
+threat,threat.enrichments.indicator.file.uid,keyword,1001,The user ID (UID) or security identifier (SID) of the file owner.
+threat,threat.enrichments.indicator.file.x509.alternative_names,keyword,*.elastic.co,List of subject alternative names (SAN).
+threat,threat.enrichments.indicator.file.x509.issuer.common_name,keyword,Example SHA2 High Assurance Server CA,List of common name (CN) of issuing certificate authority.
+threat,threat.enrichments.indicator.file.x509.issuer.country,keyword,US,List of country \(C) codes
+threat,threat.enrichments.indicator.file.x509.issuer.distinguished_name,keyword,"C=US, O=Example Inc, OU=www.example.com, CN=Example SHA2 High Assurance Server CA",Distinguished name (DN) of issuing certificate authority.
+threat,threat.enrichments.indicator.file.x509.issuer.locality,keyword,Mountain View,List of locality names (L)
+threat,threat.enrichments.indicator.file.x509.issuer.organization,keyword,Example Inc,List of organizations (O) of issuing certificate authority.
+threat,threat.enrichments.indicator.file.x509.issuer.organizational_unit,keyword,www.example.com,List of organizational units (OU) of issuing certificate authority.
+threat,threat.enrichments.indicator.file.x509.issuer.state_or_province,keyword,California,"List of state or province names (ST, S, or P)"
+threat,threat.enrichments.indicator.file.x509.not_after,date,2020-07-16T03:15:39Z,Time at which the certificate is no longer considered valid.
+threat,threat.enrichments.indicator.file.x509.not_before,date,2019-08-16T01:40:25Z,Time at which the certificate is first considered valid.
+threat,threat.enrichments.indicator.file.x509.public_key_algorithm,keyword,RSA,Algorithm used to generate the public key.
+threat,threat.enrichments.indicator.file.x509.public_key_curve,keyword,nistp521,The curve used by the elliptic curve public key algorithm. This is algorithm specific.
+threat,threat.enrichments.indicator.file.x509.public_key_exponent,long,65537,Exponent used to derive the public key. This is algorithm specific.
+threat,threat.enrichments.indicator.file.x509.public_key_size,long,2048,The size of the public key space in bits.
+threat,threat.enrichments.indicator.file.x509.serial_number,keyword,55FBB9C7DEBF09809D12CCAA,Unique serial number issued by the certificate authority.
+threat,threat.enrichments.indicator.file.x509.signature_algorithm,keyword,SHA256-RSA,Identifier for certificate signature algorithm.
+threat,threat.enrichments.indicator.file.x509.subject.common_name,keyword,shared.global.example.net,List of common names (CN) of subject.
+threat,threat.enrichments.indicator.file.x509.subject.country,keyword,US,List of country \(C) code
+threat,threat.enrichments.indicator.file.x509.subject.distinguished_name,keyword,"C=US, ST=California, L=San Francisco, O=Example, Inc., CN=shared.global.example.net",Distinguished name (DN) of the certificate subject entity.
+threat,threat.enrichments.indicator.file.x509.subject.locality,keyword,San Francisco,List of locality names (L)
+threat,threat.enrichments.indicator.file.x509.subject.organization,keyword,"Example, Inc.",List of organizations (O) of subject.
+threat,threat.enrichments.indicator.file.x509.subject.organizational_unit,keyword,,List of organizational units (OU) of subject.
+threat,threat.enrichments.indicator.file.x509.subject.state_or_province,keyword,California,"List of state or province names (ST, S, or P)"
+threat,threat.enrichments.indicator.file.x509.version_number,keyword,3,Version of x509 format.
+threat,threat.enrichments.indicator.first_seen,date,2020-11-05T17:25:47.000Z,Date/time indicator was first reported.
+threat,threat.enrichments.indicator.geo.city_name,keyword,Montreal,City name.
+threat,threat.enrichments.indicator.geo.continent_code,keyword,NA,Continent code.
+threat,threat.enrichments.indicator.geo.continent_name,keyword,North America,Name of the continent.
+threat,threat.enrichments.indicator.geo.country_iso_code,keyword,CA,Country ISO code.
+threat,threat.enrichments.indicator.geo.country_name,keyword,Canada,Country name.
+threat,threat.enrichments.indicator.geo.location,geo_point,"{ ""lon"": -73.614830, ""lat"": 45.505918 }",Longitude and latitude.
+threat,threat.enrichments.indicator.geo.name,keyword,boston-dc,User-defined description of a location.
+threat,threat.enrichments.indicator.geo.postal_code,keyword,94040,Postal code.
+threat,threat.enrichments.indicator.geo.region_iso_code,keyword,CA-QC,Region ISO code.
+threat,threat.enrichments.indicator.geo.region_name,keyword,Quebec,Region name.
+threat,threat.enrichments.indicator.geo.timezone,keyword,America/Argentina/Buenos_Aires,Time zone.
+threat,threat.enrichments.indicator.ip,ip,1.2.3.4,Indicator IP address
+threat,threat.enrichments.indicator.last_seen,date,2020-11-05T17:25:47.000Z,Date/time indicator was last reported.
+threat,threat.enrichments.indicator.marking.tlp,keyword,CLEAR,Indicator TLP marking
+threat,threat.enrichments.indicator.marking.tlp_version,keyword,2,Indicator TLP version
+threat,threat.enrichments.indicator.modified_at,date,2020-11-05T17:25:47.000Z,Date/time indicator was last updated.
+threat,threat.enrichments.indicator.name,keyword,5.2.75.227,Indicator display name
+threat,threat.enrichments.indicator.port,long,443,Indicator port
+threat,threat.enrichments.indicator.provider,keyword,lrz_urlhaus,Indicator provider
+threat,threat.enrichments.indicator.reference,keyword,https://system.example.com/indicator/0001234,Indicator reference URL
+threat,threat.enrichments.indicator.registry.data.bytes,keyword,ZQBuAC0AVQBTAAAAZQBuAAAAAAA=,Original bytes written with base64 encoding.
+threat,threat.enrichments.indicator.registry.data.strings,wildcard,"[""C:\rta\red_ttp\bin\myapp.exe""]",List of strings representing what was written to the registry.
+threat,threat.enrichments.indicator.registry.data.type,keyword,REG_SZ,Standard registry type for encoding contents
+threat,threat.enrichments.indicator.registry.hive,keyword,HKLM,Abbreviated name for the hive.
+threat,threat.enrichments.indicator.registry.key,keyword,SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\winword.exe,Hive-relative path of keys.
+threat,threat.enrichments.indicator.registry.path,keyword,HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\winword.exe\Debugger,"Full path, including hive, key and value"
+threat,threat.enrichments.indicator.registry.value,keyword,Debugger,Name of the value written.
+threat,threat.enrichments.indicator.scanner_stats,long,4,Scanner statistics
+threat,threat.enrichments.indicator.sightings,long,20,Number of times indicator observed
+threat,threat.enrichments.indicator.type,keyword,ipv4-addr,Type of indicator
+threat,threat.enrichments.indicator.url.domain,keyword,www.elastic.co,Domain of the url.
+threat,threat.enrichments.indicator.url.extension,keyword,png,"File extension from the request url, excluding the leading dot."
+threat,threat.enrichments.indicator.url.fragment,keyword,,Portion of the url after the `#`.
+threat,threat.enrichments.indicator.url.full,wildcard,https://www.elastic.co:443/search?q=elasticsearch#top,Full unparsed URL.
+threat,threat.enrichments.indicator.url.full.text,match_only_text,https://www.elastic.co:443/search?q=elasticsearch#top,Full unparsed URL.
+threat,threat.enrichments.indicator.url.original,wildcard,https://www.elastic.co:443/search?q=elasticsearch#top or /search?q=elasticsearch,Unmodified original url as seen in the event source.
+threat,threat.enrichments.indicator.url.original.text,match_only_text,https://www.elastic.co:443/search?q=elasticsearch#top or /search?q=elasticsearch,Unmodified original url as seen in the event source.
+threat,threat.enrichments.indicator.url.password,keyword,,Password of the request.
+threat,threat.enrichments.indicator.url.path,wildcard,,"Path of the request, such as ""/search""."
+threat,threat.enrichments.indicator.url.port,long,443,"Port of the request, such as 443."
+threat,threat.enrichments.indicator.url.query,keyword,,Query string of the request.
+threat,threat.enrichments.indicator.url.registered_domain,keyword,example.com,"The highest registered url domain, stripped of the subdomain."
+threat,threat.enrichments.indicator.url.scheme,keyword,https,Scheme of the url.
+threat,threat.enrichments.indicator.url.subdomain,keyword,east,The subdomain of the domain.
+threat,threat.enrichments.indicator.url.top_level_domain,keyword,co.uk,"The effective top level domain (com, org, net, co.uk)."
+threat,threat.enrichments.indicator.url.username,keyword,,Username of the request.
+threat,threat.enrichments.indicator.x509.alternative_names,keyword,*.elastic.co,List of subject alternative names (SAN).
+threat,threat.enrichments.indicator.x509.issuer.common_name,keyword,Example SHA2 High Assurance Server CA,List of common name (CN) of issuing certificate authority.
+threat,threat.enrichments.indicator.x509.issuer.country,keyword,US,List of country \(C) codes
+threat,threat.enrichments.indicator.x509.issuer.distinguished_name,keyword,"C=US, O=Example Inc, OU=www.example.com, CN=Example SHA2 High Assurance Server CA",Distinguished name (DN) of issuing certificate authority.
+threat,threat.enrichments.indicator.x509.issuer.locality,keyword,Mountain View,List of locality names (L)
+threat,threat.enrichments.indicator.x509.issuer.organization,keyword,Example Inc,List of organizations (O) of issuing certificate authority.
+threat,threat.enrichments.indicator.x509.issuer.organizational_unit,keyword,www.example.com,List of organizational units (OU) of issuing certificate authority.
+threat,threat.enrichments.indicator.x509.issuer.state_or_province,keyword,California,"List of state or province names (ST, S, or P)"
+threat,threat.enrichments.indicator.x509.not_after,date,2020-07-16T03:15:39Z,Time at which the certificate is no longer considered valid.
+threat,threat.enrichments.indicator.x509.not_before,date,2019-08-16T01:40:25Z,Time at which the certificate is first considered valid.
+threat,threat.enrichments.indicator.x509.public_key_algorithm,keyword,RSA,Algorithm used to generate the public key.
+threat,threat.enrichments.indicator.x509.public_key_curve,keyword,nistp521,The curve used by the elliptic curve public key algorithm. This is algorithm specific.
+threat,threat.enrichments.indicator.x509.public_key_exponent,long,65537,Exponent used to derive the public key. This is algorithm specific.
+threat,threat.enrichments.indicator.x509.public_key_size,long,2048,The size of the public key space in bits.
+threat,threat.enrichments.indicator.x509.serial_number,keyword,55FBB9C7DEBF09809D12CCAA,Unique serial number issued by the certificate authority.
+threat,threat.enrichments.indicator.x509.signature_algorithm,keyword,SHA256-RSA,Identifier for certificate signature algorithm.
+threat,threat.enrichments.indicator.x509.subject.common_name,keyword,shared.global.example.net,List of common names (CN) of subject.
+threat,threat.enrichments.indicator.x509.subject.country,keyword,US,List of country \(C) code
+threat,threat.enrichments.indicator.x509.subject.distinguished_name,keyword,"C=US, ST=California, L=San Francisco, O=Example, Inc., CN=shared.global.example.net",Distinguished name (DN) of the certificate subject entity.
+threat,threat.enrichments.indicator.x509.subject.locality,keyword,San Francisco,List of locality names (L)
+threat,threat.enrichments.indicator.x509.subject.organization,keyword,"Example, Inc.",List of organizations (O) of subject.
+threat,threat.enrichments.indicator.x509.subject.organizational_unit,keyword,,List of organizational units (OU) of subject.
+threat,threat.enrichments.indicator.x509.subject.state_or_province,keyword,California,"List of state or province names (ST, S, or P)"
+threat,threat.enrichments.indicator.x509.version_number,keyword,3,Version of x509 format.
+threat,threat.enrichments.matched.atomic,keyword,bad-domain.com,Matched indicator value
+threat,threat.enrichments.matched.field,keyword,file.hash.sha256,Matched indicator field
+threat,threat.enrichments.matched.id,keyword,ff93aee5-86a1-4a61-b0e6-0cdc313d01b5,Matched indicator identifier
+threat,threat.enrichments.matched.index,keyword,filebeat-8.0.0-2021.05.23-000011,Matched indicator index
+threat,threat.enrichments.matched.occurred,date,2021-10-05T17:00:58.326Z,Date of match
+threat,threat.enrichments.matched.type,keyword,indicator_match_rule,Type of indicator match
+threat,threat.feed.dashboard_id,keyword,5ba16340-72e6-11eb-a3e3-b3cc7c78a70f,Feed dashboard ID.
+threat,threat.feed.description,keyword,Threat feed from the AlienVault Open Threat eXchange network.,Description of the threat feed.
+threat,threat.feed.name,keyword,AlienVault OTX,Name of the threat feed.
+threat,threat.feed.reference,keyword,https://otx.alienvault.com,Reference for the threat feed.
+threat,threat.framework,keyword,MITRE ATT&CK,Threat classification framework.
+threat,threat.group.alias,keyword,"[ ""Magecart Group 6"" ]",Alias of the group.
+threat,threat.group.id,keyword,G0037,ID of the group.
+threat,threat.group.name,keyword,FIN6,Name of the group.
+threat,threat.group.reference,keyword,https://attack.mitre.org/groups/G0037/,Reference URL of the group.
+threat,threat.indicator.as.number,long,15169,Unique number allocated to the autonomous system.
+threat,threat.indicator.as.organization.name,keyword,Google LLC,Organization name.
+threat,threat.indicator.as.organization.name.text,match_only_text,Google LLC,Organization name.
+threat,threat.indicator.confidence,keyword,Medium,Indicator confidence rating
+threat,threat.indicator.description,keyword,IP x.x.x.x was observed delivering the Angler EK.,Indicator description
+threat,threat.indicator.email.address,keyword,phish@example.com,Indicator email address
+threat,threat.indicator.file.accessed,date,,Last time the file was accessed.
+threat,threat.indicator.file.attributes,keyword,"[""readonly"", ""system""]",Array of file attributes.
+threat,threat.indicator.file.code_signature.digest_algorithm,keyword,sha256,Hashing algorithm used to sign the process.
+threat,threat.indicator.file.code_signature.exists,boolean,TRUE,Boolean to capture if a signature is present.
+threat,threat.indicator.file.code_signature.flags,keyword,570522385,Code signing flags of the process
+threat,threat.indicator.file.code_signature.signing_id,keyword,com.apple.xpc.proxy,The identifier used to sign the process.
+threat,threat.indicator.file.code_signature.status,keyword,ERROR_UNTRUSTED_ROOT,Additional information about the certificate status.
+threat,threat.indicator.file.code_signature.subject_name,keyword,Microsoft Corporation,Subject name of the code signer
+threat,threat.indicator.file.code_signature.team_id,keyword,EQHXZ8M8AV,The team identifier used to sign the process.
+threat,threat.indicator.file.code_signature.timestamp,date,2021-01-01T12:10:30Z,When the signature was generated and signed.
+threat,threat.indicator.file.code_signature.trusted,boolean,TRUE,Stores the trust status of the certificate chain.
+threat,threat.indicator.file.code_signature.valid,boolean,TRUE,Boolean to capture if the digital signature is verified against the binary content.
+threat,threat.indicator.file.created,date,,File creation time.
+threat,threat.indicator.file.ctime,date,,Last time the file attributes or metadata changed.
+threat,threat.indicator.file.device,keyword,sda,Device that is the source of the file.
+threat,threat.indicator.file.directory,keyword,/home/alice,Directory where the file is located.
+threat,threat.indicator.file.drive_letter,keyword,C,Drive letter where the file is located.
+threat,threat.indicator.file.elf.architecture,keyword,x86-64,Machine architecture of the ELF file.
+threat,threat.indicator.file.elf.byte_order,keyword,Little Endian,Byte sequence of ELF file.
+threat,threat.indicator.file.elf.cpu_type,keyword,Intel,CPU type of the ELF file.
+threat,threat.indicator.file.elf.creation_date,date,,Build or compile date.
+threat,threat.indicator.file.elf.exports,flattened,,List of exported element names and types.
+threat,threat.indicator.file.elf.go_import_hash,keyword,10bddcb4cee42080f76c88d9ff964491,A hash of the Go language imports in an ELF file.
+threat,threat.indicator.file.elf.go_imports,flattened,,List of imported Go language element names and types.
+threat,threat.indicator.file.elf.go_imports_names_entropy,long,,Shannon entropy calculation from the list of Go imports.
+threat,threat.indicator.file.elf.go_imports_names_var_entropy,long,,Variance for Shannon entropy calculation from the list of Go imports.
+threat,threat.indicator.file.elf.go_stripped,boolean,,Whether the file is a stripped or obfuscated Go executable.
+threat,threat.indicator.file.elf.header.abi_version,keyword,,Version of the ELF Application Binary Interface (ABI).
+threat,threat.indicator.file.elf.header.class,keyword,,Header class of the ELF file.
+threat,threat.indicator.file.elf.header.data,keyword,,Data table of the ELF header.
+threat,threat.indicator.file.elf.header.entrypoint,long,,Header entrypoint of the ELF file.
+threat,threat.indicator.file.elf.header.object_version,keyword,,"""0x1"" for original ELF files."
+threat,threat.indicator.file.elf.header.os_abi,keyword,,Application Binary Interface (ABI) of the Linux OS.
+threat,threat.indicator.file.elf.header.type,keyword,,Header type of the ELF file.
+threat,threat.indicator.file.elf.header.version,keyword,,Version of the ELF header.
+threat,threat.indicator.file.elf.import_hash,keyword,d41d8cd98f00b204e9800998ecf8427e,A hash of the imports in an ELF file.
+threat,threat.indicator.file.elf.imports,flattened,,List of imported element names and types.
+threat,threat.indicator.file.elf.imports_names_entropy,long,,Shannon entropy calculation from the list of imported element names and types.
+threat,threat.indicator.file.elf.imports_names_var_entropy,long,,Variance for Shannon entropy calculation from the list of imported element names and types.
+threat,threat.indicator.file.elf.sections,nested,,Section information of the ELF file.
+threat,threat.indicator.file.elf.sections.chi2,long,,Chi-square probability distribution of the section.
+threat,threat.indicator.file.elf.sections.entropy,long,,Shannon entropy calculation from the section.
+threat,threat.indicator.file.elf.sections.flags,keyword,,ELF Section List flags.
+threat,threat.indicator.file.elf.sections.name,keyword,,ELF Section List name.
+threat,threat.indicator.file.elf.sections.physical_offset,keyword,,ELF Section List offset.
+threat,threat.indicator.file.elf.sections.physical_size,long,,ELF Section List physical size.
+threat,threat.indicator.file.elf.sections.type,keyword,,ELF Section List type.
+threat,threat.indicator.file.elf.sections.var_entropy,long,,Variance for Shannon entropy calculation from the section.
+threat,threat.indicator.file.elf.sections.virtual_address,long,,ELF Section List virtual address.
+threat,threat.indicator.file.elf.sections.virtual_size,long,,ELF Section List virtual size.
+threat,threat.indicator.file.elf.segments,nested,,ELF object segment list.
+threat,threat.indicator.file.elf.segments.sections,keyword,,ELF object segment sections.
+threat,threat.indicator.file.elf.segments.type,keyword,,ELF object segment type.
+threat,threat.indicator.file.elf.shared_libraries,keyword,,List of shared libraries used by this ELF object.
+threat,threat.indicator.file.elf.telfhash,keyword,,telfhash hash for ELF file.
+threat,threat.indicator.file.extension,keyword,png,"File extension, excluding the leading dot."
+threat,threat.indicator.file.fork_name,keyword,Zone.Identifer,A fork is additional data associated with a filesystem object.
+threat,threat.indicator.file.gid,keyword,1001,Primary group ID (GID) of the file.
+threat,threat.indicator.file.group,keyword,alice,Primary group name of the file.
+threat,threat.indicator.file.hash.cdhash,keyword,3783b4052fd474dbe30676b45c329e7a6d44acd9,The Code Directory (CD) hash of an executable.
+threat,threat.indicator.file.hash.md5,keyword,,MD5 hash.
+threat,threat.indicator.file.hash.sha1,keyword,,SHA1 hash.
+threat,threat.indicator.file.hash.sha256,keyword,,SHA256 hash.
+threat,threat.indicator.file.hash.sha384,keyword,,SHA384 hash.
+threat,threat.indicator.file.hash.sha512,keyword,,SHA512 hash.
+threat,threat.indicator.file.hash.ssdeep,keyword,,SSDEEP hash.
+threat,threat.indicator.file.hash.tlsh,keyword,,TLSH hash.
+threat,threat.indicator.file.inode,keyword,256383,Inode representing the file in the filesystem.
+threat,threat.indicator.file.mime_type,keyword,,"Media type of file, document, or arrangement of bytes."
+threat,threat.indicator.file.mode,keyword,640,Mode of the file in octal representation.
+threat,threat.indicator.file.mtime,date,,Last time the file content was modified.
+threat,threat.indicator.file.name,keyword,example.png,"Name of the file including the extension, without the directory."
+threat,threat.indicator.file.owner,keyword,alice,File owner's username.
+threat,threat.indicator.file.path,keyword,/home/alice/example.png,"Full path to the file, including the file name."
+threat,threat.indicator.file.path.text,match_only_text,/home/alice/example.png,"Full path to the file, including the file name."
+threat,threat.indicator.file.pe.architecture,keyword,x64,CPU architecture target for the file.
+threat,threat.indicator.file.pe.company,keyword,Microsoft Corporation,"Internal company name of the file, provided at compile-time."
+threat,threat.indicator.file.pe.description,keyword,Paint,"Internal description of the file, provided at compile-time."
+threat,threat.indicator.file.pe.file_version,keyword,6.3.9600.17415,Process name.
+threat,threat.indicator.file.pe.go_import_hash,keyword,10bddcb4cee42080f76c88d9ff964491,A hash of the Go language imports in a PE file.
+threat,threat.indicator.file.pe.go_imports,flattened,,List of imported Go language element names and types.
+threat,threat.indicator.file.pe.go_imports_names_entropy,long,,Shannon entropy calculation from the list of Go imports.
+threat,threat.indicator.file.pe.go_imports_names_var_entropy,long,,Variance for Shannon entropy calculation from the list of Go imports.
+threat,threat.indicator.file.pe.go_stripped,boolean,,Whether the file is a stripped or obfuscated Go executable.
+threat,threat.indicator.file.pe.imphash,keyword,0c6803c4e922103c4dca5963aad36ddf,A hash of the imports in a PE file.
+threat,threat.indicator.file.pe.import_hash,keyword,d41d8cd98f00b204e9800998ecf8427e,A hash of the imports in a PE file.
+threat,threat.indicator.file.pe.imports,flattened,,List of imported element names and types.
+threat,threat.indicator.file.pe.imports_names_entropy,long,,Shannon entropy calculation from the list of imported element names and types.
+threat,threat.indicator.file.pe.imports_names_var_entropy,long,,Variance for Shannon entropy calculation from the list of imported element names and types.
+threat,threat.indicator.file.pe.original_file_name,keyword,MSPAINT.EXE,"Internal name of the file, provided at compile-time."
+threat,threat.indicator.file.pe.pehash,keyword,73ff189b63cd6be375a7ff25179a38d347651975,A hash of the PE header and data from one or more PE sections.
+threat,threat.indicator.file.pe.product,keyword,Microsoft® Windows® Operating System,"Internal product name of the file, provided at compile-time."
+threat,threat.indicator.file.pe.sections,nested,,Section information of the PE file.
+threat,threat.indicator.file.pe.sections.entropy,long,,Shannon entropy calculation from the section.
+threat,threat.indicator.file.pe.sections.name,keyword,,PE Section List name.
+threat,threat.indicator.file.pe.sections.physical_size,long,,PE Section List physical size.
+threat,threat.indicator.file.pe.sections.var_entropy,long,,Variance for Shannon entropy calculation from the section.
+threat,threat.indicator.file.pe.sections.virtual_size,long,,PE Section List virtual size. This is always the same as `physical_size`.
+threat,threat.indicator.file.size,long,16384,File size in bytes.
+threat,threat.indicator.file.target_path,keyword,,Target path for symlinks.
+threat,threat.indicator.file.target_path.text,match_only_text,,Target path for symlinks.
+threat,threat.indicator.file.type,keyword,file,"File type (file, dir, or symlink)."
+threat,threat.indicator.file.uid,keyword,1001,The user ID (UID) or security identifier (SID) of the file owner.
+threat,threat.indicator.file.x509.alternative_names,keyword,*.elastic.co,List of subject alternative names (SAN).
+threat,threat.indicator.file.x509.issuer.common_name,keyword,Example SHA2 High Assurance Server CA,List of common name (CN) of issuing certificate authority.
+threat,threat.indicator.file.x509.issuer.country,keyword,US,List of country \(C) codes
+threat,threat.indicator.file.x509.issuer.distinguished_name,keyword,"C=US, O=Example Inc, OU=www.example.com, CN=Example SHA2 High Assurance Server CA",Distinguished name (DN) of issuing certificate authority.
+threat,threat.indicator.file.x509.issuer.locality,keyword,Mountain View,List of locality names (L)
+threat,threat.indicator.file.x509.issuer.organization,keyword,Example Inc,List of organizations (O) of issuing certificate authority.
+threat,threat.indicator.file.x509.issuer.organizational_unit,keyword,www.example.com,List of organizational units (OU) of issuing certificate authority.
+threat,threat.indicator.file.x509.issuer.state_or_province,keyword,California,"List of state or province names (ST, S, or P)"
+threat,threat.indicator.file.x509.not_after,date,2020-07-16T03:15:39Z,Time at which the certificate is no longer considered valid.
+threat,threat.indicator.file.x509.not_before,date,2019-08-16T01:40:25Z,Time at which the certificate is first considered valid.
+threat,threat.indicator.file.x509.public_key_algorithm,keyword,RSA,Algorithm used to generate the public key.
+threat,threat.indicator.file.x509.public_key_curve,keyword,nistp521,The curve used by the elliptic curve public key algorithm. This is algorithm specific.
+threat,threat.indicator.file.x509.public_key_exponent,long,65537,Exponent used to derive the public key. This is algorithm specific.
+threat,threat.indicator.file.x509.public_key_size,long,2048,The size of the public key space in bits.
+threat,threat.indicator.file.x509.serial_number,keyword,55FBB9C7DEBF09809D12CCAA,Unique serial number issued by the certificate authority.
+threat,threat.indicator.file.x509.signature_algorithm,keyword,SHA256-RSA,Identifier for certificate signature algorithm.
+threat,threat.indicator.file.x509.subject.common_name,keyword,shared.global.example.net,List of common names (CN) of subject.
+threat,threat.indicator.file.x509.subject.country,keyword,US,List of country \(C) code
+threat,threat.indicator.file.x509.subject.distinguished_name,keyword,"C=US, ST=California, L=San Francisco, O=Example, Inc., CN=shared.global.example.net",Distinguished name (DN) of the certificate subject entity.
+threat,threat.indicator.file.x509.subject.locality,keyword,San Francisco,List of locality names (L)
+threat,threat.indicator.file.x509.subject.organization,keyword,"Example, Inc.",List of organizations (O) of subject.
+threat,threat.indicator.file.x509.subject.organizational_unit,keyword,,List of organizational units (OU) of subject.
+threat,threat.indicator.file.x509.subject.state_or_province,keyword,California,"List of state or province names (ST, S, or P)"
+threat,threat.indicator.file.x509.version_number,keyword,3,Version of x509 format.
+threat,threat.indicator.first_seen,date,2020-11-05T17:25:47.000Z,Date/time indicator was first reported.
+threat,threat.indicator.geo.city_name,keyword,Montreal,City name.
+threat,threat.indicator.geo.continent_code,keyword,NA,Continent code.
+threat,threat.indicator.geo.continent_name,keyword,North America,Name of the continent.
+threat,threat.indicator.geo.country_iso_code,keyword,CA,Country ISO code.
+threat,threat.indicator.geo.country_name,keyword,Canada,Country name.
+threat,threat.indicator.geo.location,geo_point,"{ ""lon"": -73.614830, ""lat"": 45.505918 }",Longitude and latitude.
+threat,threat.indicator.geo.name,keyword,boston-dc,User-defined description of a location.
+threat,threat.indicator.geo.postal_code,keyword,94040,Postal code.
+threat,threat.indicator.geo.region_iso_code,keyword,CA-QC,Region ISO code.
+threat,threat.indicator.geo.region_name,keyword,Quebec,Region name.
+threat,threat.indicator.geo.timezone,keyword,America/Argentina/Buenos_Aires,Time zone.
+threat,threat.indicator.id,keyword,[indicator--d7008e06-ab86-415a-9803-3c81ce2d3c37],ID of the indicator
+threat,threat.indicator.ip,ip,1.2.3.4,Indicator IP address
+threat,threat.indicator.last_seen,date,2020-11-05T17:25:47.000Z,Date/time indicator was last reported.
+threat,threat.indicator.marking.tlp,keyword,CLEAR,Indicator TLP marking
+threat,threat.indicator.marking.tlp_version,keyword,2,Indicator TLP version
+threat,threat.indicator.modified_at,date,2020-11-05T17:25:47.000Z,Date/time indicator was last updated.
+threat,threat.indicator.name,keyword,5.2.75.227,Indicator display name
+threat,threat.indicator.port,long,443,Indicator port
+threat,threat.indicator.provider,keyword,lrz_urlhaus,Indicator provider
+threat,threat.indicator.reference,keyword,https://system.example.com/indicator/0001234,Indicator reference URL
+threat,threat.indicator.registry.data.bytes,keyword,ZQBuAC0AVQBTAAAAZQBuAAAAAAA=,Original bytes written with base64 encoding.
+threat,threat.indicator.registry.data.strings,wildcard,"[""C:\rta\red_ttp\bin\myapp.exe""]",List of strings representing what was written to the registry.
+threat,threat.indicator.registry.data.type,keyword,REG_SZ,Standard registry type for encoding contents
+threat,threat.indicator.registry.hive,keyword,HKLM,Abbreviated name for the hive.
+threat,threat.indicator.registry.key,keyword,SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\winword.exe,Hive-relative path of keys.
+threat,threat.indicator.registry.path,keyword,HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\winword.exe\Debugger,"Full path, including hive, key and value"
+threat,threat.indicator.registry.value,keyword,Debugger,Name of the value written.
+threat,threat.indicator.scanner_stats,long,4,Scanner statistics
+threat,threat.indicator.sightings,long,20,Number of times indicator observed
+threat,threat.indicator.type,keyword,ipv4-addr,Type of indicator
+threat,threat.indicator.url.domain,keyword,www.elastic.co,Domain of the url.
+threat,threat.indicator.url.extension,keyword,png,"File extension from the request url, excluding the leading dot."
+threat,threat.indicator.url.fragment,keyword,,Portion of the url after the `#`.
+threat,threat.indicator.url.full,wildcard,https://www.elastic.co:443/search?q=elasticsearch#top,Full unparsed URL.
+threat,threat.indicator.url.full.text,match_only_text,https://www.elastic.co:443/search?q=elasticsearch#top,Full unparsed URL.
+threat,threat.indicator.url.original,wildcard,https://www.elastic.co:443/search?q=elasticsearch#top or /search?q=elasticsearch,Unmodified original url as seen in the event source.
+threat,threat.indicator.url.original.text,match_only_text,https://www.elastic.co:443/search?q=elasticsearch#top or /search?q=elasticsearch,Unmodified original url as seen in the event source.
+threat,threat.indicator.url.password,keyword,,Password of the request.
+threat,threat.indicator.url.path,wildcard,,"Path of the request, such as ""/search""."
+threat,threat.indicator.url.port,long,443,"Port of the request, such as 443."
+threat,threat.indicator.url.query,keyword,,Query string of the request.
+threat,threat.indicator.url.registered_domain,keyword,example.com,"The highest registered url domain, stripped of the subdomain."
+threat,threat.indicator.url.scheme,keyword,https,Scheme of the url.
+threat,threat.indicator.url.subdomain,keyword,east,The subdomain of the domain.
+threat,threat.indicator.url.top_level_domain,keyword,co.uk,"The effective top level domain (com, org, net, co.uk)."
+threat,threat.indicator.url.username,keyword,,Username of the request.
+threat,threat.indicator.x509.alternative_names,keyword,*.elastic.co,List of subject alternative names (SAN).
+threat,threat.indicator.x509.issuer.common_name,keyword,Example SHA2 High Assurance Server CA,List of common name (CN) of issuing certificate authority.
+threat,threat.indicator.x509.issuer.country,keyword,US,List of country \(C) codes
+threat,threat.indicator.x509.issuer.distinguished_name,keyword,"C=US, O=Example Inc, OU=www.example.com, CN=Example SHA2 High Assurance Server CA",Distinguished name (DN) of issuing certificate authority.
+threat,threat.indicator.x509.issuer.locality,keyword,Mountain View,List of locality names (L)
+threat,threat.indicator.x509.issuer.organization,keyword,Example Inc,List of organizations (O) of issuing certificate authority.
+threat,threat.indicator.x509.issuer.organizational_unit,keyword,www.example.com,List of organizational units (OU) of issuing certificate authority.
+threat,threat.indicator.x509.issuer.state_or_province,keyword,California,"List of state or province names (ST, S, or P)"
+threat,threat.indicator.x509.not_after,date,2020-07-16T03:15:39Z,Time at which the certificate is no longer considered valid.
+threat,threat.indicator.x509.not_before,date,2019-08-16T01:40:25Z,Time at which the certificate is first considered valid.
+threat,threat.indicator.x509.public_key_algorithm,keyword,RSA,Algorithm used to generate the public key.
+threat,threat.indicator.x509.public_key_curve,keyword,nistp521,The curve used by the elliptic curve public key algorithm. This is algorithm specific.
+threat,threat.indicator.x509.public_key_exponent,long,65537,Exponent used to derive the public key. This is algorithm specific.
+threat,threat.indicator.x509.public_key_size,long,2048,The size of the public key space in bits.
+threat,threat.indicator.x509.serial_number,keyword,55FBB9C7DEBF09809D12CCAA,Unique serial number issued by the certificate authority.
+threat,threat.indicator.x509.signature_algorithm,keyword,SHA256-RSA,Identifier for certificate signature algorithm.
+threat,threat.indicator.x509.subject.common_name,keyword,shared.global.example.net,List of common names (CN) of subject.
+threat,threat.indicator.x509.subject.country,keyword,US,List of country \(C) code
+threat,threat.indicator.x509.subject.distinguished_name,keyword,"C=US, ST=California, L=San Francisco, O=Example, Inc., CN=shared.global.example.net",Distinguished name (DN) of the certificate subject entity.
+threat,threat.indicator.x509.subject.locality,keyword,San Francisco,List of locality names (L)
+threat,threat.indicator.x509.subject.organization,keyword,"Example, Inc.",List of organizations (O) of subject.
+threat,threat.indicator.x509.subject.organizational_unit,keyword,,List of organizational units (OU) of subject.
+threat,threat.indicator.x509.subject.state_or_province,keyword,California,"List of state or province names (ST, S, or P)"
+threat,threat.indicator.x509.version_number,keyword,3,Version of x509 format.
+threat,threat.software.alias,keyword,"[ ""X-Agent"" ]",Alias of the software
+threat,threat.software.id,keyword,S0552,ID of the software
+threat,threat.software.name,keyword,AdFind,Name of the software.
+threat,threat.software.platforms,keyword,"[ ""Windows"" ]",Platforms of the software.
+threat,threat.software.reference,keyword,https://attack.mitre.org/software/S0552/,Software reference URL.
+threat,threat.software.type,keyword,Tool,Software type.
+threat,threat.tactic.id,keyword,TA0002,Threat tactic id.
+threat,threat.tactic.name,keyword,Execution,Threat tactic.
+threat,threat.tactic.reference,keyword,https://attack.mitre.org/tactics/TA0002/,Threat tactic URL reference.
+threat,threat.technique.id,keyword,T1059,Threat technique id.
+threat,threat.technique.name,keyword,Command and Scripting Interpreter,Threat technique name.
+threat,threat.technique.name.text,match_only_text,Command and Scripting Interpreter,Threat technique name.
+threat,threat.technique.reference,keyword,https://attack.mitre.org/techniques/T1059/,Threat technique URL reference.
+threat,threat.technique.subtechnique.id,keyword,T1059.001,Threat subtechnique id.
+threat,threat.technique.subtechnique.name,keyword,PowerShell,Threat subtechnique name.
+threat,threat.technique.subtechnique.name.text,match_only_text,PowerShell,Threat subtechnique name.
+threat,threat.technique.subtechnique.reference,keyword,https://attack.mitre.org/techniques/T1059/001/,Threat subtechnique URL reference.
+tls,tls.cipher,keyword,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,String indicating the cipher used during the current connection.
+tls,tls.client.certificate,keyword,MII...,PEM-encoded stand-alone certificate offered by the client.
+tls,tls.client.certificate_chain,keyword,"[""MII..."", ""MII...""]",Array of PEM-encoded certificates that make up the certificate chain offered by the client.
+tls,tls.client.hash.md5,keyword,0F76C7F2C55BFD7D8E8B8F4BFBF0C9EC,Certificate fingerprint using the MD5 digest of DER-encoded version of certificate offered by the client.
+tls,tls.client.hash.sha1,keyword,9E393D93138888D288266C2D915214D1D1CCEB2A,Certificate fingerprint using the SHA1 digest of DER-encoded version of certificate offered by the client.
+tls,tls.client.hash.sha256,keyword,0687F666A054EF17A08E2F2162EAB4CBC0D265E1D7875BE74BF3C712CA92DAF0,Certificate fingerprint using the SHA256 digest of DER-encoded version of certificate offered by the client.
+tls,tls.client.issuer,keyword,"CN=Example Root CA, OU=Infrastructure Team, DC=example, DC=com",Distinguished name of subject of the issuer of the x.509 certificate presented by the client.
+tls,tls.client.ja3,keyword,d4e5b18d6b55c71272893221c96ba240,A hash that identifies clients based on how they perform an SSL/TLS handshake.
+tls,tls.client.not_after,date,2021-01-01T00:00:00.000Z,Date/Time indicating when client certificate is no longer considered valid.
+tls,tls.client.not_before,date,1970-01-01T00:00:00.000Z,Date/Time indicating when client certificate is first considered valid.
+tls,tls.client.server_name,keyword,www.elastic.co,Hostname the client is trying to connect to. Also called the SNI.
+tls,tls.client.subject,keyword,"CN=myclient, OU=Documentation Team, DC=example, DC=com",Distinguished name of subject of the x.509 certificate presented by the client.
+tls,tls.client.supported_ciphers,keyword,"[""TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"", ""TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"", ""...""]",Array of ciphers offered by the client during the client hello.
+tls,tls.client.x509.alternative_names,keyword,*.elastic.co,List of subject alternative names (SAN).
+tls,tls.client.x509.issuer.common_name,keyword,Example SHA2 High Assurance Server CA,List of common name (CN) of issuing certificate authority.
+tls,tls.client.x509.issuer.country,keyword,US,List of country \(C) codes
+tls,tls.client.x509.issuer.distinguished_name,keyword,"C=US, O=Example Inc, OU=www.example.com, CN=Example SHA2 High Assurance Server CA",Distinguished name (DN) of issuing certificate authority.
+tls,tls.client.x509.issuer.locality,keyword,Mountain View,List of locality names (L)
+tls,tls.client.x509.issuer.organization,keyword,Example Inc,List of organizations (O) of issuing certificate authority.
+tls,tls.client.x509.issuer.organizational_unit,keyword,www.example.com,List of organizational units (OU) of issuing certificate authority.
+tls,tls.client.x509.issuer.state_or_province,keyword,California,"List of state or province names (ST, S, or P)"
+tls,tls.client.x509.not_after,date,2020-07-16T03:15:39Z,Time at which the certificate is no longer considered valid.
+tls,tls.client.x509.not_before,date,2019-08-16T01:40:25Z,Time at which the certificate is first considered valid.
+tls,tls.client.x509.public_key_algorithm,keyword,RSA,Algorithm used to generate the public key.
+tls,tls.client.x509.public_key_curve,keyword,nistp521,The curve used by the elliptic curve public key algorithm. This is algorithm specific.
+tls,tls.client.x509.public_key_exponent,long,65537,Exponent used to derive the public key. This is algorithm specific.
+tls,tls.client.x509.public_key_size,long,2048,The size of the public key space in bits.
+tls,tls.client.x509.serial_number,keyword,55FBB9C7DEBF09809D12CCAA,Unique serial number issued by the certificate authority.
+tls,tls.client.x509.signature_algorithm,keyword,SHA256-RSA,Identifier for certificate signature algorithm.
+tls,tls.client.x509.subject.common_name,keyword,shared.global.example.net,List of common names (CN) of subject.
+tls,tls.client.x509.subject.country,keyword,US,List of country \(C) code
+tls,tls.client.x509.subject.distinguished_name,keyword,"C=US, ST=California, L=San Francisco, O=Example, Inc., CN=shared.global.example.net",Distinguished name (DN) of the certificate subject entity.
+tls,tls.client.x509.subject.locality,keyword,San Francisco,List of locality names (L)
+tls,tls.client.x509.subject.organization,keyword,"Example, Inc.",List of organizations (O) of subject.
+tls,tls.client.x509.subject.organizational_unit,keyword,,List of organizational units (OU) of subject.
+tls,tls.client.x509.subject.state_or_province,keyword,California,"List of state or province names (ST, S, or P)"
+tls,tls.client.x509.version_number,keyword,3,Version of x509 format.
+tls,tls.curve,keyword,secp256r1,"String indicating the curve used for the given cipher, when applicable."
+tls,tls.established,boolean,,Boolean flag indicating if the TLS negotiation was successful and transitioned to an encrypted tunnel.
+tls,tls.next_protocol,keyword,http/1.1,String indicating the protocol being tunneled.
+tls,tls.resumed,boolean,,Boolean flag indicating if this TLS connection was resumed from an existing TLS negotiation.
+tls,tls.server.certificate,keyword,MII...,PEM-encoded stand-alone certificate offered by the server.
+tls,tls.server.certificate_chain,keyword,"[""MII..."", ""MII...""]",Array of PEM-encoded certificates that make up the certificate chain offered by the server.
+tls,tls.server.hash.md5,keyword,0F76C7F2C55BFD7D8E8B8F4BFBF0C9EC,Certificate fingerprint using the MD5 digest of DER-encoded version of certificate offered by the server.
+tls,tls.server.hash.sha1,keyword,9E393D93138888D288266C2D915214D1D1CCEB2A,Certificate fingerprint using the SHA1 digest of DER-encoded version of certificate offered by the server.
+tls,tls.server.hash.sha256,keyword,0687F666A054EF17A08E2F2162EAB4CBC0D265E1D7875BE74BF3C712CA92DAF0,Certificate fingerprint using the SHA256 digest of DER-encoded version of certificate offered by the server.
+tls,tls.server.issuer,keyword,"CN=Example Root CA, OU=Infrastructure Team, DC=example, DC=com",Subject of the issuer of the x.509 certificate presented by the server.
+tls,tls.server.ja3s,keyword,394441ab65754e2207b1e1b457b3641d,A hash that identifies servers based on how they perform an SSL/TLS handshake.
+tls,tls.server.not_after,date,2021-01-01T00:00:00.000Z,Timestamp indicating when server certificate is no longer considered valid.
+tls,tls.server.not_before,date,1970-01-01T00:00:00.000Z,Timestamp indicating when server certificate is first considered valid.
+tls,tls.server.subject,keyword,"CN=www.example.com, OU=Infrastructure Team, DC=example, DC=com",Subject of the x.509 certificate presented by the server.
+tls,tls.server.x509.alternative_names,keyword,*.elastic.co,List of subject alternative names (SAN).
+tls,tls.server.x509.issuer.common_name,keyword,Example SHA2 High Assurance Server CA,List of common name (CN) of issuing certificate authority.
+tls,tls.server.x509.issuer.country,keyword,US,List of country \(C) codes
+tls,tls.server.x509.issuer.distinguished_name,keyword,"C=US, O=Example Inc, OU=www.example.com, CN=Example SHA2 High Assurance Server CA",Distinguished name (DN) of issuing certificate authority.
+tls,tls.server.x509.issuer.locality,keyword,Mountain View,List of locality names (L)
+tls,tls.server.x509.issuer.organization,keyword,Example Inc,List of organizations (O) of issuing certificate authority.
+tls,tls.server.x509.issuer.organizational_unit,keyword,www.example.com,List of organizational units (OU) of issuing certificate authority.
+tls,tls.server.x509.issuer.state_or_province,keyword,California,"List of state or province names (ST, S, or P)"
+tls,tls.server.x509.not_after,date,2020-07-16T03:15:39Z,Time at which the certificate is no longer considered valid.
+tls,tls.server.x509.not_before,date,2019-08-16T01:40:25Z,Time at which the certificate is first considered valid.
+tls,tls.server.x509.public_key_algorithm,keyword,RSA,Algorithm used to generate the public key.
+tls,tls.server.x509.public_key_curve,keyword,nistp521,The curve used by the elliptic curve public key algorithm. This is algorithm specific.
+tls,tls.server.x509.public_key_exponent,long,65537,Exponent used to derive the public key. This is algorithm specific.
+tls,tls.server.x509.public_key_size,long,2048,The size of the public key space in bits.
+tls,tls.server.x509.serial_number,keyword,55FBB9C7DEBF09809D12CCAA,Unique serial number issued by the certificate authority.
+tls,tls.server.x509.signature_algorithm,keyword,SHA256-RSA,Identifier for certificate signature algorithm.
+tls,tls.server.x509.subject.common_name,keyword,shared.global.example.net,List of common names (CN) of subject.
+tls,tls.server.x509.subject.country,keyword,US,List of country \(C) code
+tls,tls.server.x509.subject.distinguished_name,keyword,"C=US, ST=California, L=San Francisco, O=Example, Inc., CN=shared.global.example.net",Distinguished name (DN) of the certificate subject entity.
+tls,tls.server.x509.subject.locality,keyword,San Francisco,List of locality names (L)
+tls,tls.server.x509.subject.organization,keyword,"Example, Inc.",List of organizations (O) of subject.
+tls,tls.server.x509.subject.organizational_unit,keyword,,List of organizational units (OU) of subject.
+tls,tls.server.x509.subject.state_or_province,keyword,California,"List of state or province names (ST, S, or P)"
+tls,tls.server.x509.version_number,keyword,3,Version of x509 format.
+tls,tls.version,keyword,1.2,Numeric part of the version parsed from the original string.
+tls,tls.version_protocol,keyword,tls,Normalized lowercase protocol name parsed from original string.
+trace,trace.id,keyword,4bf92f3577b34da6a3ce929d0e0e4736,Unique identifier of the trace.
+transaction,transaction.id,keyword,00f067aa0ba902b7,Unique identifier of the transaction within the scope of its trace.
+url,url.domain,keyword,www.elastic.co,Domain of the url.
+url,url.extension,keyword,png,"File extension from the request url, excluding the leading dot."
+url,url.fragment,keyword,,Portion of the url after the `#`.
+url,url.full,wildcard,https://www.elastic.co:443/search?q=elasticsearch#top,Full unparsed URL.
+url,url.full.text,match_only_text,https://www.elastic.co:443/search?q=elasticsearch#top,Full unparsed URL.
+url,url.original,wildcard,https://www.elastic.co:443/search?q=elasticsearch#top or /search?q=elasticsearch,Unmodified original url as seen in the event source.
+url,url.original.text,match_only_text,https://www.elastic.co:443/search?q=elasticsearch#top or /search?q=elasticsearch,Unmodified original url as seen in the event source.
+url,url.password,keyword,,Password of the request.
+url,url.path,wildcard,,"Path of the request, such as ""/search""."
+url,url.port,long,443,"Port of the request, such as 443."
+url,url.query,keyword,,Query string of the request.
+url,url.registered_domain,keyword,example.com,"The highest registered url domain, stripped of the subdomain."
+url,url.scheme,keyword,https,Scheme of the url.
+url,url.subdomain,keyword,east,The subdomain of the domain.
+url,url.top_level_domain,keyword,co.uk,"The effective top level domain (com, org, net, co.uk)."
+url,url.username,keyword,,Username of the request.
+user,user.changes.domain,keyword,,Name of the directory the user is a member of.
+user,user.changes.email,keyword,,User email address.
+user,user.changes.full_name,keyword,Albert Einstein,"User's full name, if available."
+user,user.changes.full_name.text,match_only_text,Albert Einstein,"User's full name, if available."
+user,user.changes.group.domain,keyword,,Name of the directory the group is a member of.
+user,user.changes.group.id,keyword,,Unique identifier for the group on the system/platform.
+user,user.changes.group.name,keyword,,Name of the group.
+user,user.changes.hash,keyword,,Unique user hash to correlate information for a user in anonymized form.
+user,user.changes.id,keyword,S-1-5-21-202424912787-2692429404-2351956786-1000,Unique identifier of the user.
+user,user.changes.name,keyword,a.einstein,Short name or login of the user.
+user,user.changes.name.text,match_only_text,a.einstein,Short name or login of the user.
+user,user.changes.roles,keyword,"[""kibana_admin"", ""reporting_user""]",Array of user roles at the time of the event.
+user,user.domain,keyword,,Name of the directory the user is a member of.
+user,user.effective.domain,keyword,,Name of the directory the user is a member of.
+user,user.effective.email,keyword,,User email address.
+user,user.effective.full_name,keyword,Albert Einstein,"User's full name, if available."
+user,user.effective.full_name.text,match_only_text,Albert Einstein,"User's full name, if available."
+user,user.effective.group.domain,keyword,,Name of the directory the group is a member of.
+user,user.effective.group.id,keyword,,Unique identifier for the group on the system/platform.
+user,user.effective.group.name,keyword,,Name of the group.
+user,user.effective.hash,keyword,,Unique user hash to correlate information for a user in anonymized form.
+user,user.effective.id,keyword,S-1-5-21-202424912787-2692429404-2351956786-1000,Unique identifier of the user.
+user,user.effective.name,keyword,a.einstein,Short name or login of the user.
+user,user.effective.name.text,match_only_text,a.einstein,Short name or login of the user.
+user,user.effective.roles,keyword,"[""kibana_admin"", ""reporting_user""]",Array of user roles at the time of the event.
+user,user.email,keyword,,User email address.
+user,user.full_name,keyword,Albert Einstein,"User's full name, if available."
+user,user.full_name.text,match_only_text,Albert Einstein,"User's full name, if available."
+user,user.group.domain,keyword,,Name of the directory the group is a member of.
+user,user.group.id,keyword,,Unique identifier for the group on the system/platform.
+user,user.group.name,keyword,,Name of the group.
+user,user.hash,keyword,,Unique user hash to correlate information for a user in anonymized form.
+user,user.id,keyword,S-1-5-21-202424912787-2692429404-2351956786-1000,Unique identifier of the user.
+user,user.name,keyword,a.einstein,Short name or login of the user.
+user,user.name.text,match_only_text,a.einstein,Short name or login of the user.
+user,user.risk.calculated_level,keyword,High,A risk classification level calculated by an internal system as part of entity analytics and entity risk scoring.
+user,user.risk.calculated_score,float,880.73,A risk classification score calculated by an internal system as part of entity analytics and entity risk scoring.
+user,user.risk.calculated_score_norm,float,88.73,A normalized risk score calculated by an internal system.
+user,user.risk.static_level,keyword,High,"A risk classification level obtained from outside the system, such as from some external Threat Intelligence Platform."
+user,user.risk.static_score,float,830,"A risk classification score obtained from outside the system, such as from some external Threat Intelligence Platform."
+user,user.risk.static_score_norm,float,83,A normalized risk score calculated by an external system.
+user,user.roles,keyword,"[""kibana_admin"", ""reporting_user""]",Array of user roles at the time of the event.
+user,user.target.domain,keyword,,Name of the directory the user is a member of.
+user,user.target.email,keyword,,User email address.
+user,user.target.full_name,keyword,Albert Einstein,"User's full name, if available."
+user,user.target.full_name.text,match_only_text,Albert Einstein,"User's full name, if available."
+user,user.target.group.domain,keyword,,Name of the directory the group is a member of.
+user,user.target.group.id,keyword,,Unique identifier for the group on the system/platform.
+user,user.target.group.name,keyword,,Name of the group.
+user,user.target.hash,keyword,,Unique user hash to correlate information for a user in anonymized form.
+user,user.target.id,keyword,S-1-5-21-202424912787-2692429404-2351956786-1000,Unique identifier of the user.
+user,user.target.name,keyword,a.einstein,Short name or login of the user.
+user,user.target.name.text,match_only_text,a.einstein,Short name or login of the user.
+user,user.target.roles,keyword,"[""kibana_admin"", ""reporting_user""]",Array of user roles at the time of the event.
+user_agent,user_agent.device.name,keyword,iPhone,Name of the device.
+user_agent,user_agent.name,keyword,Safari,Name of the user agent.
+user_agent,user_agent.original,keyword,"Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1",Unparsed user_agent string.
+user_agent,user_agent.original.text,match_only_text,"Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.0 Mobile/15E148 Safari/604.1",Unparsed user_agent string.
+user_agent,user_agent.os.family,keyword,debian,"OS family (such as redhat, debian, freebsd, windows)."
+user_agent,user_agent.os.full,keyword,Mac OS Mojave,"Operating system name, including the version or code name."
+user_agent,user_agent.os.full.text,match_only_text,Mac OS Mojave,"Operating system name, including the version or code name."
+user_agent,user_agent.os.kernel,keyword,4.4.0-112-generic,Operating system kernel version as a raw string.
+user_agent,user_agent.os.name,keyword,Mac OS X,"Operating system name, without the version."
+user_agent,user_agent.os.name.text,match_only_text,Mac OS X,"Operating system name, without the version."
+user_agent,user_agent.os.platform,keyword,darwin,"Operating system platform (such centos, ubuntu, windows)."
+user_agent,user_agent.os.type,keyword,macos,"Which commercial OS family (one of: linux, macos, unix, windows, ios or android)."
+user_agent,user_agent.os.version,keyword,10.14.1,Operating system version as a raw string.
+user_agent,user_agent.version,keyword,12,Version of the user agent.
+volume,volume.bus_type,keyword,FileBackedVirtual,Bus type of the device.
+volume,volume.default_access,keyword,,Bus type of the device.
+volume,volume.device_name,keyword,,Device name of the volume.
+volume,volume.device_type,keyword,CD-ROM File System,Volume device type.
+volume,volume.dos_name,keyword,E:,DOS name of the device.
+volume,volume.file_system_type,keyword,,Volume device file system type.
+volume,volume.mount_name,keyword,,Mount name of the volume.
+volume,volume.nt_name,keyword,\Device\Cdrom1,NT name of the device.
+volume,volume.product_id,keyword,,ProductID of the device.
+volume,volume.product_name,keyword,Virtual DVD-ROM,Produce name of the volume.
+volume,volume.removable,boolean,,Indicates if the volume is removable.
+volume,volume.serial_number,keyword,,Serial number of the device.
+volume,volume.size,long,,Size of the volume device in bytes.
+volume,volume.vendor_id,keyword,,VendorID of the device.
+volume,volume.vendor_name,keyword,Msft,Vendor name of the device.
+volume,volume.writable,boolean,,Indicates if the volume is writable.
+vulnerability,vulnerability.category,keyword,"[""Firewall""]",Category of a vulnerability.
+vulnerability,vulnerability.classification,keyword,CVSS,Classification of the vulnerability.
+vulnerability,vulnerability.description,keyword,"In macOS before 2.12.6, there is a vulnerability in the RPC...",Description of the vulnerability.
+vulnerability,vulnerability.description.text,match_only_text,"In macOS before 2.12.6, there is a vulnerability in the RPC...",Description of the vulnerability.
+vulnerability,vulnerability.enumeration,keyword,CVE,Identifier of the vulnerability.
+vulnerability,vulnerability.id,keyword,CVE-2019-00001,ID of the vulnerability.
+vulnerability,vulnerability.reference,keyword,https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-6111,Reference of the vulnerability.
+vulnerability,vulnerability.report_id,keyword,20191018,Scan identification number.
+vulnerability,vulnerability.scanner.vendor,keyword,Tenable,Name of the scanner vendor.
+vulnerability,vulnerability.score.base,float,5.5,Vulnerability Base score.
+vulnerability,vulnerability.score.environmental,float,5.5,Vulnerability Environmental score.
+vulnerability,vulnerability.score.temporal,float,,Vulnerability Temporal score.
+vulnerability,vulnerability.score.version,keyword,2,CVSS version.
+vulnerability,vulnerability.severity,keyword,Critical,Severity of the vulnerability.

@@ -1,0 +1,16 @@
+ollama
+chromadb
+pdfplumber 
+langchain
+langchain-core
+langchain-ollama
+langchain-unstructured
+langchain_text_splitters
+langchain-chroma
+unstructured
+unstructured[all-docs]
+fastembed
+pikepdf
+sentence-transformers
+elevenlabs
+pandas
