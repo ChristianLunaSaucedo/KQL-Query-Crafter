@@ -1,8 +1,11 @@
 import sys, os
+
+from KQLQueryBackend import KQLQueryHandler
+
 from PyQt6.QtGui import QGuiApplication
 from PyQt6.QtQml import QQmlApplicationEngine
 from PyQt6.QtCore import QObject, pyqtSlot as Slot
-from KQLQueryBackend import KQLQueryHandler
+
 
 class SystemController(QObject):
     @Slot(str)

@@ -1,3 +1,5 @@
+# A class for simply holding parameters for Backend RAG System
+
 class Parameters():
     
         embedding_model = "nomic-embed-text"

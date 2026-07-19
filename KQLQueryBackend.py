@@ -1,16 +1,21 @@
-from langchain_ollama import OllamaEmbeddings
-from langchain_chroma import Chroma
-from langchain_core.documents import Document
 import os
 import pandas
-from langchain_ollama.llms import OllamaLLM
-from langchain_core.prompts import ChatPromptTemplate
 
 from RAGParameters import Parameters
 
-# TEST 
-from langchain_classic.retrievers import MultiQueryRetriever
+from langchain_ollama import OllamaEmbeddings
+from langchain_ollama.llms import OllamaLLM
+
+from langchain_core.documents import Document
+from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.prompts import ChatPromptTemplate, PromptTemplate
+
+from langchain_classic.retrievers import MultiQueryRetriever
+
+from langchain_chroma import Chroma
+
+
+# TEST 
 
 
 
@@ -80,9 +85,11 @@ class KQLQueryHandler():
         # Bind the prompt and the retriever together
         retriever = MultiQueryRetriever.from_llm(retriever=vector_db.as_retriever(), llm=self.model, prompt=QUERY_PROMPT)
 
+        # Alternate Method Of Retrieval
         # retriever = vector_db.as_retriever(
         #     search_kwargs={"k": 8}
         # )
+
         print("Retriever Working Nicely!")
         return retriever
     
