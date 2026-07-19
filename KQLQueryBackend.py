@@ -8,6 +8,12 @@ from langchain_core.prompts import ChatPromptTemplate
 
 from RAGParameters import Parameters
 
+# TEST 
+from langchain_classic.retrievers import MultiQueryRetriever
+from langchain_core.prompts import ChatPromptTemplate, PromptTemplate
+
+
+
 class KQLQueryHandler():
     def __init__(self):
         self.embeddings = OllamaEmbeddings(model=Parameters.embedding_model)
@@ -60,9 +66,24 @@ class KQLQueryHandler():
         return vector_db
     
     def CreateRetriever(self, vector_db):
-        retriever = vector_db.as_retriever(
-            search_kwargs={"k": 8}
+
+        QUERY_PROMPT = PromptTemplate(
+            input_variables=["question"], 
+            template="""You are an AI language model assistant. Your task is to generate three
+            different versions of the given user question to retrieve relevant documents from
+            a vector database. By generating multiple perspectives on the user question, your
+            goal is to help the user overcome some of the limitations of the distance-based
+            similarity search. Provide these alternative questions separated by newlines. 
+            Original question: {question}"""
         )
+
+        # Bind the prompt and the retriever together
+        retriever = MultiQueryRetriever.from_llm(retriever=vector_db.as_retriever(), llm=self.model, prompt=QUERY_PROMPT)
+
+        # retriever = vector_db.as_retriever(
+        #     search_kwargs={"k": 8}
+        # )
+        print("Retriever Working Nicely!")
         return retriever
     
     def CreateChain(self):

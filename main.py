@@ -16,8 +16,8 @@ class SystemController(QObject):
     def QueryPrompt(self, textToQuery):
         print("Querying Prompt: ", textToQuery)
 
-        csv_rag_system = KQLQueryHandler()
-        response = csv_rag_system.AskQuestion(textToQuery)
+        kql_query_handler = KQLQueryHandler()
+        response = kql_query_handler.AskQuestion(textToQuery)
         print("RESULTING QUERY FROM PYTHON: ", response)
         return response
 

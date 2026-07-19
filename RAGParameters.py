@@ -150,6 +150,8 @@ Do NOT output explanations, reasoning, notes, markdown, code blocks, backticks, 
 
 If uncertain with your responses, generate the 5 most likely valid KQL queries ranked from most likely to least likely internally, and choose the most likely from that list to output as the single raw string.\
 
+[ABSOLUTE MOST IMPORTANT RULE OF ALL]
+The number one and final thing you will do is ensure that your provided field names are actual valid field names. No made up field names such as (source.host.name, etc.)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 USER REQUEST
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
