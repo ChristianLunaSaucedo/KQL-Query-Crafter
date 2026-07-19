@@ -1,3 +1,4 @@
+pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
@@ -89,7 +90,8 @@ Window {
 
                     width: queries_view.width
                     // height: Math.max(8, parent.height * 0.3)
-                    height: queriesDelegateGrid.implicitHeight + 24
+                    height: queriesDelegateGrid.implicitHeight + 28
+
                     z: 2
 
                     required property string scenario
@@ -103,15 +105,18 @@ Window {
                         id: queriesDelegateGrid
                         anchors.fill: parent
 
-                        anchors.margins: 20
+                        anchors.margins: 15
 
-                        columnSpacing: 20
-                        rowSpacing: 20
+                        Layout.alignment: Qt.AlignVCenter
+
+                        columnSpacing: 15
+                        rowSpacing: 15
 
                         TextField {
                             id: scenarioText
                             Layout.fillWidth: true
-                            Layout.fillHeight: false
+                            // Layout.fillHeight: false
+
                             Layout.preferredWidth: 8
                             Layout.preferredHeight: 100
 
@@ -304,8 +309,19 @@ Window {
                 }
 
                 onAccepted: {
+                    let textToQuery = input_prompt_field.text;
+                    if (textToQuery.trim() === "")
+                        return;
+
                     console.log("Sending Prompt!");
                     input_prompt_field.clear();
+                    let resultingQuery = systemController.QueryPrompt(textToQuery);
+                    console.log(resultingQuery);
+                    // Adding New Element
+                    queriesModel.append({
+                        "scenario": textToQuery,
+                        "query": resultingQuery
+                    });
                 }
             }
 
