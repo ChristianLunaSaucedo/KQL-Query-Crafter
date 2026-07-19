@@ -84,18 +84,12 @@ Window {
                 spacing: 50
 
                 model: queriesModel
-                delegate: queriesDelegate
-            }
-
-            Component {
-                id: queriesDelegate
-
-                Rectangle {
+                delegate: Rectangle {
                     id: queriesDelegateRect
-                    anchors.left: parent.left
-                    anchors.right: parent.right
+
                     width: queries_view.width
-                    height: parent.height * 0.3
+                    // height: Math.max(8, parent.height * 0.3)
+                    height: queriesDelegateGrid.implicitHeight + 24
                     z: 2
 
                     required property string scenario
@@ -106,6 +100,7 @@ Window {
                     radius: cornerRadius
 
                     GridLayout {
+                        id: queriesDelegateGrid
                         anchors.fill: parent
 
                         anchors.margins: 20
@@ -113,15 +108,12 @@ Window {
                         columnSpacing: 20
                         rowSpacing: 20
 
-                        rows: 2
-                        columns: 2
-
                         TextField {
                             id: scenarioText
                             Layout.fillWidth: true
-                            Layout.fillHeight: true
+                            Layout.fillHeight: false
                             Layout.preferredWidth: 8
-                            Layout.preferredHeight: 1
+                            Layout.preferredHeight: 100
 
                             Layout.row: 0
                             Layout.rowSpan: 1
@@ -143,22 +135,17 @@ Window {
 
                             readOnly: true
 
-                            font.pointSize: height * 0.25
+                            font.pointSize: Math.max(8, Layout.preferredHeight * 0.25)
                             horizontalAlignment: Text.AlignLeft
-
-                            Component.onCompleted: {
-                                cursorPosition = 0;
-                                ensureVisible(0);
-                            }
                         }
 
                         TextField {
                             id: queryText
 
                             Layout.fillWidth: true
-                            Layout.fillHeight: true
+                            Layout.fillHeight: false
                             Layout.preferredWidth: 8
-                            Layout.preferredHeight: 1
+                            Layout.preferredHeight: 100
 
                             Layout.row: 1
                             Layout.rowSpan: 1
@@ -180,21 +167,16 @@ Window {
 
                             readOnly: true
 
-                            font.pointSize: height * 0.25
+                            font.pointSize: Math.max(8, Layout.preferredHeight * 0.25)
                             horizontalAlignment: Text.AlignLeft
-
-                            Component.onCompleted: {
-                                cursorPosition = 0;
-                                ensureVisible(0);
-                            }
                         }
 
                         Button {
                             id: copyButton
                             Layout.fillWidth: true
-                            Layout.fillHeight: true
+                            Layout.fillHeight: false
                             Layout.preferredWidth: 1
-                            Layout.preferredHeight: 1
+                            Layout.preferredHeight: 100
 
                             Layout.row: 0
                             Layout.rowSpan: 1
@@ -210,7 +192,7 @@ Window {
                                     source: "..\\assets\\copy.png"
                                     fillMode: Image.PreserveAspectFit
                                     width: parent.width * 0.55
-                                    height: parent.height * 0.55
+                                    height: Math.max(8, parent.height * 0.55)
                                 }
                             }
 
@@ -227,9 +209,9 @@ Window {
                         Button {
                             id: removeButton
                             Layout.fillWidth: true
-                            Layout.fillHeight: true
+                            Layout.fillHeight: false
                             Layout.preferredWidth: 1
-                            Layout.preferredHeight: 1
+                            Layout.preferredHeight: 100
 
                             Layout.row: 1
                             Layout.rowSpan: 1
@@ -245,7 +227,7 @@ Window {
                                     source: "..\\assets\\trash.png"
                                     fillMode: Image.PreserveAspectFit
                                     width: parent.width * 0.55
-                                    height: parent.height * 0.55
+                                    height: Math.max(8, parent.height * 0.55)
                                 }
                             }
 
@@ -256,6 +238,7 @@ Window {
                                 onPressed: {
                                     console.log("Removing Text at Index", index);
                                     queriesDelegateRect.height = queriesDelegateRect.height;
+                                    queriesDelegateGrid.focus = true;
                                     queriesModel.remove(index, 1);
                                 }
                             }
@@ -284,14 +267,13 @@ Window {
                 anchors.left: parent.left
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
-                font.pointSize: height * 0.3
+                font.pointSize: Math.max(8, height * 0.3)
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 text: "Prompt: "
                 font.family: appFont
                 fontSizeMode: Text.Fit
                 renderType: Text.HighRenderTypeQuality
-                minimumPointSize: 2
                 width: parent.width * 0.15
             }
 
@@ -301,9 +283,9 @@ Window {
                 anchors.left: prompt_text.right
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.rightMargin: 30
-                height: parent.height * 0.75
+                height: Math.max(8, parent.height * 0.75)
                 width: parent.width * 0.75
-                font.pointSize: height * 0.3
+                font.pointSize: Math.max(8, height * 0.3)
                 font.family: appFont
                 font.wordSpacing: -5
 
@@ -342,7 +324,7 @@ Window {
                     anchors.centerIn: parent
                     source: "..\\assets\\send.png"
                     width: parent.width * 0.5
-                    height: parent.height * 0.5
+                    height: Math.max(8, parent.height * 0.5)
                     fillMode: Image.PreserveAspectFit
                     opacity: mouse_area.containsPress ? 0.3 : 1
 
