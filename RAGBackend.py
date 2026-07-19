@@ -142,6 +142,13 @@ Answer:"""
     def AskQuestion(self, chain, question):
         res = chain.invoke(question)
         return str(res)
+    
+
+
+
+# TESTING NOW CODE
+
+
 
 
 

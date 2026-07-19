@@ -14,6 +14,22 @@ Window {
     property double cornerRadius: 20
     property string appFont: "Consolas"
 
+    function queryPrompt(params) {
+        let textToQuery = input_prompt_field.text;
+        if (textToQuery.trim() === "")
+            return;
+
+        console.log("Sending Prompt!");
+        input_prompt_field.clear();
+        let resultingQuery = systemController.QueryPrompt(textToQuery);
+        console.log(resultingQuery);
+        // Adding New Element
+        queriesModel.append({
+            "scenario": textToQuery,
+            "query": resultingQuery
+        });
+    }
+
     GridLayout {
         anchors.fill: parent
         columnSpacing: 50
@@ -56,21 +72,6 @@ Window {
 
             ListModel {
                 id: queriesModel
-
-                ListElement {
-                    scenario: "What is the query for an ip originating from 192.168.9.1 going towards ip 172.1.3.1"
-                    query: "source.ip: 192.168.9.1 and destination.ip: 172.1.3.1"
-                }
-
-                ListElement {
-                    scenario: "What is the query for a source port of 22 going towards 65543"
-                    query: "source.port: 22 and destination.port: 65543"
-                }
-
-                ListElement {
-                    scenario: "What is the query for a hostname of COMP-123"
-                    query: "host.name: \"COMP-123\""
-                }
             }
 
             ListView {
@@ -309,19 +310,7 @@ Window {
                 }
 
                 onAccepted: {
-                    let textToQuery = input_prompt_field.text;
-                    if (textToQuery.trim() === "")
-                        return;
-
-                    console.log("Sending Prompt!");
-                    input_prompt_field.clear();
-                    let resultingQuery = systemController.QueryPrompt(textToQuery);
-                    console.log(resultingQuery);
-                    // Adding New Element
-                    queriesModel.append({
-                        "scenario": textToQuery,
-                        "query": resultingQuery
-                    });
+                    queryPrompt();
                 }
             }
 
@@ -354,6 +343,10 @@ Window {
                         id: mouse_area
                         anchors.fill: parent
                         cursorShape: Qt.PointingHandCursor
+
+                        onClicked: {
+                            queryPrompt();
+                        }
                     }
                 }
             }

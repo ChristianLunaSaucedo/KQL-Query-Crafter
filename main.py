@@ -2,18 +2,7 @@ import sys, os
 from PyQt6.QtGui import QGuiApplication
 from PyQt6.QtQml import QQmlApplicationEngine
 from PyQt6.QtCore import QObject, pyqtSlot as Slot
-from RAGBackend import RAGSystem
-
-doc_path = "D:\\Coding\\PythonProjects\\RAGSystem\\data\\ECS_RAG_Formatted.pdf"
-model = "qwen2.5-coder:7b"
-
-embedding_model = "nomic-embed-text"
-embedding_directory = "saved_embeddings"
-embedding_collection_name = "simple-rag"
-
-chunk_size = 1500
-chunk_overlap = 150
-
+from KQLQueryBackend import KQLQueryHandler
 
 class SystemController(QObject):
     @Slot(str)
@@ -27,13 +16,8 @@ class SystemController(QObject):
     def QueryPrompt(self, textToQuery):
         print("Querying Prompt: ", textToQuery)
 
-        rag_system = RAGSystem()
-        data = rag_system.LoadPDFFile(doc_path)
-        chunks = rag_system.SplitDocumentIntoChunks(data, chunk_size, chunk_overlap)
-        vector_db = rag_system.CreateVectorDB(chunks)
-        chain = rag_system.SetupLLM(vector_db)
-        
-        response = rag_system.AskQuestion(chain, textToQuery)
+        csv_rag_system = KQLQueryHandler()
+        response = csv_rag_system.AskQuestion(textToQuery)
         print("RESULTING QUERY FROM PYTHON: ", response)
         return response
 
@@ -54,7 +38,5 @@ if __name__ == "__main__":
 
     engine.load(".\\qml\\main.qml")
     
-
-
     # Start the event loop
     sys.exit(app.exec())
