@@ -74,6 +74,8 @@ Window {
 
             ListView {
                 id: queries_view
+                reuseItems: false
+                clip: true
                 anchors.fill: parent
                 anchors.topMargin: 50
                 anchors.bottomMargin: 50
@@ -89,14 +91,16 @@ Window {
                 id: queriesDelegate
 
                 Rectangle {
+                    id: queriesDelegateRect
                     anchors.left: parent.left
                     anchors.right: parent.right
-
+                    width: queries_view.width
                     height: parent.height * 0.3
                     z: 2
 
                     required property string scenario
                     required property string query
+                    required property int index
 
                     color: "#8CBDC7"
                     radius: cornerRadius
@@ -133,6 +137,8 @@ Window {
                             }
 
                             text: scenario
+                            font.family: appFont
+
                             selectionColor: "gray"
 
                             readOnly: true
@@ -168,6 +174,8 @@ Window {
                             }
 
                             text: query
+
+                            font.family: appFont
                             selectionColor: "gray"
 
                             readOnly: true
@@ -196,6 +204,23 @@ Window {
                             background: Rectangle {
                                 color: "#F6F9FA"
                                 radius: cornerRadius
+
+                                Image {
+                                    anchors.centerIn: parent
+                                    source: "..\\assets\\copy.png"
+                                    fillMode: Image.PreserveAspectFit
+                                    width: parent.width * 0.55
+                                    height: parent.height * 0.55
+                                }
+                            }
+
+                            MouseArea {
+                                id: copyButtonMouse
+                                anchors.fill: parent
+                                cursorShape: Qt.PointingHandCursor
+                                onPressed: {
+                                    systemController.CopyToClipboard(queryText.text);
+                                }
                             }
                         }
 
@@ -214,6 +239,25 @@ Window {
                             background: Rectangle {
                                 color: "#F6F9FA"
                                 radius: cornerRadius
+
+                                Image {
+                                    anchors.centerIn: parent
+                                    source: "..\\assets\\trash.png"
+                                    fillMode: Image.PreserveAspectFit
+                                    width: parent.width * 0.55
+                                    height: parent.height * 0.55
+                                }
+                            }
+
+                            MouseArea {
+                                id: removeButtonMouse
+                                anchors.fill: parent
+                                cursorShape: Qt.PointingHandCursor
+                                onPressed: {
+                                    console.log("Removing Text at Index", index);
+                                    queriesDelegateRect.height = queriesDelegateRect.height;
+                                    queriesModel.remove(index, 1);
+                                }
                             }
                         }
                     }
