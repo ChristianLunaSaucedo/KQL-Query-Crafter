@@ -11,6 +11,7 @@ Window {
     color: "#1D222A"
 
     property double cornerRadius: 20
+    property string appFont: "Consolas"
 
     GridLayout {
         anchors.fill: parent
@@ -51,6 +52,173 @@ Window {
             Layout.preferredHeight: 8
 
             radius: cornerRadius
+
+            ListModel {
+                id: queriesModel
+
+                ListElement {
+                    scenario: "What is the query for an ip originating from 192.168.9.1 going towards ip 172.1.3.1"
+                    query: "source.ip: 192.168.9.1 and destination.ip: 172.1.3.1"
+                }
+
+                ListElement {
+                    scenario: "What is the query for a source port of 22 going towards 65543"
+                    query: "source.port: 22 and destination.port: 65543"
+                }
+
+                ListElement {
+                    scenario: "What is the query for a hostname of COMP-123"
+                    query: "host.name: \"COMP-123\""
+                }
+            }
+
+            ListView {
+                id: queries_view
+                anchors.fill: parent
+                anchors.topMargin: 50
+                anchors.bottomMargin: 50
+                anchors.leftMargin: 50
+                anchors.rightMargin: 50
+                spacing: 50
+
+                model: queriesModel
+                delegate: queriesDelegate
+            }
+
+            Component {
+                id: queriesDelegate
+
+                Rectangle {
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+
+                    height: parent.height * 0.3
+                    z: 2
+
+                    required property string scenario
+                    required property string query
+
+                    color: "#8CBDC7"
+                    radius: cornerRadius
+
+                    GridLayout {
+                        anchors.fill: parent
+
+                        anchors.margins: 20
+
+                        columnSpacing: 20
+                        rowSpacing: 20
+
+                        rows: 2
+                        columns: 2
+
+                        TextField {
+                            id: scenarioText
+                            Layout.fillWidth: true
+                            Layout.fillHeight: true
+                            Layout.preferredWidth: 8
+                            Layout.preferredHeight: 1
+
+                            Layout.row: 0
+                            Layout.rowSpan: 1
+                            Layout.column: 0
+                            Layout.columnSpan: 1
+                            padding: 30
+
+                            color: "#1D222A"
+
+                            background: Rectangle {
+                                color: "#F6F9FA"
+                                radius: cornerRadius
+                            }
+
+                            text: scenario
+                            selectionColor: "gray"
+
+                            readOnly: true
+
+                            font.pointSize: height * 0.25
+                            horizontalAlignment: Text.AlignLeft
+
+                            Component.onCompleted: {
+                                cursorPosition = 0;
+                                ensureVisible(0);
+                            }
+                        }
+
+                        TextField {
+                            id: queryText
+
+                            Layout.fillWidth: true
+                            Layout.fillHeight: true
+                            Layout.preferredWidth: 8
+                            Layout.preferredHeight: 1
+
+                            Layout.row: 1
+                            Layout.rowSpan: 1
+                            Layout.column: 0
+                            Layout.columnSpan: 1
+                            padding: 30
+
+                            color: "#1D222A"
+
+                            background: Rectangle {
+                                color: "#F6F9FA"
+                                radius: cornerRadius
+                            }
+
+                            text: query
+                            selectionColor: "gray"
+
+                            readOnly: true
+
+                            font.pointSize: height * 0.25
+                            horizontalAlignment: Text.AlignLeft
+
+                            Component.onCompleted: {
+                                cursorPosition = 0;
+                                ensureVisible(0);
+                            }
+                        }
+
+                        Button {
+                            id: copyButton
+                            Layout.fillWidth: true
+                            Layout.fillHeight: true
+                            Layout.preferredWidth: 1
+                            Layout.preferredHeight: 1
+
+                            Layout.row: 0
+                            Layout.rowSpan: 1
+                            Layout.column: 1
+                            Layout.columnSpan: 1
+
+                            background: Rectangle {
+                                color: "#F6F9FA"
+                                radius: cornerRadius
+                            }
+                        }
+
+                        Button {
+                            id: removeButton
+                            Layout.fillWidth: true
+                            Layout.fillHeight: true
+                            Layout.preferredWidth: 1
+                            Layout.preferredHeight: 1
+
+                            Layout.row: 1
+                            Layout.rowSpan: 1
+                            Layout.column: 1
+                            Layout.columnSpan: 1
+
+                            background: Rectangle {
+                                color: "#F6F9FA"
+                                radius: cornerRadius
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         Rectangle {
@@ -67,34 +235,16 @@ Window {
 
             radius: cornerRadius
 
-            // Rectangle {
-            //     id: prompt_text
-            //     anchors.left: parent.left
-            //     anchors.top: parent.top
-            //     anchors.bottom: parent.bottom
-            //     width: parent.width * 0.15
-            //     Text {
-            //         anchors.fill: parent
-            //         font.pointSize: 32
-            //         horizontalAlignment: Text.AlignLeft
-            //         verticalAlignment: Text.AlignVCenter
-            //         text: "Prompt: "
-            //         font.family: "Consolas"
-            //         fontSizeMode: Text.Fit
-            //         minimumPointSize: 2
-            //     }
-            // }
-
             Text {
                 id: prompt_text
                 anchors.left: parent.left
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
-                font.pointSize: 32
+                font.pointSize: height * 0.3
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 text: "Prompt: "
-                font.family: "Consolas"
+                font.family: appFont
                 fontSizeMode: Text.Fit
                 renderType: Text.HighRenderTypeQuality
                 minimumPointSize: 2
@@ -110,10 +260,12 @@ Window {
                 height: parent.height * 0.75
                 width: parent.width * 0.75
                 font.pointSize: height * 0.3
-                font.family: "Consolas"
-                font.wordSpacing: -0.01
+                font.family: appFont
+                font.wordSpacing: -5
+
                 renderType: Text.NativeRendering
                 color: "#375077"
+                selectionColor: "gray"
 
                 placeholderText: "Enter Scenario..."
                 placeholderTextColor: '#6e375077'
