@@ -113,13 +113,16 @@ Window {
                 font.family: "Consolas"
                 font.wordSpacing: -0.01
                 renderType: Text.NativeRendering
-                color: "red"
+                color: "#375077"
+
+                placeholderText: "Enter Scenario..."
+                placeholderTextColor: '#6e375077'
 
                 wrapMode: Text.Wrap
 
                 background: Rectangle {
                     radius: cornerRadius
-                    color: "white"
+                    color: "#F6F9FA"
                 }
 
                 onAccepted: {
