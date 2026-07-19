@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Layouts
+import QtQuick.Controls
 
 Window {
     id: mainWindow
@@ -66,11 +67,6 @@ Window {
 
             radius: cornerRadius
 
-            FontLoader {
-                id: iosekva_font
-                source: "fonts\\Iosevka_Charon_Mono\\IosevkaCharonMono-Light.ttf"
-            }
-
             // Rectangle {
             //     id: prompt_text
             //     anchors.left: parent.left
@@ -83,7 +79,7 @@ Window {
             //         horizontalAlignment: Text.AlignLeft
             //         verticalAlignment: Text.AlignVCenter
             //         text: "Prompt: "
-            //         font.family: iosekva_font.name
+            //         font.family: "Consolas"
             //         fontSizeMode: Text.Fit
             //         minimumPointSize: 2
             //     }
@@ -98,20 +94,71 @@ Window {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 text: "Prompt: "
-                font.family: iosekva_font.name
+                font.family: "Consolas"
                 fontSizeMode: Text.Fit
+                renderType: Text.HighRenderTypeQuality
                 minimumPointSize: 2
                 width: parent.width * 0.15
             }
 
-            Rectangle {
-                id: input_area
+            TextField {
+                id: input_prompt_field
 
                 anchors.left: prompt_text.right
-                anchors.top: parent.top
-                anchors.bottom: parent.bottom
-                width: (parent.width - prompt_text.width)
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.rightMargin: 30
+                height: parent.height * 0.75
+                width: parent.width * 0.75
+                font.pointSize: height * 0.3
+                font.family: "Consolas"
+                font.wordSpacing: -0.01
+                renderType: Text.NativeRendering
                 color: "red"
+
+                wrapMode: Text.Wrap
+
+                background: Rectangle {
+                    radius: cornerRadius
+                    color: "white"
+                }
+
+                onAccepted: {
+                    console.log("Sending Prompt!");
+                    input_prompt_field.clear();
+                }
+            }
+
+            Item {
+                id: send_button
+                width: parent.width * 0.1
+                anchors.leftMargin: 10
+
+                anchors.left: input_prompt_field.right
+                anchors.right: parent.right
+                anchors.bottom: parent.bottom
+                anchors.top: parent.top
+
+                Image {
+                    id: send_image
+                    anchors.centerIn: parent
+                    source: "..\\assets\\send.png"
+                    width: parent.width * 0.5
+                    height: parent.height * 0.5
+                    fillMode: Image.PreserveAspectFit
+                    opacity: mouse_area.containsPress ? 0.3 : 1
+
+                    Behavior on opacity {
+                        NumberAnimation {
+                            duration: 100
+                        }
+                    }
+
+                    MouseArea {
+                        id: mouse_area
+                        anchors.fill: parent
+                        cursorShape: Qt.PointingHandCursor
+                    }
+                }
             }
         }
     }
