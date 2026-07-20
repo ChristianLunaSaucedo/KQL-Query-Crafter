@@ -34,76 +34,32 @@ GridLayout {
         startingColumn: 0
     }
 
-    Button {
+    QueryEntryButton {
         id: copyButton
-        Layout.fillWidth: true
-        Layout.fillHeight: false
-        Layout.preferredWidth: 1
-        Layout.preferredHeight: 100
 
-        Layout.row: 0
-        Layout.rowSpan: 1
-        Layout.column: 1
-        Layout.columnSpan: 1
+        imageSource: "..\\assets\\copy.png"
 
-        background: Rectangle {
-            color: "#F6F9FA"
-            radius: cornerRadius
-
-            Image {
-                anchors.centerIn: parent
-                source: "..\\assets\\copy.png"
-                fillMode: Image.PreserveAspectFit
-                width: parent.width * 0.55
-                height: Math.max(8, parent.height * 0.55)
-            }
+        pressedFunctionality: () => {
+            systemController.CopyToClipboard(queriesDelegateGrid.query);
         }
 
-        MouseArea {
-            id: copyButtonMouse
-            anchors.fill: parent
-            cursorShape: Qt.PointingHandCursor
-            onPressed: {
-                systemController.CopyToClipboard(queryText.text);
-            }
-        }
+        startingRow: 0
+        startingColumn: 1
     }
 
-    Button {
+    QueryEntryButton {
         id: removeButton
-        Layout.fillWidth: true
-        Layout.fillHeight: false
-        Layout.preferredWidth: 1
-        Layout.preferredHeight: 100
 
-        Layout.row: 1
-        Layout.rowSpan: 1
-        Layout.column: 1
-        Layout.columnSpan: 1
+        imageSource: "..\\assets\\trash.png"
 
-        background: Rectangle {
-            color: "#F6F9FA"
-            radius: cornerRadius
-
-            Image {
-                anchors.centerIn: parent
-                source: "..\\assets\\trash.png"
-                fillMode: Image.PreserveAspectFit
-                width: parent.width * 0.55
-                height: Math.max(8, parent.height * 0.55)
-            }
+        pressedFunctionality: () => {
+            console.log("Removing Text at Index", index);
+            queriesDelegateRect.height = queriesDelegateRect.height;
+            queriesDelegateGrid.focus = true;
+            queriesModel.remove(index, 1);
         }
 
-        MouseArea {
-            id: removeButtonMouse
-            anchors.fill: parent
-            cursorShape: Qt.PointingHandCursor
-            onPressed: {
-                console.log("Removing Text at Index", index);
-                queriesDelegateRect.height = queriesDelegateRect.height;
-                queriesDelegateGrid.focus = true;
-                queriesModel.remove(index, 1);
-            }
-        }
+        startingRow: 1
+        startingColumn: 1
     }
 }
