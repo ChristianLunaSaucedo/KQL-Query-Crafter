@@ -3,7 +3,7 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
 
-Window {
+ApplicationWindow {
     id: mainWindow
     width: 1280
     height: 960
@@ -11,8 +11,13 @@ Window {
     title: qsTr("KQL Query")
     color: "#1D222A"
 
-    property double cornerRadius: 20
+    property double cornerRadius: 25
     property string appFont: "Consolas"
+
+    property int buttonEasing: Easing.InOutQuad
+    property double buttonOpacity: 0.7
+    property double buttonScale: 1.05
+    property double buttonDuration: 75
 
     function queryPrompt(params) {
         let textToQuery = input_prompt_field.text;
@@ -39,20 +44,85 @@ Window {
         anchors.topMargin: 50
         anchors.bottomMargin: 50
 
-        rows: 2
+        rows: 3
         columns: 2
 
-        Rectangle {
-            id: left_pane
-            color: "#375077"
+        TabBar {
+            id: mainTabBar
+
+            spacing: 30
+
             Layout.fillWidth: true
             Layout.fillHeight: true
             Layout.row: 0
-            Layout.rowSpan: 2
+            Layout.rowSpan: 1
             Layout.column: 0
             Layout.columnSpan: 1
-            Layout.preferredWidth: 1
-            radius: cornerRadius
+            Layout.preferredHeight: 0.75
+
+            TabButton {
+                id: firstButton
+                background: Rectangle {
+                    radius: cornerRadius
+                    color: "#375077"
+                    scale: firstButton.hovered ? buttonScale : 1
+                    opacity: firstButton.hovered ? buttonOpacity : 1
+
+                    Behavior on scale {
+                        NumberAnimation {
+                            duration: buttonDuration
+                            easing.type: buttonEasing
+                        }
+                    }
+                }
+                anchors.top: parent.top
+                anchors.bottom: parent.bottom
+
+                HoverHandler {
+                    id: firstButtonArea
+                    cursorShape: Qt.PointingHandCursor
+                }
+
+                text: "BUTTON 1"
+                ToolTip.text: "CLEAR"
+                ToolTip.visible: firstButtonArea.hovered
+
+                Image {
+                    anchors.centerIn: parent
+                    source: "..\\assets\\reset.png"
+                    fillMode: Image.PreserveAspectFit
+                    height: parent.height * 0.8
+                    width: parent.width * 0.8
+                }
+            }
+
+            TabButton {
+                id: secondButton
+                background: Rectangle {
+                    radius: cornerRadius
+                    color: "red"
+                    scale: secondButton.hovered ? buttonScale : 1
+                    opacity: secondButton.hovered ? buttonOpacity : 1
+
+                    Behavior on scale {
+                        NumberAnimation {
+                            duration: buttonDuration
+                            easing.type: buttonEasing
+                        }
+                    }
+                }
+                anchors.top: parent.top
+                anchors.bottom: parent.bottom
+
+                HoverHandler {
+                    id: secondButtonArea
+                    cursorShape: Qt.PointingHandCursor
+                }
+
+                text: "BUTTON 2"
+                ToolTip.text: "DO STUFF"
+                ToolTip.visible: secondButtonArea.hovered
+            }
         }
 
         Rectangle {
@@ -61,10 +131,10 @@ Window {
 
             Layout.fillWidth: true
             Layout.fillHeight: true
-            Layout.row: 0
-            Layout.column: 1
+            Layout.row: 1
+            Layout.column: 0
             Layout.rowSpan: 1
-            Layout.columnSpan: 1
+            Layout.columnSpan: 2
             Layout.preferredWidth: 3
             Layout.preferredHeight: 8
 
@@ -72,6 +142,36 @@ Window {
 
             ListModel {
                 id: queriesModel
+
+                ListElement {
+                    scenario: "test"
+                    query: "test"
+                }
+
+                ListElement {
+                    scenario: "test"
+                    query: "test"
+                }
+
+                ListElement {
+                    scenario: "test"
+                    query: "test"
+                }
+
+                ListElement {
+                    scenario: "test"
+                    query: "test"
+                }
+
+                ListElement {
+                    scenario: "test"
+                    query: "test"
+                }
+
+                ListElement {
+                    scenario: "test"
+                    query: "test"
+                }
             }
 
             ListView {
@@ -79,10 +179,7 @@ Window {
                 reuseItems: false
                 clip: true
                 anchors.fill: parent
-                anchors.topMargin: 50
-                anchors.bottomMargin: 50
-                anchors.leftMargin: 50
-                anchors.rightMargin: 50
+                anchors.margins: 50
                 spacing: 50
 
                 model: queriesModel
@@ -259,10 +356,10 @@ Window {
             color: "#375077"
             Layout.fillWidth: true
             Layout.fillHeight: true
-            Layout.row: 1
+            Layout.row: 2
             Layout.rowSpan: 1
-            Layout.column: 1
-            Layout.columnSpan: 1
+            Layout.column: 0
+            Layout.columnSpan: 2
             Layout.preferredWidth: 2
             Layout.preferredHeight: 1
 

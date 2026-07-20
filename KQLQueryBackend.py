@@ -14,11 +14,6 @@ from langchain_classic.retrievers import MultiQueryRetriever
 
 from langchain_chroma import Chroma
 
-
-# TEST 
-
-
-
 class KQLQueryHandler():
     def __init__(self):
         self.embeddings = OllamaEmbeddings(model=Parameters.embedding_model)
