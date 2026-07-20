@@ -15,27 +15,27 @@ Button {
         console.log("Button Pressed!");
     }
 
-    scale: button.hovered ? buttonScale : 1
-    opacity: button.hovered ? buttonOpacity : 1
+    scale: button.hovered ? mainWindow.buttonScale : 1
+    opacity: button.hovered ? mainWindow.buttonOpacity : 1
 
     ToolTip.visible: button.hovered
     ToolTip.text: toolTipText
 
     Behavior on scale {
         NumberAnimation {
-            duration: buttonDuration
-            easing.type: buttonEasing
+            duration: mainWindow.buttonDuration
+            easing.type: mainWindow.buttonEasing
         }
     }
 
     background: Rectangle {
-        radius: cornerRadius
+        radius: mainWindow.cornerRadius
         color: buttonMouseArea.pressed ? Qt.darker(button.buttonColor) : button.buttonColor
 
         Behavior on color {
             ColorAnimation {
-                duration: buttonDuration
-                easing.type: buttonEasing
+                duration: mainWindow.buttonDuration
+                easing.type: mainWindow.buttonEasing
             }
         }
 

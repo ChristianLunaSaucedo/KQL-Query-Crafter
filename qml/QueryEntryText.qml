@@ -28,11 +28,11 @@ TextField {
 
     background: Rectangle {
         color: "#F6F9FA"
-        radius: cornerRadius
+        radius: mainWindow.cornerRadius
     }
 
     text: textToDisplay
-    font.family: appFont
+    font.family: mainWindow.appFont
 
     selectionColor: "gray"
 

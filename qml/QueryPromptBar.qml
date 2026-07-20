@@ -21,7 +21,7 @@ RowLayout {
 
         Layout.fillHeight: true
         Layout.fillWidth: true
-        Layout.preferredWidth: 5
+        Layout.preferredWidth: 6
         padding: 10
 
         property bool canType: busyPopup.visible == false
@@ -29,7 +29,7 @@ RowLayout {
 
         renderType: Text.NativeRendering
         font.pointSize: Math.max(8, parent.height * 0.3)
-        font.family: appFont
+        font.family: mainWindow.appFont
         font.wordSpacing: -5
 
         color: "#375077"
@@ -42,13 +42,13 @@ RowLayout {
         wrapMode: Text.Wrap
 
         background: Rectangle {
-            radius: cornerRadius
+            radius: mainWindow.cornerRadius
             color: "#F6F9FA"
         }
 
         onAccepted: {
             if (canSend)
-                mainWindow.queryPrompt();
+                mainPage.queryPrompt();
         }
     }
 
@@ -67,7 +67,7 @@ RowLayout {
         toolTipText: "Query Prompt"
         pressedFunctionality: () => {
             if (query_prompt.canSend)
-                mainWindow.queryPrompt();
+                mainPage.queryPrompt();
         }
     }
 }
