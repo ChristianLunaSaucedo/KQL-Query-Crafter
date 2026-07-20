@@ -20,6 +20,7 @@ class KQLQueryHandler():
         self.model = OllamaLLM(model=Parameters.ollama_model)
         
         self.first_llm_setup = not os.path.exists(Parameters.embeddings_save_dir)
+
         
 
     def CreateCSVDocuments(self, doc_path):

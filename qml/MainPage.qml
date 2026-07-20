@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
+import QtQuick.Dialogs
 
 Item {
     id: mainPage
@@ -96,6 +97,7 @@ Item {
                 imageSource: "..\\assets\\setting.png"
                 tabPressFunctionality: () => {
                     console.log("Settings");
+                    mainSwipeView.currentIndex = 1;
                 }
             }
 
@@ -115,10 +117,25 @@ Item {
                 buttonText: ""
                 imageSource: "..\\assets\\reset.png"
                 tabPressFunctionality: () => {
+                    clearHistoryDialog.open();
+                }
+                enabledFunctionality: queriesModel.count > 0
+            }
+
+            MessageDialog {
+                id: clearHistoryDialog
+                title: "Clear History"
+                text: "You have existing query entries. Would you like to clear your history?"
+
+                buttons: MessageDialog.Yes | MessageDialog.No
+
+                onAccepted: {
                     console.log("Cleared History");
                     queriesModel.clear();
                 }
-                enabledFunctionality: queriesModel.count > 0
+                onRejected: {
+                    console.log("Cancelled Clear History.");
+                }
             }
         }
 

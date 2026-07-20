@@ -1,4 +1,4 @@
-import sys, os
+import sys, os, ollama
 
 from KQLQueryBackend import KQLQueryHandler
 
@@ -45,6 +45,11 @@ class SystemController(QObject):
 
 if __name__ == "__main__":
     # Initialize the application
+
+    # modelList = ollama.list()
+    # for model in modelList['models']:
+    #     print(model['model'], sep=", ")
+
     app = QGuiApplication(sys.argv)
     systemController = SystemController()
 

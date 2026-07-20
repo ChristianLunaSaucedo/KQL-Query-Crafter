@@ -5,6 +5,22 @@ import QtQuick.Controls
 Rectangle {
     color: "#1D222A"
 
+    Image {}
+
+    AnimatedButton {
+        anchors.top: parent.top
+        anchors.right: parent.right
+        anchors.margins: 50
+        imageSource: "..\\assets\\cancel.png"
+        buttonColor: "transparent"
+
+        scale: 10
+
+        pressedFunctionality: () => {
+            mainSwipeView.currentIndex = 0;
+        }
+    }
+
     GridLayout {
         anchors.fill: parent
 

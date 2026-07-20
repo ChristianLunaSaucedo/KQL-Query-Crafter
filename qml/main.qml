@@ -11,8 +11,13 @@ ApplicationWindow {
     title: qsTr("KQL Query")
     color: "#1D222A"
 
-    property double cornerRadius: 25
-    property string appFont: "Consolas"
+    FontLoader {
+        id: iosevkaFont
+        source: "..\\fonts\\Iosevka_Charon_Mono\\Regular.ttf"
+    }
+
+    property double cornerRadius: 15
+    property string appFont: iosevkaFont.name
 
     property int buttonEasing: Easing.InOutQuad
     property double buttonOpacity: 0.7
@@ -20,7 +25,9 @@ ApplicationWindow {
     property double buttonDuration: 75
 
     SwipeView {
+        id: mainSwipeView
         anchors.fill: parent
+        interactive: false
         currentIndex: 0
         MainPage {}
         SettingsPage {}
