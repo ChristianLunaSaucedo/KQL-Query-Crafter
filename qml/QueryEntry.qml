@@ -38,6 +38,7 @@ GridLayout {
         id: copyButton
 
         imageSource: "..\\assets\\copy.png"
+        toolTipText: "Copy Query"
 
         pressedFunctionality: () => {
             systemController.CopyToClipboard(queriesDelegateGrid.query);
@@ -51,12 +52,13 @@ GridLayout {
         id: removeButton
 
         imageSource: "..\\assets\\trash.png"
+        toolTipText: "Remove Query"
 
         pressedFunctionality: () => {
-            console.log("Removing Text at Index", index);
+            console.log("Removing Text at Index", queriesDelegateGrid.index);
             queriesDelegateRect.height = queriesDelegateRect.height;
             queriesDelegateGrid.focus = true;
-            queriesModel.remove(index, 1);
+            queriesModel.remove(queriesDelegateGrid.index, 1);
         }
 
         startingRow: 1

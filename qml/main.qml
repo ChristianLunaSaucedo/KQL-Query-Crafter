@@ -20,12 +20,12 @@ ApplicationWindow {
     property double buttonDuration: 75
 
     function queryPrompt(params) {
-        let textToQuery = input_prompt_field.text;
+        let textToQuery = queryPromptBar.getText();
         if (textToQuery.trim() === "")
             return;
 
         console.log("Sending Prompt!");
-        input_prompt_field.clear();
+        queryPromptBar.clearTextField();
         let resultingQuery = systemController.QueryPrompt(textToQuery);
         console.log(resultingQuery);
         // Adding New Element
@@ -162,88 +162,136 @@ ApplicationWindow {
 
             radius: cornerRadius
 
-            Text {
-                id: prompt_text
-                anchors.left: parent.left
-                anchors.top: parent.top
-                anchors.bottom: parent.bottom
-                font.pointSize: Math.max(8, height * 0.3)
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-                text: "Prompt: "
-                font.family: appFont
-                fontSizeMode: Text.Fit
-                renderType: Text.HighRenderTypeQuality
-                width: parent.width * 0.15
+            QueryPromptBar {
+                id: queryPromptBar
             }
+            // RowLayout {
+            //     anchors.margins: 15
+            //     anchors.fill: parent
+            //     spacing: 15
+            //     TextField {
+            //         id: input_prompt_field
 
-            TextField {
-                id: input_prompt_field
+            //         Layout.fillHeight: true
+            //         Layout.fillWidth: true
+            //         Layout.preferredWidth: 5
+            //         padding: 10
 
-                anchors.left: prompt_text.right
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.rightMargin: 30
-                height: Math.max(8, parent.height * 0.75)
-                width: parent.width * 0.75
-                font.pointSize: Math.max(8, height * 0.3)
-                font.family: appFont
-                font.wordSpacing: -5
+            //         renderType: Text.NativeRendering
+            //         font.pointSize: Math.max(8, height * 0.3)
+            //         font.family: appFont
+            //         font.wordSpacing: -5
 
-                renderType: Text.NativeRendering
-                color: "#375077"
-                selectionColor: "gray"
+            //         color: "#375077"
+            //         selectionColor: "gray"
 
-                placeholderText: "Enter Scenario..."
-                placeholderTextColor: '#6e375077'
+            //         placeholderText: "Enter Scenario..."
+            //         placeholderTextColor: '#6e375077'
 
-                wrapMode: Text.Wrap
+            //         wrapMode: Text.Wrap
 
-                background: Rectangle {
-                    radius: cornerRadius
-                    color: "#F6F9FA"
-                }
+            //         background: Rectangle {
+            //             radius: cornerRadius
+            //             color: "#F6F9FA"
+            //         }
+            //         onAccepted: {
+            //             mainWindow.queryPrompt();
+            //         }
+            //     }
 
-                onAccepted: {
-                    queryPrompt();
-                }
-            }
+            //     AnimatedButton {
+            //         id: query_button
 
-            Item {
-                id: send_button
-                width: parent.width * 0.1
-                anchors.leftMargin: 10
+            //         Layout.fillHeight: true
+            //         Layout.fillWidth: true
+            //         Layout.preferredWidth: 1
 
-                anchors.left: input_prompt_field.right
-                anchors.right: parent.right
-                anchors.bottom: parent.bottom
-                anchors.top: parent.top
+            //         buttonColor: "#F6F9FA"
+            //         imageSource: "..\\assets\\send.png"
+            //         imageScaledFactor: 0.55
+            //         toolTipText: "Query Prompt"
+            //         pressedFunctionality: () => mainWindow.queryPrompt()
+            //     }
+            // }
 
-                Image {
-                    id: send_image
-                    anchors.centerIn: parent
-                    source: "..\\assets\\send.png"
-                    width: parent.width * 0.5
-                    height: Math.max(8, parent.height * 0.5)
-                    fillMode: Image.PreserveAspectFit
-                    opacity: mouse_area.containsPress ? 0.3 : 1
+            // Text {
+            //     id: prompt_text
+            //     anchors.left: parent.left
+            //     anchors.top: parent.top
+            //     anchors.bottom: parent.bottom
+            //     font.pointSize: Math.max(8, height * 0.3)
+            //     horizontalAlignment: Text.AlignHCenter
+            //     verticalAlignment: Text.AlignVCenter
+            //     text: "Prompt: "
+            //     font.family: appFont
+            //     fontSizeMode: Text.Fit
+            //     renderType: Text.HighRenderTypeQuality
+            //     width: parent.width * 0.15
+            // }
 
-                    Behavior on opacity {
-                        NumberAnimation {
-                            duration: 100
-                        }
-                    }
+            // TextField {
 
-                    MouseArea {
-                        id: mouse_area
-                        anchors.fill: parent
-                        cursorShape: Qt.PointingHandCursor
+            //     anchors.left: prompt_text.right
+            //     anchors.verticalCenter: parent.verticalCenter
+            //     anchors.rightMargin: 30
+            //     height: Math.max(8, parent.height * 0.75)
+            //     width: parent.width * 0.75
 
-                        onClicked: {
-                            queryPrompt();
-                        }
-                    }
-                }
-            }
+            //     id: input_prompt_field
+            //     font.pointSize: Math.max(8, height * 0.3)
+            //     font.family: appFont
+            //     font.wordSpacing: -5
+            //     renderType: Text.NativeRendering
+            //     color: "#375077"
+            //     selectionColor: "gray"
+            //     placeholderText: "Enter Scenario..."
+            //     placeholderTextColor: '#6e375077'
+            //     wrapMode: Text.Wrap
+            //     background: Rectangle {
+            //         radius: cornerRadius
+            //         color: "#F6F9FA"
+            //     }
+            //     onAccepted: {
+            //         queryPrompt();
+            //     }
+            // }
+
+            // Item {
+            //     id: send_button
+            //     width: parent.width * 0.1
+            //     anchors.leftMargin: 10
+
+            //     anchors.left: input_prompt_field.right
+            //     anchors.right: parent.right
+            //     anchors.bottom: parent.bottom
+            //     anchors.top: parent.top
+
+            //     Image {
+            //         id: send_image
+            //         anchors.centerIn: parent
+            //         source: "..\\assets\\send.png"
+            //         width: parent.width * 0.5
+            //         height: Math.max(8, parent.height * 0.5)
+            //         fillMode: Image.PreserveAspectFit
+            //         opacity: mouse_area.containsPress ? 0.3 : 1
+
+            //         Behavior on opacity {
+            //             NumberAnimation {
+            //                 duration: 100
+            //             }
+            //         }
+
+            //         MouseArea {
+            //             id: mouse_area
+            //             anchors.fill: parent
+            //             cursorShape: Qt.PointingHandCursor
+
+            //             onClicked: {
+            //                 queryPrompt();
+            //             }
+            //         }
+            //     }
+            // }
         }
     }
 }
