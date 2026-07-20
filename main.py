@@ -4,10 +4,37 @@ from KQLQueryBackend import KQLQueryHandler
 
 from PyQt6.QtGui import QGuiApplication
 from PyQt6.QtQml import QQmlApplicationEngine
-from PyQt6.QtCore import QObject, pyqtSlot as Slot
+from PyQt6.QtCore import QObject, pyqtSlot as Slot, pyqtSignal as Signal, QRunnable, QThreadPool
 
 
 class SystemController(QObject):
+    # Signals To Send To QML
+    query_started = Signal()
+    query_finished = Signal(str, str)
+
+    @Slot(str)
+    def QueryPrompt(self, textToQuery):
+        self.query_started.emit()
+
+        # A Class That Runs On Threads
+        class Task(QRunnable):
+            def __init__(task_self, textToQuery):
+                super().__init__()
+                task_self.textToQuery = textToQuery
+                    
+            def run(task_self):
+                print("Querying Prompt: ", task_self.textToQuery)
+                kql_query_handler = KQLQueryHandler()
+                response = kql_query_handler.AskQuestion(task_self.textToQuery)
+
+                print("GOT A Query FROM THREAD: ", response)
+                self.query_finished.emit(task_self.textToQuery, response)
+
+        # Spawn Task On New Thread
+        task = Task(textToQuery)
+        QThreadPool.globalInstance().start(task)
+        print("Spawned KQL Query Thread")
+
     @Slot(str)
     def CopyToClipboard(self, textToCopy):
         clipboard = QGuiApplication.clipboard()
@@ -15,14 +42,6 @@ class SystemController(QObject):
         print("Copied Text To Clipboard: ", textToCopy)
         pass
     
-    @Slot(str, result=str)
-    def QueryPrompt(self, textToQuery):
-        print("Querying Prompt: ", textToQuery)
-
-        kql_query_handler = KQLQueryHandler()
-        response = kql_query_handler.AskQuestion(textToQuery)
-        print("RESULTING QUERY FROM PYTHON: ", response)
-        return response
 
 if __name__ == "__main__":
     # Initialize the application
@@ -36,8 +55,6 @@ if __name__ == "__main__":
     # Connecting Python & QML
     engine.rootContext().setContextProperty("systemController", systemController)
     
-
-
     # Load the QML file
     os.environ["QT_QUICK_CONTROLS_STYLE"] = "Fusion"
 

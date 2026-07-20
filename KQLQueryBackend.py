@@ -85,7 +85,6 @@ class KQLQueryHandler():
         #     search_kwargs={"k": 8}
         # )
 
-        print("Retriever Working Nicely!")
         return retriever
     
     def CreateChain(self):

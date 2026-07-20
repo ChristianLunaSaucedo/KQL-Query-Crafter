@@ -19,20 +19,38 @@ ApplicationWindow {
     property double buttonScale: 1.05
     property double buttonDuration: 75
 
+    function onQueryStarted() {
+        queryPromptBar.clearTextField();
+        busyPopup.visible = true;
+
+        console.log("On Query Started Signal Emitted (QML)");
+    }
+
+    function onQueryFinished(scenario, query) {
+        console.log(query, scenario);
+        // Adding New Element
+        queriesModel.append({
+            "scenario": scenario,
+            "query": query
+        });
+        busyPopup.visible = false;
+
+        console.log("On Query Finished Signal Emitted (QML)");
+    }
+
+    Component.onCompleted: {
+        systemController.query_started.connect(mainWindow.onQueryStarted);
+        systemController.query_finished.connect(mainWindow.onQueryFinished);
+    }
+
     function queryPrompt(params) {
         let textToQuery = queryPromptBar.getText();
         if (textToQuery.trim() === "")
             return;
 
         console.log("Sending Prompt!");
-        queryPromptBar.clearTextField();
-        let resultingQuery = systemController.QueryPrompt(textToQuery);
-        console.log(resultingQuery);
-        // Adding New Element
-        queriesModel.append({
-            "scenario": textToQuery,
-            "query": resultingQuery
-        });
+
+        systemController.QueryPrompt(textToQuery);
     }
 
     GridLayout {
@@ -46,6 +64,8 @@ ApplicationWindow {
 
         rows: 3
         columns: 2
+
+        // Tab Bar Pane
         TabBar {
             id: mainTabBar
 
@@ -69,6 +89,9 @@ ApplicationWindow {
                 toolTipText: "Settings"
                 buttonText: ""
                 imageSource: "..\\assets\\setting.png"
+                tabPressFunctionality: () => {
+                    console.log("Settings");
+                }
             }
 
             AnimatedTabButton {
@@ -76,6 +99,9 @@ ApplicationWindow {
                 toolTipText: "Help"
                 buttonText: ""
                 imageSource: "..\\assets\\help.png"
+                tabPressFunctionality: () => {
+                    console.log("Help");
+                }
             }
 
             AnimatedTabButton {
@@ -83,11 +109,44 @@ ApplicationWindow {
                 toolTipText: "Clear History"
                 buttonText: ""
                 imageSource: "..\\assets\\reset.png"
+                tabPressFunctionality: () => {
+                    console.log("Cleared History");
+                    queriesModel.clear();
+                }
+                enabledFunctionality: queriesModel.count > 0
             }
         }
 
+        // Queries Pane
         Rectangle {
             id: queries_pane
+
+            Popup {
+                id: busyPopup
+
+                anchors.centerIn: parent
+                width: parent.width
+                height: parent.height
+
+                modal: false
+
+                closePolicy: Popup.NoAutoClose
+
+                visible: false
+
+                background: Rectangle {
+                    radius: 8
+                    color: '#95000000'
+
+                    BusyIndicator {
+                        anchors.centerIn: parent
+                        antialiasing: true
+                        implicitWidth: parent.width * 0.2
+                        implicitHeight: parent.height * 0.2
+                    }
+                }
+            }
+
             color: "#F6F9FA"
 
             Layout.fillWidth: true
@@ -148,6 +207,7 @@ ApplicationWindow {
             }
         }
 
+        // Input Pane
         Rectangle {
             id: input_pane
             color: "#375077"
@@ -165,133 +225,6 @@ ApplicationWindow {
             QueryPromptBar {
                 id: queryPromptBar
             }
-            // RowLayout {
-            //     anchors.margins: 15
-            //     anchors.fill: parent
-            //     spacing: 15
-            //     TextField {
-            //         id: input_prompt_field
-
-            //         Layout.fillHeight: true
-            //         Layout.fillWidth: true
-            //         Layout.preferredWidth: 5
-            //         padding: 10
-
-            //         renderType: Text.NativeRendering
-            //         font.pointSize: Math.max(8, height * 0.3)
-            //         font.family: appFont
-            //         font.wordSpacing: -5
-
-            //         color: "#375077"
-            //         selectionColor: "gray"
-
-            //         placeholderText: "Enter Scenario..."
-            //         placeholderTextColor: '#6e375077'
-
-            //         wrapMode: Text.Wrap
-
-            //         background: Rectangle {
-            //             radius: cornerRadius
-            //             color: "#F6F9FA"
-            //         }
-            //         onAccepted: {
-            //             mainWindow.queryPrompt();
-            //         }
-            //     }
-
-            //     AnimatedButton {
-            //         id: query_button
-
-            //         Layout.fillHeight: true
-            //         Layout.fillWidth: true
-            //         Layout.preferredWidth: 1
-
-            //         buttonColor: "#F6F9FA"
-            //         imageSource: "..\\assets\\send.png"
-            //         imageScaledFactor: 0.55
-            //         toolTipText: "Query Prompt"
-            //         pressedFunctionality: () => mainWindow.queryPrompt()
-            //     }
-            // }
-
-            // Text {
-            //     id: prompt_text
-            //     anchors.left: parent.left
-            //     anchors.top: parent.top
-            //     anchors.bottom: parent.bottom
-            //     font.pointSize: Math.max(8, height * 0.3)
-            //     horizontalAlignment: Text.AlignHCenter
-            //     verticalAlignment: Text.AlignVCenter
-            //     text: "Prompt: "
-            //     font.family: appFont
-            //     fontSizeMode: Text.Fit
-            //     renderType: Text.HighRenderTypeQuality
-            //     width: parent.width * 0.15
-            // }
-
-            // TextField {
-
-            //     anchors.left: prompt_text.right
-            //     anchors.verticalCenter: parent.verticalCenter
-            //     anchors.rightMargin: 30
-            //     height: Math.max(8, parent.height * 0.75)
-            //     width: parent.width * 0.75
-
-            //     id: input_prompt_field
-            //     font.pointSize: Math.max(8, height * 0.3)
-            //     font.family: appFont
-            //     font.wordSpacing: -5
-            //     renderType: Text.NativeRendering
-            //     color: "#375077"
-            //     selectionColor: "gray"
-            //     placeholderText: "Enter Scenario..."
-            //     placeholderTextColor: '#6e375077'
-            //     wrapMode: Text.Wrap
-            //     background: Rectangle {
-            //         radius: cornerRadius
-            //         color: "#F6F9FA"
-            //     }
-            //     onAccepted: {
-            //         queryPrompt();
-            //     }
-            // }
-
-            // Item {
-            //     id: send_button
-            //     width: parent.width * 0.1
-            //     anchors.leftMargin: 10
-
-            //     anchors.left: input_prompt_field.right
-            //     anchors.right: parent.right
-            //     anchors.bottom: parent.bottom
-            //     anchors.top: parent.top
-
-            //     Image {
-            //         id: send_image
-            //         anchors.centerIn: parent
-            //         source: "..\\assets\\send.png"
-            //         width: parent.width * 0.5
-            //         height: Math.max(8, parent.height * 0.5)
-            //         fillMode: Image.PreserveAspectFit
-            //         opacity: mouse_area.containsPress ? 0.3 : 1
-
-            //         Behavior on opacity {
-            //             NumberAnimation {
-            //                 duration: 100
-            //             }
-            //         }
-
-            //         MouseArea {
-            //             id: mouse_area
-            //             anchors.fill: parent
-            //             cursorShape: Qt.PointingHandCursor
-
-            //             onClicked: {
-            //                 queryPrompt();
-            //             }
-            //         }
-            //     }
-            // }
         }
     }
 }

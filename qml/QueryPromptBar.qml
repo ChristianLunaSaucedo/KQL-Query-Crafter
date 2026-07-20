@@ -24,7 +24,8 @@ RowLayout {
         Layout.preferredWidth: 5
         padding: 10
 
-        property bool canSend: false
+        property bool canType: busyPopup.visible == false
+        property bool canSend: query_prompt.text.trim() !== "" && canType
 
         renderType: Text.NativeRendering
         font.pointSize: Math.max(8, parent.height * 0.3)
@@ -34,9 +35,10 @@ RowLayout {
         color: "#375077"
         selectionColor: "gray"
 
-        placeholderText: "Enter Scenario..."
+        placeholderText: canType ? "Enter Scenario..." : "Loading Query..."
         placeholderTextColor: '#6e375077'
 
+        readOnly: !canType
         wrapMode: Text.Wrap
 
         background: Rectangle {
@@ -45,11 +47,8 @@ RowLayout {
         }
 
         onAccepted: {
-            mainWindow.queryPrompt();
-        }
-
-        onTextChanged: {
-            canSend = query_prompt.text.trim() !== "";
+            if (canSend)
+                mainWindow.queryPrompt();
         }
     }
 
@@ -66,6 +65,9 @@ RowLayout {
         imageSource: "..\\assets\\send.png"
         imageScaledFactor: 0.55
         toolTipText: "Query Prompt"
-        pressedFunctionality: () => mainWindow.queryPrompt()
+        pressedFunctionality: () => {
+            if (query_prompt.canSend)
+                mainWindow.queryPrompt();
+        }
     }
 }
