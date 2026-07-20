@@ -35,6 +35,8 @@ if __name__ == "__main__":
 
     # Connecting Python & QML
     engine.rootContext().setContextProperty("systemController", systemController)
+    
+
 
     # Load the QML file
     os.environ["QT_QUICK_CONTROLS_STYLE"] = "Fusion"
