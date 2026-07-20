@@ -18,68 +18,20 @@ GridLayout {
     columnSpacing: 15
     rowSpacing: 15
 
-    TextField {
+    QueryEntryText {
         id: scenarioText
-        Layout.fillWidth: true
-        // Layout.fillHeight: false
+        textToDisplay: queriesDelegateGrid.scenario
 
-        Layout.preferredWidth: 8
-        Layout.preferredHeight: 100
-
-        Layout.row: 0
-        Layout.rowSpan: 1
-        Layout.column: 0
-        Layout.columnSpan: 1
-        padding: 30
-
-        color: "#1D222A"
-
-        background: Rectangle {
-            color: "#F6F9FA"
-            radius: cornerRadius
-        }
-
-        text: scenario
-        font.family: appFont
-
-        selectionColor: "gray"
-
-        readOnly: true
-
-        font.pointSize: Math.max(8, Layout.preferredHeight * 0.25)
-        horizontalAlignment: Text.AlignLeft
+        startingRow: 0
+        startingColumn: 0
     }
 
-    TextField {
+    QueryEntryText {
         id: queryText
+        textToDisplay: queriesDelegateGrid.query
 
-        Layout.fillWidth: true
-        Layout.fillHeight: false
-        Layout.preferredWidth: 8
-        Layout.preferredHeight: 100
-
-        Layout.row: 1
-        Layout.rowSpan: 1
-        Layout.column: 0
-        Layout.columnSpan: 1
-        padding: 30
-
-        color: "#1D222A"
-
-        background: Rectangle {
-            color: "#F6F9FA"
-            radius: cornerRadius
-        }
-
-        text: query
-
-        font.family: appFont
-        selectionColor: "gray"
-
-        readOnly: true
-
-        font.pointSize: Math.max(8, Layout.preferredHeight * 0.25)
-        horizontalAlignment: Text.AlignLeft
+        startingRow: 1
+        startingColumn: 0
     }
 
     Button {
