@@ -46,7 +46,6 @@ ApplicationWindow {
 
         rows: 3
         columns: 2
-
         TabBar {
             id: mainTabBar
 
@@ -60,68 +59,18 @@ ApplicationWindow {
             Layout.columnSpan: 1
             Layout.preferredHeight: 0.75
 
-            TabButton {
-                id: firstButton
-                background: Rectangle {
-                    radius: cornerRadius
-                    color: "#375077"
-                    scale: firstButton.hovered ? buttonScale : 1
-                    opacity: firstButton.hovered ? buttonOpacity : 1
-
-                    Behavior on scale {
-                        NumberAnimation {
-                            duration: buttonDuration
-                            easing.type: buttonEasing
-                        }
-                    }
-                }
-                anchors.top: parent.top
-                anchors.bottom: parent.bottom
-
-                HoverHandler {
-                    id: firstButtonArea
-                    cursorShape: Qt.PointingHandCursor
-                }
-
-                text: "BUTTON 1"
-                ToolTip.text: "CLEAR"
-                ToolTip.visible: firstButtonArea.hovered
-
-                Image {
-                    anchors.centerIn: parent
-                    source: "..\\assets\\reset.png"
-                    fillMode: Image.PreserveAspectFit
-                    height: parent.height * 0.8
-                    width: parent.width * 0.8
-                }
+            AnimatedTabButton {
+                id: settingButton
+                toolTipText: "Settings"
+                buttonText: ""
+                imageSource: "..\\assets\\setting.png"
             }
 
-            TabButton {
-                id: secondButton
-                background: Rectangle {
-                    radius: cornerRadius
-                    color: "red"
-                    scale: secondButton.hovered ? buttonScale : 1
-                    opacity: secondButton.hovered ? buttonOpacity : 1
-
-                    Behavior on scale {
-                        NumberAnimation {
-                            duration: buttonDuration
-                            easing.type: buttonEasing
-                        }
-                    }
-                }
-                anchors.top: parent.top
-                anchors.bottom: parent.bottom
-
-                HoverHandler {
-                    id: secondButtonArea
-                    cursorShape: Qt.PointingHandCursor
-                }
-
-                text: "BUTTON 2"
-                ToolTip.text: "DO STUFF"
-                ToolTip.visible: secondButtonArea.hovered
+            AnimatedTabButton {
+                id: resetButton
+                toolTipText: "Clear History"
+                buttonText: ""
+                imageSource: "..\\assets\\reset.png"
             }
         }
 
@@ -143,35 +92,10 @@ ApplicationWindow {
             ListModel {
                 id: queriesModel
 
-                ListElement {
-                    scenario: "test"
-                    query: "test"
-                }
-
-                ListElement {
-                    scenario: "test"
-                    query: "test"
-                }
-
-                ListElement {
-                    scenario: "test"
-                    query: "test"
-                }
-
-                ListElement {
-                    scenario: "test"
-                    query: "test"
-                }
-
-                ListElement {
-                    scenario: "test"
-                    query: "test"
-                }
-
-                ListElement {
-                    scenario: "test"
-                    query: "test"
-                }
+                // ListElement {
+                //     scenario: "test"
+                //     query: "test"
+                // }
             }
 
             ListView {

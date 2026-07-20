@@ -2,25 +2,49 @@ import QtQuick
 import QtQuick.Controls
 
 TabButton {
-    id: control
-
-    // Explicitly set sizes so the TabBar can distribute layout room evenly
-    implicitWidth: 120
-    implicitHeight: 40
-
-    // Custom Styling: This styling applies automatically to every button
-    contentItem: Text {
-        text: control.text
-        font.pixelSize: 14
-        font.bold: control.checked // Make text bold if this tab is active
-        color: control.checked ? "#2196F3" : "#666666" // Blue if active, gray if not
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
-    }
+    id: button
+    property string buttonText: ""
+    property string toolTipText: "Tool Tip"
+    property string imageSource: "..\\assets\\reset.png"
 
     background: Rectangle {
-        color: control.checked ? "#E3F2FD" : (control.hovered ? "#F5F5F5" : "transparent")
-        border.color: control.checked ? "#2196F3" : "transparent"
-        border.width: 1
+        radius: cornerRadius
+        color: "#375077"
+        scale: button.hovered ? buttonScale : 1
+        opacity: button.hovered ? buttonOpacity : 1
+
+        Behavior on scale {
+            NumberAnimation {
+                duration: buttonDuration
+                easing.type: buttonEasing
+            }
+        }
+    }
+    anchors.top: parent.top
+    anchors.bottom: parent.bottom
+
+    HoverHandler {
+        id: buttonArea
+        cursorShape: Qt.PointingHandCursor
+    }
+
+    text: buttonText
+    ToolTip.text: toolTipText
+    ToolTip.visible: buttonArea.hovered
+
+    Image {
+        anchors.centerIn: parent
+        source: imageSource
+        fillMode: Image.PreserveAspectFit
+        height: parent.height * 0.8
+        width: parent.width * 0.8
+
+        scale: button.hovered ? buttonScale : 1
+
+        Behavior on scale {
+            NumberAnimation {
+                duration: buttonDuration
+            }
+        }
     }
 }
