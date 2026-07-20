@@ -30,7 +30,6 @@ Button {
 
     background: Rectangle {
         radius: cornerRadius
-
         color: buttonMouseArea.pressed ? Qt.darker(button.buttonColor) : button.buttonColor
 
         Behavior on color {

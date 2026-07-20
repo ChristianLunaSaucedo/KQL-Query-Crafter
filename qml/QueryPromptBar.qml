@@ -27,7 +27,7 @@ RowLayout {
         property bool canSend: false
 
         renderType: Text.NativeRendering
-        font.pointSize: Math.max(8, height * 0.3)
+        font.pointSize: Math.max(8, parent.height * 0.3)
         font.family: appFont
         font.wordSpacing: -5
 
