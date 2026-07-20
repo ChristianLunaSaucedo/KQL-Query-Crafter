@@ -35,7 +35,7 @@ RowLayout {
         color: "#375077"
         selectionColor: "gray"
 
-        placeholderText: canType ? "Enter Scenario..." : "Loading Query..."
+        placeholderText: canType ? "Enter Scenario..." : ("Loading Query" + queryingTimer.resultingText)
         placeholderTextColor: '#6e375077'
 
         readOnly: !canType

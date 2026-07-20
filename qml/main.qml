@@ -53,6 +53,26 @@ ApplicationWindow {
         systemController.QueryPrompt(textToQuery);
     }
 
+    Timer {
+        // Runs only when there is a popup timer to add extra effects
+        id: queryingTimer
+        interval: 500
+        running: busyPopup.visible
+        repeat: true
+
+        property int elipseCount: 0
+        property string resultingText: ""
+
+        onTriggered: {
+            console.log("Triggered Timer", elipseCount);
+            elipseCount++;
+            if (elipseCount > 3) {
+                elipseCount = 0;
+            }
+            resultingText = ".".repeat(elipseCount);
+        }
+    }
+
     GridLayout {
         anchors.fill: parent
         columnSpacing: 50
