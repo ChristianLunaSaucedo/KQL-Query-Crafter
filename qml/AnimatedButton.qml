@@ -40,6 +40,7 @@ Button {
         }
 
         Image {
+            id: image
             anchors.centerIn: parent
             source: button.imageSource
             fillMode: Image.PreserveAspectFit

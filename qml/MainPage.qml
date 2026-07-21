@@ -108,6 +108,24 @@ Item {
                 imageSource: "..\\assets\\help.png"
                 tabPressFunctionality: () => {
                     console.log("Help");
+                    helpDialog.open();
+                }
+            }
+
+            MessageDialog {
+                id: helpDialog
+                title: "Open KQL Query Page"
+                text: "Would you like to open the Official KQL Query Reference Page?"
+
+                buttons: MessageDialog.Yes | MessageDialog.No
+
+                onAccepted: {
+                    console.log("Confirm Help");
+                    Qt.openUrlExternally("https://www.elastic.co/docs/reference/query-languages/kql");
+                }
+
+                onRejected: {
+                    console.log("Rejected  Help");
                 }
             }
 
