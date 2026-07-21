@@ -27,7 +27,12 @@ ApplicationWindow {
     SwipeView {
         id: mainSwipeView
         anchors.fill: parent
+
+        clip: true
         interactive: false
+
+        contentItem.width: width
+
         currentIndex: 0
         MainPage {}
         SettingsPage {}

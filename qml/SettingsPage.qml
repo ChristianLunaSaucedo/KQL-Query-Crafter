@@ -46,140 +46,86 @@ Rectangle {
             anchors.fill: parent
             spacing: 5
 
-            Rectangle {
-                id: appearanceBehaviorRect
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-                Layout.preferredHeight: 1
-                Layout.preferredWidth: 1
+            SettingsHeading {
+                id: appearanceBehaviorHeading
 
-                property string headingText: "<HEADING>"
-
-                color: "transparent"
-
-                Text {
-                    id: appearanceBehaviorText
-                    anchors.fill: parent
-                    color: "#375077"
-                    font.pointSize: settingsText.font.pointSize * 0.5
-                    font.family: mainWindow.appFont
-                    horizontalAlignment: Qt.AlignLeft
-                    verticalAlignment: Qt.AlignVCenter
-                    text: "Appearance & Behavior"
-                    padding: 20
-                }
+                headingText: "Appearance & Behavior"
             }
 
-            Rectangle {
-                id: themeRect
-                Layout.fillWidth: true
-                Layout.fillHeight: true
+            SettingsSetting {
+                id: themeSetting
+                settingText: "Theme: "
 
-                Layout.preferredHeight: 1
-                Layout.preferredWidth: 1
+                SettingsDropdown {
+                    id: themeSelectionDropdown
 
-                property string subSettingText: "Sub Heading"
-
-                color: "transparent"
-
-                RowLayout {
-                    anchors.fill: parent
-                    anchors.margins: 20
-                    spacing: 10
-
-                    Text {
-                        id: themeText
-                        color: "#F6F9FA"
-                        Layout.fillWidth: true
-                        Layout.fillHeight: true
-                        Layout.preferredWidth: 1
-                        font.family: mainWindow.appFont
-                        font.pointSize: appearanceBehaviorText.font.pointSize * 0.75
-                        text: "Theme: "
-                        horizontalAlignment: Text.AlignLeft
-                        verticalAlignment: Text.AlignVCenter
-                        leftPadding: 50
-                    }
-
-                    // Note: When using component ensure you make this a user passed in component NOT IN THE QML FILE
-                    ComboBox {
-                        id: themeSelectionBox
-                        Layout.fillWidth: true
-                        Layout.fillHeight: true
-                        Layout.preferredWidth: 3
-                        Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
-
-                        currentIndex: 0
-
-                        background: Rectangle {
-                            color: "#F6F9FA"
-                            radius: mainWindow.cornerRadius
-                            clip: true
+                    model: ListModel {
+                        ListElement {
+                            key: "Default"
                         }
 
-                        contentItem: Text {
-                            color: "#375077"
-                            text: themeSelectionBox.currentText
-                            font.family: mainWindow.appFont
-                            font.pointSize: themeText.font.pointSize
-
-                            horizontalAlignment: Text.AlignHCenter
-                            verticalAlignment: Text.AlignVCenter
+                        ListElement {
+                            key: "Dark"
                         }
 
-                        model: themeModel
-                        ListModel {
-                            id: themeModel
-                            ListElement {
-                                key: "Theme 1"
-                            }
-
-                            ListElement {
-                                key: "Theme 2"
-                            }
-
-                            ListElement {
-                                key: "Theme 3"
-                            }
+                        ListElement {
+                            key: "Light"
                         }
                     }
                 }
             }
 
-            Rectangle {
-                Layout.fillWidth: true
-                Layout.fillHeight: true
+            SettingsSetting {
+                id: autoCopySetting
+                settingText: "Auto-Copy: "
 
-                Layout.preferredHeight: 1
-                Layout.preferredWidth: 1
+                SettingsDropdown {
+                    id: autoCopyDropdown
 
-                color: "green"
+                    model: ListModel {
+                        id: autoCopyDropdownModel
+                        ListElement {
+                            key: "Disabled"
+                        }
+
+                        ListElement {
+                            key: "Enabled"
+                        }
+                    }
+                }
             }
 
-            Rectangle {
-                Layout.fillWidth: true
-                Layout.fillHeight: true
+            SettingsHeading {
+                id: llmOptionsHeading
 
-                Layout.preferredHeight: 1
-                Layout.preferredWidth: 1
-
-                color: "blue"
+                headingText: "LLM Options"
             }
 
-            Rectangle {
-                Layout.fillWidth: true
-                Layout.fillHeight: true
+            SettingsSetting {
+                id: llmModelSetting
+                settingText: "LLM Model: "
 
-                Layout.preferredHeight: 1
-                Layout.preferredWidth: 1
+                SettingsDropdown {
+                    id: llmModelDropdown
 
-                color: "brown"
+                    model: ListModel {
+                        id: llmModelDropdownModel
+                        ListElement {
+                            key: "LLM Model #1"
+                        }
+
+                        ListElement {
+                            key: "LLM Model #2"
+                        }
+                    }
+                }
             }
 
             Item {
+                id: invisibleSpacer
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-                Layout.preferredHeight: 0.2
+                Layout.preferredHeight: 3
             }
         }
     }
