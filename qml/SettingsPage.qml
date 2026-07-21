@@ -3,6 +3,19 @@ import QtQuick.Layouts
 import QtQuick.Controls
 
 Rectangle {
+    id: settingsPage
+    function onSendExistingModel(model) {
+        llmModelDropdownModel.append({
+            "key": model
+        });
+    }
+
+    Component.onCompleted: {
+        systemController.send_existing_model.connect(settingsPage.onSendExistingModel);
+
+        // Manually Invoke LLM Fetch List
+        systemController.FetchLLMList();
+    }
     color: "#1D222A"
 
     AnimatedButton {
@@ -42,16 +55,20 @@ Rectangle {
         width: parent.width * 0.7
         color: "transparent"
 
+        // Settings Page Layout
         ColumnLayout {
+            id: settingsPageLayout
             anchors.fill: parent
             spacing: 5
 
+            // Appearance & Behavior (Heading)
             SettingsHeading {
                 id: appearanceBehaviorHeading
 
                 headingText: "Appearance & Behavior"
             }
 
+            // Theme Setting
             SettingsSetting {
                 id: themeSetting
                 settingText: "Theme: "
@@ -75,6 +92,7 @@ Rectangle {
                 }
             }
 
+            // Auto-Copy Setting
             SettingsSetting {
                 id: autoCopySetting
                 settingText: "Auto-Copy: "
@@ -95,12 +113,14 @@ Rectangle {
                 }
             }
 
+            // LLM Options (Heading)
             SettingsHeading {
                 id: llmOptionsHeading
 
                 headingText: "LLM Options"
             }
 
+            // LLM Setting
             SettingsSetting {
                 id: llmModelSetting
                 settingText: "LLM Model: "
@@ -110,17 +130,15 @@ Rectangle {
 
                     model: ListModel {
                         id: llmModelDropdownModel
-                        ListElement {
-                            key: "LLM Model #1"
-                        }
+                    }
 
-                        ListElement {
-                            key: "LLM Model #2"
-                        }
+                    onCurrentTextChanged: {
+                        systemController.UpdateLLMUsed(currentText);
                     }
                 }
             }
 
+            // Invisible Spacer
             Item {
                 id: invisibleSpacer
                 Layout.fillWidth: true

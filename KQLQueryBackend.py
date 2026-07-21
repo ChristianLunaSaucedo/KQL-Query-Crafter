@@ -15,13 +15,12 @@ from langchain_classic.retrievers import MultiQueryRetriever
 from langchain_chroma import Chroma
 
 class KQLQueryHandler():
-    def __init__(self):
-        self.embeddings = OllamaEmbeddings(model=Parameters.embedding_model)
-        self.model = OllamaLLM(model=Parameters.ollama_model)
-        
-        self.first_llm_setup = not os.path.exists(Parameters.embeddings_save_dir)
-
-        
+    def __init__(self, kqlParameters):
+        self.embeddings = OllamaEmbeddings(model=kqlParameters.embedding_model)
+        self.model = OllamaLLM(model=kqlParameters.ollama_model)
+                
+        self.first_llm_setup = not os.path.exists(kqlParameters.embeddings_save_dir)
+        self.kqlParameters = kqlParameters
 
     def CreateCSVDocuments(self, doc_path):
         csv_data = pandas.read_csv(doc_path)
@@ -58,7 +57,7 @@ class KQLQueryHandler():
     def CreateVectorDB(self, documents, ids):
         vector_db = Chroma(
             collection_name="restaurant_reviews",
-            persist_directory=Parameters.embeddings_save_dir,
+            persist_directory=self.kqlParameters.embeddings_save_dir,
             embedding_function=self.embeddings,
         )
 
@@ -89,13 +88,13 @@ class KQLQueryHandler():
         return retriever
     
     def CreateChain(self):
-        template = Parameters.template
+        template = self.kqlParameters.template
         prompt = ChatPromptTemplate.from_template(template)
         chain = prompt | self.model 
         return chain
     
     def AskQuestion(self, question):
-        documents, ids = self.CreateCSVDocuments(Parameters.doc_path)
+        documents, ids = self.CreateCSVDocuments(self.kqlParameters.doc_path)
 
         vector_db = self.CreateVectorDB(documents, ids)        
         

@@ -1,13 +1,14 @@
 # A class for simply holding parameters for Backend RAG System
 
 class Parameters():
-    
-        embedding_model = "nomic-embed-text"
-        embeddings_save_dir = "./chrome_langchain_db"
-        doc_path = ".\\data\\ECSFieldsCSV.csv"
+        
+        def __init__(self):
+                self.embedding_model = "nomic-embed-text"
+                self.embeddings_save_dir = "./chrome_langchain_db"
+                self.doc_path = ".\\data\\ECSFieldsCSV.csv"
 
-        ollama_model = "qwen2.5-coder:7b"
-        template = """ You are an expert Kibana Query Language (KQL) query generator for Security Operations Center (SOC), Host Analysis, Network Analysis, Threat Hunting, and Incident Response workflows.
+                self.ollama_model = "qwen2.5-coder:7b"
+                self.template = """ You are an expert Kibana Query Language (KQL) query generator for Security Operations Center (SOC), Host Analysis, Network Analysis, Threat Hunting, and Incident Response workflows.
 
 Your ONLY task is to generate a valid KQL query from the user's request.
 

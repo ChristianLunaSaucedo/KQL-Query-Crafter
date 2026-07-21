@@ -5,6 +5,7 @@ import QtQuick.Dialogs
 
 Item {
     id: mainPage
+
     function onQueryStarted() {
         queryPromptBar.clearTextField();
         busyPopup.visible = true;
@@ -13,15 +14,25 @@ Item {
     }
 
     function onQueryFinished(scenario, query) {
-        console.log(query, scenario);
+        console.log("On Query Finished Signal Emitted (QML)");
+        busyPopup.visible = false;
+        console.log(scenario, query);
+
+        // In case of an invalid query
+        if (query === "Error") {
+            // Adding New Element
+            queriesModel.append({
+                "scenario": "Error Generating A Query",
+                "query": "Please Select A Valid Generation Model From Settings Menu"
+            });
+            return;
+        }
+
         // Adding New Element
         queriesModel.append({
             "scenario": scenario,
             "query": query
         });
-        busyPopup.visible = false;
-
-        console.log("On Query Finished Signal Emitted (QML)");
     }
 
     Component.onCompleted: {
