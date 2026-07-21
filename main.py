@@ -9,7 +9,7 @@ from RAGParameters import Parameters
 
 from PyQt6.QtGui import QGuiApplication
 from PyQt6.QtQml import QQmlApplicationEngine
-from PyQt6.QtCore import QObject, pyqtSlot as Slot, pyqtSignal as Signal, QRunnable, QThreadPool
+from PyQt6.QtCore import QObject, pyqtSlot as Slot, pyqtSignal as Signal, QRunnable, QThreadPool, QSettings
 from ollama import ResponseError
 
 class SystemController(QObject):
@@ -21,6 +21,8 @@ class SystemController(QObject):
 
     def __init__(self):
         super().__init__()
+
+        # Querying
         self.kqlParameters = Parameters()
         self.kql_query_handler = KQLQueryHandler(self.kqlParameters)
 
@@ -79,12 +81,29 @@ class SystemController(QObject):
         # Update New Parser
         self.kqlParameters.ollama_model = newModel
         self.kql_query_handler = KQLQueryHandler(self.kqlParameters)
+class SettingsManager(QObject):
+    
+    def __init__(self):
+        super().__init__()
+
+        # Settings
+        self.savedSettings = QSettings("Organization", "App")
+        self.initialModel = self.savedSettings.value("initial_model", "llama3.2", type=str)
+        self.theme = self.savedSettings.value("theme", "default", type=str)
+        self.autoCopy = self.savedSettings.value("auto_copy", False, type=bool)
+    
+    @Slot(str, str, str)
+    def UpdateSettings(self, initialModel,theme,autoCopy):
+        self.savedSettings.setValue("initial_model", initialModel)
+        self.savedSettings.setValue("theme", theme)
+        self.savedSettings.setValue("auto_copy", autoCopy)
+
 
 if __name__ == "__main__":
-    
-
     app = QGuiApplication(sys.argv)
+
     systemController = SystemController()
+    settingsManager = SettingsManager()
 
     # Create the QML application engine
     engine = QQmlApplicationEngine()
@@ -92,6 +111,7 @@ if __name__ == "__main__":
 
     # Connecting Python & QML
     engine.rootContext().setContextProperty("systemController", systemController)
+    engine.rootContext().setContextProperty("settingsManager", settingsManager)
     
     # Load the QML file
     os.environ["QT_QUICK_CONTROLS_STYLE"] = "Fusion"

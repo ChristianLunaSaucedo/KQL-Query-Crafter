@@ -4,6 +4,7 @@ import QtQuick.Controls
 
 Rectangle {
     id: settingsPage
+
     function onSendExistingModel(model) {
         llmModelDropdownModel.append({
             "key": model
