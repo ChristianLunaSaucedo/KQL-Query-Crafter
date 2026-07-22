@@ -231,7 +231,10 @@ Rectangle {
                 settingText: "Generation Model: "
 
                 ToolTip.visible: llmModelDropdown.hovered
-                ToolTip.text: "Generation Model Used"
+                ToolTip.text: enabled ? "Generation Model Used" : "Cannot Change While Querying"
+
+                // Disable Model Changing When Querying In Progress
+                enabled: !mainPage.isQuerying
 
                 SettingsDropdown {
                     id: llmModelDropdown
@@ -261,7 +264,10 @@ Rectangle {
                 settingText: "Embedding Model: "
 
                 ToolTip.visible: embeddingModelDropdown.hovered
-                ToolTip.text: "Embedding Model Used"
+                ToolTip.text: enabled ? "Embedding Model Used" : "Cannot Change While Querying"
+
+                // Disable Model Changing When Querying In Progress
+                enabled: !mainPage.isQuerying
 
                 SettingsDropdown {
                     id: embeddingModelDropdown

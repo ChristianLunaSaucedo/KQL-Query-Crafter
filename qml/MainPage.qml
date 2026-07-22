@@ -6,6 +6,7 @@ import QtQuick.Dialogs
 Item {
     id: mainPage
 
+    property bool isQuerying: busyPopup.visible === true
     function onQueryStarted() {
         queryPromptBar.clearTextField();
         busyPopup.visible = true;
