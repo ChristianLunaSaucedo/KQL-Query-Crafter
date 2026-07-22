@@ -1,5 +1,3 @@
-scripts/__pycache__/
-saved_embeddings/
 .venv
+scripts/__pycache__/
 chrome_langchain_db
-RAGBackend.py
