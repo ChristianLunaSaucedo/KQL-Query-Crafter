@@ -22,6 +22,7 @@ class KQLQueryHandler():
         self.first_llm_setup = not os.path.exists(kqlParameters.embeddings_save_dir)
         self.kqlParameters = kqlParameters
 
+    # Creates Documents From CSV File (Can be swapped out for Other Types Of Files)
     def CreateCSVDocuments(self, doc_path):
         csv_data = pandas.read_csv(doc_path)
         documents = []
@@ -53,7 +54,8 @@ class KQLQueryHandler():
                 ids.append(str(id))
                 documents.append(document)
         return documents, ids
-    
+
+    # Creates a Vector Database from given documents
     def CreateVectorDB(self, documents, ids):
         vector_db = Chroma(
             collection_name="restaurant_reviews",
@@ -64,7 +66,8 @@ class KQLQueryHandler():
         if self.first_llm_setup:
             vector_db.add_documents(documents=documents, ids=ids)
         return vector_db
-    
+
+    # Creates a retriever using a given Vector Database
     def CreateRetriever(self, vector_db):
 
         QUERY_PROMPT = PromptTemplate(
@@ -86,13 +89,15 @@ class KQLQueryHandler():
         # )
 
         return retriever
-    
+
+    # Prepares a chain for future execution
     def CreateChain(self):
         template = self.kqlParameters.template
         prompt = ChatPromptTemplate.from_template(template)
         chain = prompt | self.model 
         return chain
-    
+
+    # Invokes all methods from class in sequential order for easy method calling in order to receive a response for a given question
     def AskQuestion(self, question):
         documents, ids = self.CreateCSVDocuments(self.kqlParameters.doc_path)
 

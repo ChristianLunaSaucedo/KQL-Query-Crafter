@@ -1,13 +1,18 @@
-# A class for simply holding parameters for Backend RAG System
+import os
 
+# A class for simply holding parameters for Backend RAG System
 class Parameters():
         
         def __init__(self):
                 self.embedding_model = "None"
-                self.embeddings_save_dir = ".\\chrome_langchain_db"
-                self.doc_path = ".\\data\\ECSFieldsCSV.csv"
 
+                self.embeddings_save_dir = ".\\chrome_langchain_db"
+
+                self.doc_path = os.path.join("data", "ECSFieldsCSV.csv")
+                
                 self.ollama_model = "None"
+                
+                # Personalizing Backend LLM Settings (Can be improved)
                 self.template = """ You are an expert Kibana Query Language (KQL) query generator for Security Operations Center (SOC), Host Analysis, Network Analysis, Threat Hunting, and Incident Response workflows.
 
 Your ONLY task is to generate a valid KQL query from the user's request.

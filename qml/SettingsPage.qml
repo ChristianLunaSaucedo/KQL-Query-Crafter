@@ -70,7 +70,7 @@ Rectangle {
         // Manually Invoke LLM Fetch List
         systemController.FetchLLMList();
 
-        // Get Saved Values
+        // Get Saved Values (CAN BE OPTIMIZED)
         savedTheme = settingsManager.FetchSetting("theme", "Default");
         console.log("Loaded Theme: ", savedTheme);
 
@@ -107,6 +107,7 @@ Rectangle {
         }
     }
 
+    // Main Settings Text
     Text {
         id: settingsText
 
@@ -122,6 +123,7 @@ Rectangle {
         text: "Settings"
     }
 
+    // Main Settings Container
     Rectangle {
         id: settingsContainer
         anchors.top: settingsText.bottom
@@ -234,6 +236,8 @@ Rectangle {
                 SettingsDropdown {
                     id: llmModelDropdown
 
+                    currentValue: "None"
+
                     model: ListModel {
                         id: llmModelDropdownModel
 
@@ -261,6 +265,8 @@ Rectangle {
 
                 SettingsDropdown {
                     id: embeddingModelDropdown
+
+                    currentValue: "None"
 
                     model: ListModel {
                         id: embeddingModelDropdownModel

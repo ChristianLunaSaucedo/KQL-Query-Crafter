@@ -9,8 +9,9 @@ from SettingsManager import SettingsManager
 
 if __name__ == "__main__":
     app = QGuiApplication(sys.argv)
-    app.setWindowIcon(QIcon(".\\assets\\icon.png"))
+    app.setWindowIcon(QIcon(os.path.join("assets", "icon.png")))
 
+    # Create Python Classes
     systemController = SystemController()
     settingsManager = SettingsManager()
 
@@ -21,11 +22,13 @@ if __name__ == "__main__":
     # Connecting Python & QML
     engine.rootContext().setContextProperty("systemController", systemController)
     engine.rootContext().setContextProperty("settingsManager", settingsManager)
-    
-    # Load the QML file
+
+    # Specify Default Styling
     os.environ["QT_QUICK_CONTROLS_STYLE"] = "Fusion"
 
-    engine.load(".\\qml\\main.qml")
+    # Load the QML file
+    engine.load(os.path.join("qml", "main.qml"))
+
     
     # Start the event loop
     sys.exit(app.exec())
