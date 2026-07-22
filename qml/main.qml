@@ -34,7 +34,11 @@ ApplicationWindow {
         contentItem.width: width
 
         currentIndex: 0
-        MainPage {}
-        SettingsPage {}
+        MainPage {
+            id: mainPage
+        }
+        SettingsPage {
+            id: settingsPage
+        }
     }
 }

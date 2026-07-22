@@ -33,6 +33,12 @@ Item {
             "scenario": scenario,
             "query": query
         });
+
+        // Auto Send Query To Clipboard when querying
+        if (settingsPage.autoCopyEnabled) {
+            systemController.CopyToClipboard(query);
+            console.log("Auto Copied: ", query);
+        }
     }
 
     Component.onCompleted: {

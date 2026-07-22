@@ -21,7 +21,7 @@ ComboBox {
         color: "#375077"
         text: settingsDropdown.currentText
         font.family: mainWindow.appFont
-        font.pointSize: settingsText.font.pointSize * 0.35
+        font.pointSize: Math.max(8, settingsText.font.pointSize * 0.3) //Math.max(settingsDropdown.implicitHeight * 0.45, settingsText.font.pointSize * 0.3)
 
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter

@@ -29,7 +29,7 @@ Rectangle {
             Layout.fillHeight: true
             Layout.preferredWidth: 1
             font.family: mainWindow.appFont
-            font.pointSize: Math.min(parent.implicitHeight * 0.5, settingsText.font.pointSize * 0.35)
+            font.pointSize: Math.min(parent.implicitHeight * 0.45, settingsText.font.pointSize * 0.35)
             text: subSettingRect.settingText
             horizontalAlignment: Text.AlignLeft
             verticalAlignment: Text.AlignVCenter

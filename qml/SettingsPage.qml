@@ -11,11 +11,32 @@ Rectangle {
         });
     }
 
+    property string savedTheme: ""
+    property string savedAutoCopy: ""
+    property string savedLLMModel: ""
+
+    property bool autoCopyEnabled: false
+
     Component.onCompleted: {
         systemController.send_existing_model.connect(settingsPage.onSendExistingModel);
 
         // Manually Invoke LLM Fetch List
         systemController.FetchLLMList();
+
+        // Get Saved Values
+        savedTheme = settingsManager.FetchSetting("theme", "Dark");
+        console.log("Loaded Theme: ", savedTheme);
+
+        savedAutoCopy = settingsManager.FetchSetting("auto_copy", "Disabled");
+        console.log("Loaded AutoClick: ", savedAutoCopy);
+
+        savedLLMModel = settingsManager.FetchSetting("llm_model", "None");
+        console.log("Loaded LLM Model: ", savedLLMModel);
+
+        // Use Saved Values
+        llmModelDropdown.currentValue = savedLLMModel;
+        themeSelectionDropdown.currentValue = savedTheme;
+        autoCopyDropdown.currentValue = savedAutoCopy;
     }
     color: "#1D222A"
 
@@ -62,7 +83,7 @@ Rectangle {
             anchors.fill: parent
             spacing: 5
 
-            // Appearance & Behavior (Heading)
+            // Appearance & Behavior (Header)
             SettingsHeading {
                 id: appearanceBehaviorHeading
 
@@ -90,6 +111,10 @@ Rectangle {
                             key: "Light"
                         }
                     }
+
+                    onActivated: {
+                        settingsManager.SetSetting("theme", currentText);
+                    }
                 }
             }
 
@@ -111,10 +136,19 @@ Rectangle {
                             key: "Enabled"
                         }
                     }
+
+                    onCurrentValueChanged: {
+                        settingsPage.autoCopyEnabled = currentValue == "Enabled";
+                        console.log("CHANGED AUTO COPY TEXT To: ", settingsPage.autoCopyEnabled);
+                    }
+
+                    onActivated: {
+                        settingsManager.SetSetting("auto_copy", currentText);
+                    }
                 }
             }
 
-            // LLM Options (Heading)
+            // LLM Options (Header)
             SettingsHeading {
                 id: llmOptionsHeading
 
@@ -131,10 +165,17 @@ Rectangle {
 
                     model: ListModel {
                         id: llmModelDropdownModel
+
+                        ListElement {
+                            key: "None"
+                        }
                     }
 
                     onCurrentTextChanged: {
                         systemController.UpdateLLMUsed(currentText);
+                    }
+                    onActivated: {
+                        settingsManager.SetSetting("llm_model", currentText);
                     }
                 }
             }
@@ -144,7 +185,7 @@ Rectangle {
                 id: invisibleSpacer
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-                Layout.preferredHeight: 3
+                Layout.preferredHeight: 2
             }
         }
     }
