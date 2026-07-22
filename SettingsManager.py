@@ -19,13 +19,11 @@ class SettingsManager(QObject):
 
         # Settings
         self.savedSettings = QSettings("Organization", "App")
-        self.FetchSetting("llm_model", "llama3.2")
-        self.FetchSetting("theme", "default")
-        self.FetchSetting("auto_copy", "Disabled")
     
-    @Slot(str, str, str)
+    @Slot(str, str, str, str)
     def UpdateSettings(self, llmModel,theme,autoCopy):
         self.savedSettings.setValue("llm_model", llmModel)
+        self.savedSettings.setValue("embedding_model", llmModel)
         self.savedSettings.setValue("theme", theme)
         self.savedSettings.setValue("auto_copy", autoCopy)
 

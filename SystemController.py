@@ -77,8 +77,17 @@ class SystemController(QObject):
         print("Copied Text To Clipboard: ", textToCopy)
     
     @Slot(str)
-    def UpdateLLMUsed(self, newModel):
-        print("Swapped Model From ",self.kqlParameters.ollama_model, " To: ", newModel)
+    def UpdateGenerationLLM(self, newModel):
+        print("Swapped Generation Model From ",self.kqlParameters.ollama_model, " To: ", newModel)
         # Update New Parser
         self.kqlParameters.ollama_model = newModel
         self.kql_query_handler = KQLQueryHandler(self.kqlParameters)
+    
+    @Slot(str)
+    def UpdateEmbeddingModel(self, newModel):
+        print("Swapped Embedding Model From ",self.kqlParameters.embedding_model, " To: ", newModel)
+        # Update New Parser
+        self.kqlParameters.embedding_model = newModel
+        self.kql_query_handler = KQLQueryHandler(self.kqlParameters)
+    
+    

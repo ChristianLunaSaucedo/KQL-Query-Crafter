@@ -23,7 +23,7 @@ Item {
             // Adding New Element
             queriesModel.append({
                 "scenario": "Error Generating A Query",
-                "query": "Please Select A Valid Generation Model From Settings Menu"
+                "query": "Please Select A Valid Generation/Embedding Model From Settings Menu"
             });
             return;
         }
@@ -41,11 +41,6 @@ Item {
         }
     }
 
-    Component.onCompleted: {
-        systemController.query_started.connect(mainPage.onQueryStarted);
-        systemController.query_finished.connect(mainPage.onQueryFinished);
-    }
-
     function queryPrompt(params) {
         let textToQuery = queryPromptBar.getText();
         if (textToQuery.trim() === "")
@@ -56,6 +51,13 @@ Item {
         systemController.QueryPrompt(textToQuery);
     }
 
+    // Start Function
+    Component.onCompleted: {
+        systemController.query_started.connect(mainPage.onQueryStarted);
+        systemController.query_finished.connect(mainPage.onQueryFinished);
+    }
+
+    // Effects Timer
     Timer {
         // Runs only when there is a popup timer to add extra effects
         id: queryingTimer
@@ -77,9 +79,12 @@ Item {
 
     // [ Window Content Starts Here ]
     GridLayout {
+        id: mainPageLayout
         anchors.fill: parent
+
         columnSpacing: 50
         rowSpacing: 50
+
         anchors.leftMargin: 50
         anchors.rightMargin: 50
         anchors.topMargin: 50

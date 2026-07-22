@@ -9,11 +9,16 @@ Rectangle {
         llmModelDropdownModel.append({
             "key": model
         });
+
+        embeddingModelDropdownModel.append({
+            "key": model
+        });
     }
 
     property string savedTheme: ""
     property string savedAutoCopy: ""
     property string savedLLMModel: ""
+    property string savedEmbeddingModel: ""
 
     property bool autoCopyEnabled: false
 
@@ -33,8 +38,12 @@ Rectangle {
         savedLLMModel = settingsManager.FetchSetting("llm_model", "None");
         console.log("Loaded LLM Model: ", savedLLMModel);
 
+        savedEmbeddingModel = settingsManager.FetchSetting("embedding_model", "None");
+        console.log("Loaded Embedding Model: ", savedLLMModel);
+
         // Use Saved Values
         llmModelDropdown.currentValue = savedLLMModel;
+        embeddingModelDropdown.currentValue = savedEmbeddingModel;
         themeSelectionDropdown.currentValue = savedTheme;
         autoCopyDropdown.currentValue = savedAutoCopy;
     }
@@ -95,6 +104,9 @@ Rectangle {
                 id: themeSetting
                 settingText: "Theme: "
 
+                ToolTip.visible: themeSelectionDropdown.hovered
+                ToolTip.text: "Theme"
+
                 SettingsDropdown {
                     id: themeSelectionDropdown
 
@@ -122,6 +134,9 @@ Rectangle {
             SettingsSetting {
                 id: autoCopySetting
                 settingText: "Auto-Copy: "
+
+                ToolTip.visible: autoCopyDropdown.hovered
+                ToolTip.text: "Auto Copy Query"
 
                 SettingsDropdown {
                     id: autoCopyDropdown
@@ -155,10 +170,13 @@ Rectangle {
                 headingText: "LLM Options"
             }
 
-            // LLM Setting
+            // Generation Model Setting
             SettingsSetting {
                 id: llmModelSetting
-                settingText: "LLM Model: "
+                settingText: "Generation Model: "
+
+                ToolTip.visible: llmModelDropdown.hovered
+                ToolTip.text: "Generation Model Used"
 
                 SettingsDropdown {
                     id: llmModelDropdown
@@ -172,10 +190,38 @@ Rectangle {
                     }
 
                     onCurrentTextChanged: {
-                        systemController.UpdateLLMUsed(currentText);
+                        systemController.UpdateGenerationLLM(currentText);
                     }
                     onActivated: {
                         settingsManager.SetSetting("llm_model", currentText);
+                    }
+                }
+            }
+
+            // Embedding Model Setting
+            SettingsSetting {
+                id: embeddingModelSetting
+                settingText: "Embedding Model: "
+
+                ToolTip.visible: embeddingModelDropdown.hovered
+                ToolTip.text: "Embedding Model Used"
+
+                SettingsDropdown {
+                    id: embeddingModelDropdown
+
+                    model: ListModel {
+                        id: embeddingModelDropdownModel
+
+                        ListElement {
+                            key: "None"
+                        }
+                    }
+
+                    onCurrentTextChanged: {
+                        systemController.UpdateEmbeddingModel(currentText);
+                    }
+                    onActivated: {
+                        settingsManager.SetSetting("embedding_model", currentText);
                     }
                 }
             }
