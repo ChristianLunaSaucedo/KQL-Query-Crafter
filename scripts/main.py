@@ -6,6 +6,7 @@ from PyQt6.QtQml import QQmlApplicationEngine
 
 from SystemController import SystemController
 from SettingsManager import SettingsManager
+from AssetsManager import AssetsManager
 
 if __name__ == "__main__":
     app = QGuiApplication(sys.argv)
@@ -14,6 +15,7 @@ if __name__ == "__main__":
     # Create Python Classes
     systemController = SystemController()
     settingsManager = SettingsManager()
+    assetsManager = AssetsManager()
 
     # Create the QML application engine
     engine = QQmlApplicationEngine()
@@ -22,6 +24,8 @@ if __name__ == "__main__":
     # Connecting Python & QML
     engine.rootContext().setContextProperty("systemController", systemController)
     engine.rootContext().setContextProperty("settingsManager", settingsManager)
+    engine.rootContext().setContextProperty("assetsManager", assetsManager)
+    
 
     # Specify Default Styling
     os.environ["QT_QUICK_CONTROLS_STYLE"] = "Fusion"

@@ -37,7 +37,7 @@ GridLayout {
     QueryEntryButton {
         id: copyButton
 
-        imageSource: "..\\assets\\copy.png"
+        imageSource: mainWindow.copyPath
         toolTipText: "Copy Query"
 
         pressedFunctionality: () => {
@@ -51,7 +51,7 @@ GridLayout {
     QueryEntryButton {
         id: removeButton
 
-        imageSource: "..\\assets\\trash.png"
+        imageSource: mainWindow.trashPath
         toolTipText: "Remove Query"
 
         pressedFunctionality: () => {

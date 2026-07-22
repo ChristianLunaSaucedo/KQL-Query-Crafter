@@ -1,6 +1,6 @@
 from PyQt6.QtCore import QObject, QSettings, pyqtSlot as Slot
 
-# Class Used To Manage Settings More App
+# Class Used To Manage Settings For App
 class SettingsManager(QObject):
     
     def __init__(self):

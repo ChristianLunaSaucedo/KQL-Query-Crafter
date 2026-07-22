@@ -13,16 +13,38 @@ ApplicationWindow {
 
     FontLoader {
         id: iosevkaFont
-        source: "..\\fonts\\Iosevka_Charon_Mono\\Regular.ttf"
     }
 
+    // General Styling Properties
     property double cornerRadius: 15
     property string appFont: iosevkaFont.name
 
+    // Button Properties
     property int buttonEasing: Easing.InOutQuad
     property double buttonOpacity: 0.7
     property double buttonScale: 1.05
     property double buttonDuration: 75
+
+    // Main Paths For App
+    property string cancelPath: ""
+    property string copyPath: ""
+    property string helpPath: ""
+    property string resetPath: ""
+    property string sendPath: ""
+    property string settingPath: ""
+    property string trashPath: ""
+
+    Component.onCompleted: {
+        console.log("OBTAINING IMAGE PATHS");
+        cancelPath = assetsManager.GetAssetPath("cancel.png");
+        copyPath = assetsManager.GetAssetPath("copy.png");
+        helpPath = assetsManager.GetAssetPath("help.png");
+        resetPath = assetsManager.GetAssetPath("reset.png");
+        sendPath = assetsManager.GetAssetPath("send.png");
+        settingPath = assetsManager.GetAssetPath("setting.png");
+        trashPath = assetsManager.GetAssetPath("trash.png");
+        iosevkaFont.source = assetsManager.GetFontPath();
+    }
 
     SwipeView {
         id: mainSwipeView

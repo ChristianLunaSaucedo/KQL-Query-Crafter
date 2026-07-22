@@ -5,7 +5,7 @@ TabButton {
     id: button
     property string buttonText: ""
     property string toolTipText: "Tool Tip"
-    property string imageSource: "..\\assets\\reset.png"
+    property string imageSource: ""
 
     property bool enabledFunctionality: true
 

@@ -116,7 +116,7 @@ Item {
                 id: settingButton
                 toolTipText: "Settings"
                 buttonText: ""
-                imageSource: "..\\assets\\setting.png"
+                imageSource: mainWindow.settingPath
                 tabPressFunctionality: () => {
                     console.log("Settings");
                     mainSwipeView.currentIndex = 1;
@@ -127,7 +127,7 @@ Item {
                 id: helpButton
                 toolTipText: "Help"
                 buttonText: ""
-                imageSource: "..\\assets\\help.png"
+                imageSource: mainWindow.helpPath
                 tabPressFunctionality: () => {
                     console.log("Help");
                     helpDialog.open();
@@ -155,7 +155,7 @@ Item {
                 id: resetButton
                 toolTipText: "Clear History"
                 buttonText: ""
-                imageSource: "..\\assets\\reset.png"
+                imageSource: mainWindow.resetPath
                 tabPressFunctionality: () => {
                     clearHistoryDialog.open();
                 }

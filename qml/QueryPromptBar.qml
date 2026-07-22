@@ -62,7 +62,7 @@ RowLayout {
         enabled: query_prompt.canSend
 
         buttonColor: enabled ? settingsPage.color_1 : Qt.darker(settingsPage.color_1)
-        imageSource: "..\\assets\\send.png"
+        imageSource: mainWindow.sendPath
         imageScaledFactor: 0.55
         toolTipText: "Query Prompt"
         pressedFunctionality: () => {

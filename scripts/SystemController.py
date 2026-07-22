@@ -7,7 +7,7 @@ from RAGParameters import Parameters
 from PyQt6.QtGui import QGuiApplication
 from PyQt6.QtCore import QObject, pyqtSlot as Slot, pyqtSignal as Signal, QRunnable, QThreadPool
 
-# Class used to handle main QML/Python Communication
+# Class Used To Manage Main QML/Python Communication
 class SystemController(QObject):
     
     # Signals To Send To QML
@@ -57,8 +57,7 @@ class SystemController(QObject):
     # Method that is called in the beginning of app setup to fetch all existing ollama models on host and sends to frontend
     @Slot()
     def FetchLLMList(self):
-        # modelsList = ollama.list()['models']
-        modelsList = []
+        modelsList = ollama.list()['models']
             
         for model in modelsList:
             modelName = model['model']

@@ -56,5 +56,6 @@ Button {
         onPressed: {
             button.pressedFunctionality();
         }
+        scale: button.imageScaledFactor
     }
 }

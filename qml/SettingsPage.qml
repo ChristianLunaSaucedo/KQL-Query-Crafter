@@ -97,7 +97,7 @@ Rectangle {
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.margins: 75
-        imageSource: "..\\assets\\cancel.png"
+        imageSource: mainWindow.cancelPath
         buttonColor: "transparent"
 
         imageScaledFactor: 12
