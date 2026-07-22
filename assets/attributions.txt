@@ -1,0 +1,20 @@
+cancel.png
+<a href="https://www.flaticon.com/free-icons/cancel" title="cancel icons">Cancel icons created by Fingerprint Designs - Flaticon</a>
+
+copy.png
+<a href="https://www.flaticon.com/free-icons/duplicate" title="duplicate icons">Duplicate icons created by meaicon - Flaticon</a>
+
+help.png
+<a href="https://www.flaticon.com/free-icons/question" title="question icons">Question icons created by Magnific - Flaticon</a>
+
+reset.png
+<a href="https://www.flaticon.com/free-icons/revert" title="revert icons">Revert icons created by KP Arts - Flaticon</a>
+
+send.png
+<a href="https://www.flaticon.com/free-icons/revert" title="revert icons">Revert icons created by KP Arts - Flaticon</a>
+
+setting.png
+<a href="https://www.flaticon.com/free-icons/settings" title="settings icons">Settings icons created by Magnific - Flaticon</a>
+
+trash.png
+<a href="https://www.flaticon.com/free-icons/delete" title="delete icons">Delete icons created by bqlqn - Flaticon</a>
