@@ -47,7 +47,7 @@ class SystemController(QObject):
                     self.query_finished.emit(task_self.textToQuery, response)
                 except ResponseError as e:
                     self.query_finished.emit(task_self.textToQuery, "Error")
-                    print("FAILED!")
+                    print("FAILED! ", e)
 
                 
 

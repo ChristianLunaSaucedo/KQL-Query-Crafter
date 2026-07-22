@@ -3,11 +3,11 @@
 class Parameters():
         
         def __init__(self):
-                self.embedding_model = "nomic-embed-text"
-                self.embeddings_save_dir = "./chrome_langchain_db"
+                self.embedding_model = "None"
+                self.embeddings_save_dir = ".\\chrome_langchain_db"
                 self.doc_path = ".\\data\\ECSFieldsCSV.csv"
 
-                self.ollama_model = "qwen2.5-coder:7b"
+                self.ollama_model = "None"
                 self.template = """ You are an expert Kibana Query Language (KQL) query generator for Security Operations Center (SOC), Host Analysis, Network Analysis, Threat Hunting, and Incident Response workflows.
 
 Your ONLY task is to generate a valid KQL query from the user's request.
