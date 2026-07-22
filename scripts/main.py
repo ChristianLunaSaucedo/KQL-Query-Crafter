@@ -1,7 +1,7 @@
 import sys
 import os
 
-from PyQt6.QtGui import QGuiApplication
+from PyQt6.QtGui import QGuiApplication, QIcon
 from PyQt6.QtQml import QQmlApplicationEngine
 
 from SystemController import SystemController
@@ -9,6 +9,7 @@ from SettingsManager import SettingsManager
 
 if __name__ == "__main__":
     app = QGuiApplication(sys.argv)
+    app.setWindowIcon(QIcon(".\\assets\\icon.png"))
 
     systemController = SystemController()
     settingsManager = SettingsManager()
