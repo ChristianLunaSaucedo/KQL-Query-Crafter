@@ -24,7 +24,7 @@ Rectangle {
 
         Text {
             id: subSettingText
-            color: "#F6F9FA"
+            color: settingsPage.color_1
             Layout.fillWidth: true
             Layout.fillHeight: true
             Layout.preferredWidth: 1

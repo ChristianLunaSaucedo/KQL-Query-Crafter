@@ -28,7 +28,7 @@ TabButton {
         enabled: button.enabledFunctionality
 
         imageScaledFactor: 0.8
-        buttonColor: enabled ? "#375077" : Qt.darker("#375077")
+        buttonColor: enabled ? settingsPage.color_3 : Qt.darker(settingsPage.color_3)
 
         pressedFunctionality: () => {
             button.tabPressFunctionality();

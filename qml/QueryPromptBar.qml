@@ -32,7 +32,7 @@ RowLayout {
         font.family: mainWindow.appFont
         font.wordSpacing: -5
 
-        color: "#375077"
+        color: settingsPage.color_3
         selectionColor: "gray"
 
         placeholderText: canType ? "Enter Scenario..." : ("Loading Query" + queryingTimer.resultingText)
@@ -43,7 +43,7 @@ RowLayout {
 
         background: Rectangle {
             radius: mainWindow.cornerRadius
-            color: "#F6F9FA"
+            color: settingsPage.color_1
         }
 
         onAccepted: {
@@ -61,7 +61,7 @@ RowLayout {
 
         enabled: query_prompt.canSend
 
-        buttonColor: enabled ? "#F6F9FA" : Qt.darker("#F6F9FA")
+        buttonColor: enabled ? settingsPage.color_1 : Qt.darker(settingsPage.color_1)
         imageSource: "..\\assets\\send.png"
         imageScaledFactor: 0.55
         toolTipText: "Query Prompt"

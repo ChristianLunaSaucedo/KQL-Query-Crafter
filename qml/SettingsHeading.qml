@@ -17,7 +17,7 @@ Rectangle {
     Text {
         id: settingsHeadingText
         anchors.fill: parent
-        color: "#375077"
+        color: settingsPage.color_3
         font.pointSize: settingsText.font.pointSize * 0.4
         font.family: mainWindow.appFont
         horizontalAlignment: Qt.AlignLeft

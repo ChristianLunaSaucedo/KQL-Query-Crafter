@@ -24,10 +24,10 @@ TextField {
 
     padding: 30
 
-    color: "#1D222A"
+    color: settingsPage.color_5
 
     background: Rectangle {
-        color: "#F6F9FA"
+        color: settingsPage.color_1
         radius: mainWindow.cornerRadius
     }
 

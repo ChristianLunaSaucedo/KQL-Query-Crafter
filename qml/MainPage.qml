@@ -209,7 +209,7 @@ Item {
                 }
             }
 
-            color: "#F6F9FA"
+            color: settingsPage.color_1
 
             Layout.fillWidth: true
             Layout.fillHeight: true
@@ -256,7 +256,7 @@ Item {
                     required property string query
                     required property int index
 
-                    color: "#8CBDC7"
+                    color: settingsPage.color_2
                     radius: mainWindow.cornerRadius
 
                     QueryEntry {
@@ -272,7 +272,7 @@ Item {
         // Input Pane
         Rectangle {
             id: input_pane
-            color: "#375077"
+            color: settingsPage.color_3
             Layout.fillWidth: true
             Layout.fillHeight: true
             Layout.row: 2

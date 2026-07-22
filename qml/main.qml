@@ -9,7 +9,7 @@ ApplicationWindow {
     height: 960
     visible: true
     title: qsTr("KQL Query")
-    color: "#1D222A"
+    color: settingsPage.color_5
 
     FontLoader {
         id: iosevkaFont

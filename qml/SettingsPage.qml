@@ -15,6 +15,48 @@ Rectangle {
         });
     }
 
+    function setCorrectTheme(themeName) {
+        if (themeName == "Dark") {
+            color_1 = "#FBFBFB";
+            color_2 = "#BCABAE";
+            color_3 = "#716969";
+            color_4 = "#2D2E2E";
+            color_5 = "#0F0F0F";
+        } else if (themeName == "Blue") {
+            color_1 = "#6DAEDB";
+            color_2 = "#173753";
+            color_3 = "#2892D7";
+            color_4 = "#1B4353";
+            color_5 = "#1D70A2";
+        } else if (themeName == "Pink Gold") {
+            color_1 = "#DAD6D6";
+            color_2 = "#92BFB1";
+            color_3 = "#F4AC45";
+            color_4 = "#694A38";
+            color_5 = "#A61C3C";
+        } else if (themeName == "Blue Brown") {
+            color_1 = "#FFECD1";
+            color_2 = "#FF7D00";
+            color_3 = "#78290F";
+            color_4 = "#15616D";
+            color_5 = "#001524";
+        } else {
+            color_1 = "#f6f9fa";
+            color_2 = "#8cbdc7";
+            color_3 = "#375077";
+            color_4 = "#4e8ec8";
+            color_5 = "#1d222a";
+        }
+
+        console.log("Set Custom Theme To: ", themeName);
+    }
+
+    property string color_1: "#f6f9fa"
+    property string color_2: "#8cbdc7"
+    property string color_3: "#375077"
+    property string color_4: "#4e8ec8"
+    property string color_5: "#1d222a"
+
     property string savedTheme: ""
     property string savedAutoCopy: ""
     property string savedLLMModel: ""
@@ -29,7 +71,7 @@ Rectangle {
         systemController.FetchLLMList();
 
         // Get Saved Values
-        savedTheme = settingsManager.FetchSetting("theme", "Dark");
+        savedTheme = settingsManager.FetchSetting("theme", "Default");
         console.log("Loaded Theme: ", savedTheme);
 
         savedAutoCopy = settingsManager.FetchSetting("auto_copy", "Disabled");
@@ -46,8 +88,10 @@ Rectangle {
         embeddingModelDropdown.currentValue = savedEmbeddingModel;
         themeSelectionDropdown.currentValue = savedTheme;
         autoCopyDropdown.currentValue = savedAutoCopy;
+
+        setCorrectTheme(savedTheme);
     }
-    color: "#1D222A"
+    color: settingsPage.color_5
 
     AnimatedButton {
         anchors.top: parent.top
@@ -120,12 +164,21 @@ Rectangle {
                         }
 
                         ListElement {
-                            key: "Light"
+                            key: "Blue"
+                        }
+
+                        ListElement {
+                            key: "Pink Gold"
+                        }
+
+                        ListElement {
+                            key: "Blue Brown"
                         }
                     }
 
                     onActivated: {
                         settingsManager.SetSetting("theme", currentText);
+                        settingsPage.setCorrectTheme(currentText);
                     }
                 }
             }

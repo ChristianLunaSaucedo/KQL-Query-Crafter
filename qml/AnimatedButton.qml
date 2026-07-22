@@ -9,7 +9,7 @@ Button {
     property string imageSource: ""
 
     property double imageScaledFactor: 1
-    property string buttonColor: "#F6F9FA"
+    property string buttonColor: settingsPage.color_1
 
     property var pressedFunctionality: () => {
         console.log("Button Pressed!");

@@ -12,13 +12,13 @@ ComboBox {
     currentIndex: 0
 
     background: Rectangle {
-        color: "#F6F9FA"
+        color: settingsPage.color_1
         radius: mainWindow.cornerRadius
         clip: true
     }
 
     contentItem: Text {
-        color: "#375077"
+        color: settingsPage.color_3
         text: settingsDropdown.currentText
         font.family: mainWindow.appFont
         font.pointSize: Math.max(8, settingsText.font.pointSize * 0.3) //Math.max(settingsDropdown.implicitHeight * 0.45, settingsText.font.pointSize * 0.3)
