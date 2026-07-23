@@ -31,7 +31,8 @@ if __name__ == "__main__":
     os.environ["QT_QUICK_CONTROLS_STYLE"] = "Fusion"
 
     # Load the QML file
-    engine.load(os.path.join("qml", "main.qml"))
+    engine.load(os.path.join(os.getcwd(), "KibanaQuery", "qml","main.qml"))
+    
 
     
     # Start the event loop
