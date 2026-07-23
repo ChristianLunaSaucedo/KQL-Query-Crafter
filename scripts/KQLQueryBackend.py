@@ -22,6 +22,10 @@ class KQLQueryHandler():
         self.first_llm_setup = not os.path.exists(kqlParameters.embeddings_save_dir)
         self.kqlParameters = kqlParameters
 
+        # Automatically Create Vector Database From CSV File If It Does Not Exist
+        start_documents, ids = self.CreateCSVDocuments(kqlParameters.doc_path)
+        self.CreateVectorDB(start_documents, ids)
+
     # Creates Documents From CSV File (Can be swapped out for Other Types Of Files)
     def CreateCSVDocuments(self, doc_path):
         csv_data = pandas.read_csv(doc_path)
