@@ -64,6 +64,7 @@ class KQLQueryHandler():
         )
 
         if self.first_llm_setup:
+            print("IS FIRST LLM USE")
             vector_db.add_documents(documents=documents, ids=ids)
         return vector_db
 

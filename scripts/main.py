@@ -37,7 +37,5 @@ if __name__ == "__main__":
     # Load the QML file
     engine.load(execution_path)
     
-
-    
     # Start the event loop
     sys.exit(app.exec())
