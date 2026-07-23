@@ -40,4 +40,8 @@ TextField {
 
     font.pointSize: Math.max(8, Layout.preferredHeight * 0.25)
     horizontalAlignment: Text.AlignLeft
+
+    Component.onCompleted: {
+        scenarioText.ensureVisible(0)
+    }
 }
