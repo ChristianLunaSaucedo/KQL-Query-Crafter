@@ -30,8 +30,12 @@ if __name__ == "__main__":
     # Specify Default Styling
     os.environ["QT_QUICK_CONTROLS_STYLE"] = "Fusion"
 
+    # Get the path to the main QML File (Change This If Issues Found)
+    current_file_dir = os.path.dirname(os.path.abspath(__file__))
+    execution_path = os.path.join(current_file_dir, "..", "qml", "main.qml")
+
     # Load the QML file
-    engine.load(os.path.join(os.getcwd(), "KibanaQuery", "qml","main.qml"))
+    engine.load(execution_path)
     
 
     
