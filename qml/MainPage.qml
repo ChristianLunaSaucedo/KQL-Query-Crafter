@@ -14,11 +14,21 @@ Item {
         console.log("On Query Started Signal Emitted (QML)");
     }
 
-    function onQueryFinished(scenario, query) {
+    function onQueryFinished(scenario, query, isInformationOnly) {
         console.log("On Query Finished Signal Emitted (QML)");
         busyPopup.visible = false;
         console.log(scenario, query);
 
+        onSendResponse(scenario, query, isInformationOnly);
+
+        // Auto Send Query To Clipboard when querying
+        if (settingsPage.autoCopyEnabled && !isInformationOnly) {
+            systemController.CopyToClipboard(query);
+            console.log("Auto Copied: ", query);
+        }
+    }
+
+    function onSendResponse(scenario, query, isInformationOnly) {
         // In case of an invalid query
         if (query === "Error") {
             // Adding New Element
@@ -34,12 +44,6 @@ Item {
             "scenario": scenario,
             "query": query
         });
-
-        // Auto Send Query To Clipboard when querying
-        if (settingsPage.autoCopyEnabled) {
-            systemController.CopyToClipboard(query);
-            console.log("Auto Copied: ", query);
-        }
     }
 
     function queryPrompt(params) {
@@ -56,6 +60,7 @@ Item {
     Component.onCompleted: {
         systemController.query_started.connect(mainPage.onQueryStarted);
         systemController.query_finished.connect(mainPage.onQueryFinished);
+        systemController.send_response.connect(mainPage.onSendResponse);
     }
 
     // Effects Timer
