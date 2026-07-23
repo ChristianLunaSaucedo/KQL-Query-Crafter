@@ -90,6 +90,9 @@ Rectangle {
         autoCopyDropdown.currentValue = savedAutoCopy;
 
         setCorrectTheme(savedTheme);
+        systemController.UpdateEmbeddingModel(savedEmbeddingModel);
+        systemController.UpdateGenerationLLM(savedLLMModel);
+
     }
     color: settingsPage.color_5
 

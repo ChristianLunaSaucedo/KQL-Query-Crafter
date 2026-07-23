@@ -7,7 +7,7 @@ class Parameters():
                 current_file_dir = os.path.dirname(os.path.abspath(__file__))
                 self.embedding_model = "None"
 
-                self.embeddings_save_dir = os.path.join(current_file_dir, "..", "chrome_langchain_db")
+                self.embeddings_save_dir = "Broken"
 
                 
                 data_path = os.path.join(current_file_dir, "..", "data", "ECSFieldsCSV.csv")

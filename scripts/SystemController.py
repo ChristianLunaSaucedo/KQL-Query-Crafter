@@ -1,4 +1,5 @@
 import ollama
+import os
 from ollama import ResponseError
 
 from KQLQueryBackend import KQLQueryHandler
@@ -12,7 +13,8 @@ class SystemController(QObject):
     
     # Signals To Send To QML
     query_started = Signal()
-    query_finished = Signal(str, str)
+    query_finished = Signal(str, str, bool)
+    send_response = Signal(str, str, bool)
 
     send_existing_model = Signal(str)
 
@@ -34,6 +36,10 @@ class SystemController(QObject):
                 super().__init__()
                 task_self.textToQuery = textToQuery
                 task_self.kql_query_handler = kql_query_handler
+
+                # A helpful message to avoid confusion when using a new embedding model for the first time
+                if self.kql_query_handler.first_llm_setup and self.kqlParameters.embedding_model != "None":
+                    self.send_response.emit("First Time Using Embedding Model Detected", "Please Run A Query And Restart The Application To Resolve (If Valid Model)", True)
                     
             def run(task_self):
                 print("Querying Prompt: ", task_self.textToQuery)
@@ -42,9 +48,9 @@ class SystemController(QObject):
                 try:
                     response = task_self.kql_query_handler.AskQuestion(task_self.textToQuery)
                     print("GOT A Query FROM THREAD: ", response)
-                    self.query_finished.emit(task_self.textToQuery, response)
+                    self.query_finished.emit(task_self.textToQuery, response, False)
                 except ResponseError as e:
-                    self.query_finished.emit(task_self.textToQuery, "Error")
+                    self.query_finished.emit(task_self.textToQuery, "Error", True)
                     print("FAILED! ", e)
 
                 
@@ -58,7 +64,7 @@ class SystemController(QObject):
     @Slot()
     def FetchLLMList(self):
         modelsList = ollama.list()['models']
-            
+        
         for model in modelsList:
             modelName = model['model']
 
@@ -86,5 +92,5 @@ class SystemController(QObject):
         # Update Parameters 
         self.kqlParameters.embedding_model = newModel
         self.kql_query_handler = KQLQueryHandler(self.kqlParameters)
-    
-    
+        
+        

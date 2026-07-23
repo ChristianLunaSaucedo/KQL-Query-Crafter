@@ -1,6 +1,6 @@
 import os
 import pandas
-
+from ollama import ResponseError
 from RAGParameters import Parameters
 
 from langchain_ollama import OllamaEmbeddings
@@ -16,15 +16,13 @@ from langchain_chroma import Chroma
 
 class KQLQueryHandler():
     def __init__(self, kqlParameters):
-        self.embeddings = OllamaEmbeddings(model=kqlParameters.embedding_model)
-        self.model = OllamaLLM(model=kqlParameters.ollama_model)
-                
-        self.first_llm_setup = not os.path.exists(kqlParameters.embeddings_save_dir)
+        self.embeddings = OllamaEmbeddings(model=kqlParameters.embedding_model, keep_alive=-1)
+        self.model = OllamaLLM(model=kqlParameters.ollama_model, keep_alive=-1)
+        
         self.kqlParameters = kqlParameters
+        self.kqlParameters.embeddings_save_dir = os.path.join("chroma_databases", kqlParameters.embedding_model.replace(":", "_"))
+        self.first_llm_setup = not os.path.exists(self.kqlParameters.embeddings_save_dir)
 
-        # Automatically Create Vector Database From CSV File If It Does Not Exist
-        start_documents, ids = self.CreateCSVDocuments(kqlParameters.doc_path)
-        self.CreateVectorDB(start_documents, ids)
 
     # Creates Documents From CSV File (Can be swapped out for Other Types Of Files)
     def CreateCSVDocuments(self, doc_path):
@@ -62,13 +60,12 @@ class KQLQueryHandler():
     # Creates a Vector Database from given documents
     def CreateVectorDB(self, documents, ids):
         vector_db = Chroma(
-            collection_name="restaurant_reviews",
+            collection_name="ecs_fields",
             persist_directory=self.kqlParameters.embeddings_save_dir,
             embedding_function=self.embeddings,
         )
 
         if self.first_llm_setup:
-            print("IS FIRST LLM USE")
             vector_db.add_documents(documents=documents, ids=ids)
         return vector_db
 
@@ -104,9 +101,11 @@ class KQLQueryHandler():
 
     # Invokes all methods from class in sequential order for easy method calling in order to receive a response for a given question
     def AskQuestion(self, question):
+        if(self.kqlParameters.embedding_model == "None" or self.kqlParameters.ollama_model == "None"):
+            raise ResponseError("Please Set Both Embedding Model and LLM Model Before Querying")
         documents, ids = self.CreateCSVDocuments(self.kqlParameters.doc_path)
 
-        vector_db = self.CreateVectorDB(documents, ids)        
+        vector_db = self.CreateVectorDB(documents, ids)   
         
         retriever = self.CreateRetriever(vector_db)
 
