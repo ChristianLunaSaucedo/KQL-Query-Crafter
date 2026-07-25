@@ -23,7 +23,8 @@ class KQLQueryHandler():
         self.model = OllamaLLM(model=kqlParameters.ollama_model, keep_alive=-1)
         
         self.kqlParameters = kqlParameters
-        self.kqlParameters.embeddings_save_dir = os.path.join("chroma_databases", kqlParameters.embedding_model.replace(":", "_"))
+        # self.kqlParameters.embeddings_save_dir = os.path.join("chroma_databases", kqlParameters.embedding_model.replace(":", "_"))
+        self.kqlParameters.embeddings_save_dir = "./chroma_ecs_db"
         self.first_llm_setup = not os.path.exists(self.kqlParameters.embeddings_save_dir)
 
 
@@ -63,34 +64,39 @@ class KQLQueryHandler():
         return documents, ids
         
     def CreateMarkdownVectorDB(self):
-        DOCS_DIRECTORY = os.path.join(".", "ecs-corpus")
-        loader = DirectoryLoader(
-        DOCS_DIRECTORY,
-        glob="**/*.md",             # Recursively find all .md files
-        loader_cls=TextLoader,       # Use simple text loading for raw Markdown
-        loader_kwargs={"encoding": "utf-8"}
-        )
 
-        documents = loader.load()
-        print(f"Loaded {len(documents)} markdown files.")
-
-        # 3. Split large Markdown documents into smaller chunks
-        # Crucial for vector search so context stays focused and fits within LLM context windows
-        text_splitter = RecursiveCharacterTextSplitter(
-            chunk_size=7000,           # Character limit per chunk
-            chunk_overlap=200,         # Overlap ensures context isn't cut awkwardly at boundaries
-            separators=["\n## ", "\n### ", "\n\n", "\n", " ", ""] # Respects Markdown headers!
-        )
-
-        chunked_docs = text_splitter.split_documents(documents)
-        print(f"Split into {len(chunked_docs)} chunks.")
-
-        vector_db = Chroma.from_documents(
-            documents=chunked_docs,
-            embedding=self.embeddings,
-            persist_directory="./chroma_ecs_db",
+        vector_db = Chroma(
+            embedding_function=self.embeddings,
+            persist_directory=self.kqlParameters.embeddings_save_dir,
             collection_name="elastic_ecs_docs"
         )
+
+        if(self.first_llm_setup):
+            DOCS_DIRECTORY = os.path.join(".", "ecs-corpus")
+            loader = DirectoryLoader(
+            DOCS_DIRECTORY,
+            glob="**/*.md",             # Recursively find all .md files
+            loader_cls=TextLoader,       # Use simple text loading for raw Markdown
+            loader_kwargs={"encoding": "utf-8"}
+            )
+
+            documents = loader.load()
+            print(f"Loaded {len(documents)} markdown files.")
+
+            # 3. Split large Markdown documents into smaller chunks
+            # Crucial for vector search so context stays focused and fits within LLM context windows
+            text_splitter = RecursiveCharacterTextSplitter(
+                chunk_size=7000,           # Character limit per chunk
+                chunk_overlap=200,         # Overlap ensures context isn't cut awkwardly at boundaries
+                separators=["\n## ", "\n### ", "\n\n", "\n", " ", ""] # Respects Markdown headers!
+            )
+
+            chunked_docs = text_splitter.split_documents(documents)
+            print(f"Split into {len(chunked_docs)} chunks.")
+            vector_db.add_documents(documents=chunked_docs)
+            
+        
+
         return vector_db
 
 
@@ -133,7 +139,7 @@ class KQLQueryHandler():
     def CreateChain(self):
         template = """
         You are an AI Kibana Language Bot. Your task is to assist users in understanding utilizing Kibana Query Language (KQL) by providing clear and concise answers to their query questions. You have access to a set of fields and their descriptions, which you can use to provide accurate and helpful responses for their query.
-
+        I only want the query inside of the json you provide.
         Here are the fields:
         {context}
 
