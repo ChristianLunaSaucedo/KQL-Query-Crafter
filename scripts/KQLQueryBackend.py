@@ -94,7 +94,13 @@ class KQLQueryHandler():
 
     # Prepares a chain for future execution
     def CreateChain(self):
-        template = self.kqlParameters.template
+        template = """
+        Here are the fields:
+        {context}
+
+        Here is the question to answer:
+        {question}
+        """
         prompt = ChatPromptTemplate.from_template(template)
         chain = prompt | self.model 
         return chain
