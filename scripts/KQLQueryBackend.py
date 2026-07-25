@@ -57,6 +57,38 @@ class KQLQueryHandler():
                 documents.append(document)
         return documents, ids
 
+     def CreateMarkdownVectorDB(self):
+        DOCS_DIRECTORY = os.path.join(".", "ecs-corpus")
+        loader = DirectoryLoader(
+        DOCS_DIRECTORY,
+        glob="**/*.md",             # Recursively find all .md files
+        loader_cls=TextLoader,       # Use simple text loading for raw Markdown
+        loader_kwargs={"encoding": "utf-8"}
+        )
+
+        documents = loader.load()
+        print(f"Loaded {len(documents)} markdown files.")
+
+        # 3. Split large Markdown documents into smaller chunks
+        # Crucial for vector search so context stays focused and fits within LLM context windows
+        text_splitter = RecursiveCharacterTextSplitter(
+            chunk_size=7000,           # Character limit per chunk
+            chunk_overlap=200,         # Overlap ensures context isn't cut awkwardly at boundaries
+            separators=["\n## ", "\n### ", "\n\n", "\n", " ", ""] # Respects Markdown headers!
+        )
+
+        chunked_docs = text_splitter.split_documents(documents)
+        print(f"Split into {len(chunked_docs)} chunks.")
+
+        vector_db = Chroma.from_documents(
+            documents=chunked_docs,
+            embedding=self.embeddings,
+            persist_directory="./chroma_ecs_db",
+            collection_name="elastic_ecs_docs"
+        )
+        return vector_db
+
+
     # Creates a Vector Database from given documents
     def CreateVectorDB(self, documents, ids):
         vector_db = Chroma(
