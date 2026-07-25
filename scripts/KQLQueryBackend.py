@@ -10,6 +10,8 @@ from langchain_core.documents import Document
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.prompts import ChatPromptTemplate, PromptTemplate
 
+from langchain_community.document_loaders import DirectoryLoader, TextLoader
+
 from langchain_classic.retrievers import MultiQueryRetriever
 
 from langchain_chroma import Chroma
@@ -126,7 +128,15 @@ class KQLQueryHandler():
 
     # Prepares a chain for future execution
     def CreateChain(self):
-        template = self.kqlParameters.template
+        template = """
+        You are an AI Kibana Language Bot. Your task is to assist users in understanding utilizing Kibana Query Language (KQL) by providing clear and concise answers to their query questions. You have access to a set of fields and their descriptions, which you can use to provide accurate and helpful responses for their query.
+
+        Here are the fields:
+        {context}
+
+        Here is the question to answer:
+        {question}
+        """
         prompt = ChatPromptTemplate.from_template(template)
         chain = prompt | self.model 
         return chain
@@ -135,9 +145,11 @@ class KQLQueryHandler():
     def AskQuestion(self, question):
         if(self.kqlParameters.embedding_model == "None" or self.kqlParameters.ollama_model == "None"):
             raise ResponseError("Please Set Both Embedding Model and LLM Model Before Querying")
-        documents, ids = self.CreateCSVDocuments(self.kqlParameters.doc_path)
+        //documents, ids = self.CreateCSVDocuments(self.kqlParameters.doc_path)
 
-        vector_db = self.CreateVectorDB(documents, ids)   
+        //vector_db = self.CreateVectorDB(documents, ids)   
+        vector_db = self.CreateMarkdownVectorDB() 
+
         
         retriever = self.CreateRetriever(vector_db)
 
