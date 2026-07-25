@@ -1,3 +1,24 @@
-.venv
-scripts/__pycache__/
-chrome_langchain_db
+# Virtual environment
+.venv/
+venv/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Generated vector stores.
+# Rebuilt by `bootstrap.py --build-index <model>` or lazily on first query.
+# Large, binary, machine-specific, and keyed to the embedding model that
+# produced them.
+chroma_databases/
+chrome_langchain_db/
+
+# Qt / QML build artifacts
+*.qmlc
+*.jsc
+
+# OS noise
+.DS_Store
+Thumbs.db
+desktop.ini
