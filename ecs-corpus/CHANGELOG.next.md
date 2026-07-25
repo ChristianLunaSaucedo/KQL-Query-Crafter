@@ -1,0 +1,47 @@
+<!-- When adding an entry to the Changelog:
+
+- Please follow the Keep a Changelog: http://keepachangelog.com/ guidelines.
+- Please insert your changelog line ordered by PR ID.
+- Make sure you add your entry to the correct section (schema or tooling).
+
+Thanks, you're awesome :-) -->
+
+## Unreleased
+
+### Schema Changes
+
+#### Breaking changes
+
+#### Bugfixes
+
+* Fix GenAI integer fields to use `long` datatype per ECS conventions. #2646
+
+#### Added
+
+* Add `vulnerability.status` field with allowed values `open`, `fixed`, `reopened`, `unknown`. #2662
+
+#### Improvements
+
+#### Deprecated
+
+### Tooling and Artifact Changes
+
+#### Breaking changes
+
+#### Bugfixes
+
+#### Added
+
+#### Improvements
+
+* Streamline RFC process from four stages (Strawperson, Draft, Candidate, Finished) to a single Proposal stage with target maturity. #2600
+
+#### Deprecated
+
+## 9.4.0 (Feature Freeze)
+
+### Tooling and Artifact Changes
+
+#### Added
+
+#### Improvements
