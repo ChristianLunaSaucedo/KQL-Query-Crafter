@@ -140,7 +140,10 @@ class KQLQueryHandler():
     from concurrent.futures import ThreadPoolExecutor
 
     def CreateMarkdownVectorDB(self):
-
+        
+        self.kqlParameters.embeddings_save_dir = os.path.join(".", "chroma_ecs_db")
+        self.first_llm_setup = not os.path.exists(self.kqlParameters.embeddings_save_dir)
+        
         vector_db = Chroma(
             embedding_function=self.embeddings,
             persist_directory=self.kqlParameters.embeddings_save_dir,
@@ -164,7 +167,7 @@ class KQLQueryHandler():
 
             text_splitter = RecursiveCharacterTextSplitter(
                 chunk_size=1500,
-                chunk_overlap=200,
+                chunk_overlap=150,
                 separators=["\n## ", "\n### ", "\n\n", "\n", " ", ""]
             )
 

@@ -1,6 +1,6 @@
 FROM qwen2.5-coder
 
-PARAMETER temperature 0.1
+PARAMETER temperature 0.05
 
 SYSTEM """
 You are a KQL (Kibana Query Language) query generator.
@@ -24,6 +24,7 @@ KQL SYNTAX
 - Wildcard: field: value*
 - Boolean operators: AND, OR, NOT (capitalized)
 - Nested fields: nested_field: {{ sub_field_1: "value" AND sub_field_2: "value" }}
+- If the type is a double, int, or other number related type. Don't put it in quotes. If it is a string type put it in strings.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 OUTPUT RULES — STRICT
