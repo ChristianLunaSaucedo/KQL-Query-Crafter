@@ -24,7 +24,7 @@ class KQLQueryHandler():
         
         self.kqlParameters = kqlParameters
         # self.kqlParameters.embeddings_save_dir = os.path.join("chroma_databases", kqlParameters.embedding_model.replace(":", "_"))
-        self.kqlParameters.embeddings_save_dir = "./chroma_ecs_db"
+        self.kqlParameters.embeddings_save_dir = os.path.join(".", "chroma_ecs_db")
         self.first_llm_setup = not os.path.exists(self.kqlParameters.embeddings_save_dir)
 
 
@@ -62,8 +62,9 @@ class KQLQueryHandler():
                 ids.append(str(id))
                 documents.append(document)
         return documents, ids
-        
-    def CreateMarkdownVectorDB(self):
+    
+    # Version 1
+    # def CreateMarkdownVectorDB(self):
 
         vector_db = Chroma(
             embedding_function=self.embeddings,
@@ -98,7 +99,90 @@ class KQLQueryHandler():
         
 
         return vector_db
+    
+    # Version 2
+    # def CreateMarkdownVectorDB(self):
 
+        vector_db = Chroma(
+            embedding_function=self.embeddings,
+            persist_directory=self.kqlParameters.embeddings_save_dir,
+            collection_name="elastic_ecs_docs"
+        )
+
+        if self.first_llm_setup:
+            DOCS_DIRECTORY = os.path.join(".", "ecs-corpus")
+            loader = DirectoryLoader(
+                DOCS_DIRECTORY,
+                glob="**/*.md",
+                loader_cls=TextLoader,
+                loader_kwargs={"encoding": "utf-8"},
+                use_multithreading=True,
+                show_progress=True,
+            )
+
+            documents = loader.load()
+            print(f"Loaded {len(documents)} markdown files.")
+
+            text_splitter = RecursiveCharacterTextSplitter(
+                chunk_size=7000,
+                chunk_overlap=200,
+                separators=["\n## ", "\n### ", "\n\n", "\n", " ", ""]
+            )
+
+            chunked_docs = text_splitter.split_documents(documents)
+            print(f"Split into {len(chunked_docs)} chunks.")
+
+            vector_db.add_documents(documents=chunked_docs)
+
+        return vector_db
+
+
+    from concurrent.futures import ThreadPoolExecutor
+
+    def CreateMarkdownVectorDB(self):
+
+        vector_db = Chroma(
+            embedding_function=self.embeddings,
+            persist_directory=self.kqlParameters.embeddings_save_dir,
+            collection_name="elastic_ecs_docs"
+        )
+
+        if self.first_llm_setup:
+            print("NO CHROMA DATABASE EXISTS, Creating one!")
+            DOCS_DIRECTORY = os.path.join(".", "ecs-corpus")
+            loader = DirectoryLoader(
+                DOCS_DIRECTORY,
+                glob="**/*.md",
+                loader_cls=TextLoader,
+                loader_kwargs={"encoding": "utf-8"},
+                use_multithreading=True,
+                show_progress=True,
+            )
+
+            documents = loader.load()
+            print(f"Loaded {len(documents)} markdown files.")
+
+            text_splitter = RecursiveCharacterTextSplitter(
+                chunk_size=1500,
+                chunk_overlap=200,
+                separators=["\n## ", "\n### ", "\n\n", "\n", " ", ""]
+            )
+
+            chunked_docs = text_splitter.split_documents(documents)
+            print(f"Split into {len(chunked_docs)} chunks.")
+
+            BATCH_SIZE = 100
+            batches = [chunked_docs[i:i + BATCH_SIZE] for i in range(0, len(chunked_docs), BATCH_SIZE)]
+
+            def add_batch(batch):
+                vector_db.add_documents(documents=batch)
+
+            with self.ThreadPoolExecutor(max_workers=5) as executor:
+                list(executor.map(add_batch, batches))
+
+            print(f"Added {len(chunked_docs)} chunks to vector store.")
+
+        return vector_db
 
     # Creates a Vector Database from given documents
     def CreateVectorDB(self, documents, ids):
@@ -129,32 +213,48 @@ class KQLQueryHandler():
         # retriever = MultiQueryRetriever.from_llm(retriever=vector_db.as_retriever(), llm=self.model, prompt=QUERY_PROMPT)
 
         # Alternate Method Of Retrieval
+        # retriever = vector_db.as_retriever(
+        #     search_kwargs={"k": 8}
+        # )
+
         retriever = vector_db.as_retriever(
-            search_kwargs={"k": 8}
-        )
+        search_type="mmr",          # Maximal Marginal Relevance — reduces redundant chunks
+        search_kwargs={
+        "k": 5,                 # number of chunks returned to the LLM
+        "fetch_k": 20,          # candidate pool MMR selects from
+        "lambda_mult": 0.5,     # 0 = max diversity, 1 = max relevance; 0.5 is a good default
+    }
+)
 
         return retriever
 
     # Prepares a chain for future execution
     def CreateChain(self):
+        # template = """
+        
+        # Here are the fields:
+        # {context}
+
+        # Here is the question to answer:
+        # {question}
+        # """
         template = """
-        You are an AI Kibana Language  QUERY ONLY Bot. Your task is to assist users in understanding utilizing Kibana Query Language (KQL) by providing clear and concise answers to their query questions. You have access to a set of fields and their descriptions, which you can use to provide accurate and helpful responses for their query.
-        I only want the query inside of the json you provide. I am not here to chat and read a lot. I want you to be clear and direct on my query. Ensure that you provide answers in the json form of term.term.term separated by . As well as bridging terms with boolean values such as "AND", "OR", etc. I DO Not want steps/explanations, I want answers
+You are given reference documentation describing available log fields:
 
-        CONCISENESS RULES:
-- Be direct, succinct, and clear. Avoid fluff or filler.
-- Maximum response length: 2 to 3 sentences (or under 50 words).
-- Provide ONLY the direct answer based on the reviews; do NOT re-explain the question.
-- Do NOT provide bullet points, lists, or unwanted background details unless asked.
+{context}
 
-CRITICAL FORMATTING REQUIREMENT:
-Provide a ONE SENTENCE direct answer using ONLY the reviews above. Do NOT write paragraphs or lists. I just want the combined json result for the Kibana Query Language Query without the curly braces, separated by periods
-        Here are the fields:
-        {context}
+Convert the scenario below into a single KQL (Kibana Query Language) query using only fields present in the documentation above.
 
-        Here is the question to answer:
-        {question}
-        """
+IMPORTANT: Always use the full, exact field name as it appears after "Field:" in the documentation — never shorten it to just the field set name.
+Correct: user.name: "John"
+Incorrect: user: "John"
+Correct: host.name: "SYS-01"
+Incorrect: host: "SYS-01"
+
+Scenario: {question}
+
+Respond with ONLY the raw KQL query. No JSON. No explanations. No markdown or code blocks. No labels like "Query:". Your entire response must be a single line containing nothing but the KQL query itself.
+"""
         prompt = ChatPromptTemplate.from_template(template)
         chain = prompt | self.model 
         return chain

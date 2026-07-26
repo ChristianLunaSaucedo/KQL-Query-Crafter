@@ -38,8 +38,8 @@ class SystemController(QObject):
                 task_self.kql_query_handler = kql_query_handler
 
                 # A helpful message to avoid confusion when using a new embedding model for the first time
-                if self.kql_query_handler.first_llm_setup and self.kqlParameters.embedding_model != "None":
-                    self.send_response.emit("First Time Using Embedding Model Detected", "Please Run A Query And Restart The Application To Resolve (If Valid Model)", True)
+                # if self.kql_query_handler.first_llm_setup and self.kqlParameters.embedding_model != "None":
+                #     self.send_response.emit("First Time Using Embedding Model Detected", "Please Run A Query And Restart The Application To Resolve (If Valid Model)", True)
                     
             def run(task_self):
                 print("Querying Prompt: ", task_self.textToQuery)
