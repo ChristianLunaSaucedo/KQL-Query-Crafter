@@ -13,7 +13,7 @@ __pycache__/
 # produced them.
 chroma_databases/
 chrome_langchain_db/
-chrom_ecs_db
+chroma_ecs_db
 # Qt / QML build artifacts
 *.qmlc
 *.jsc
