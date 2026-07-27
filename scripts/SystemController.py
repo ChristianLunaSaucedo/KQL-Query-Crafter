@@ -1,6 +1,7 @@
 import ollama
 import os
 from ollama import ResponseError
+from datetime import datetime
 
 from KQLQueryBackend import KQLQueryHandler
 from RAGParameters import Parameters
@@ -46,7 +47,9 @@ class SystemController(QObject):
 
                 # Sends response from llm to frontend QML (Error Sent If Failed)
                 try:
+                    print("Started Query @: ", datetime.now())
                     response = task_self.kql_query_handler.AskQuestion(task_self.textToQuery)
+                    print("Finished Query @: ", datetime.now())
                     print("GOT A Query FROM THREAD: ", response)
                     self.query_finished.emit(task_self.textToQuery, response, False)
                 except ResponseError as e:

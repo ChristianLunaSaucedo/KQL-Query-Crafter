@@ -1,4 +1,4 @@
-FROM qwen2.5-coder
+FROM granite4.1:8b
 
 PARAMETER temperature 0.05
 
@@ -25,7 +25,8 @@ KQL SYNTAX
 - Boolean operators: AND, OR, NOT (capitalized)
 - Nested fields: nested_field: {{ sub_field_1: "value" AND sub_field_2: "value" }}
 - If the type is a double, int, or other number related type. Don't put it in quotes. If it is a string type put it in strings.
-
+- When grouping logic with 2 or more terms ensure you use Parenthesis
+- Ensure that the retrieved terms are actual valid terms with term=""
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 OUTPUT RULES — STRICT
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -38,5 +39,6 @@ Respond with ONLY the raw KQL query. Nothing else.
 - No trailing commentary.
 - If multiple interpretations are possible, silently choose the single best one and output only that.
 
+ALWAYS ATTEMPT TO USE THE WORDS IN THE PROMPT IF POSSIBLE FOR MORE SPECIFICITY ONLY IF VALID/SYNONYMS 
 Your entire response must be one line: the KQL query itself, and nothing else.
 """
