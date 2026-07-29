@@ -19,13 +19,16 @@ from langchain_classic.retrievers import MultiQueryRetriever
 
 from langchain_chroma import Chroma
 
+from docling.document_converter import DocumentConverter
+import glob
+
 
 class KQLQueryHandler:
     def __init__(self, kqlParameters):
         self.embeddings = OllamaEmbeddings(
             model=kqlParameters.embedding_model, keep_alive=-1
         )
-        self.model = OllamaLLM(model=kqlParameters.ollama_model, keep_alive=-1)
+        self.model = OllamaLLM(model=kqlParameters.ollama_model, keep_alive=-1, num_ctx=4096)
 
         self.kqlParameters = kqlParameters
         # self.kqlParameters.embeddings_save_dir = os.path.join("chroma_databases", kqlParameters.embedding_model.replace(":", "_"))
@@ -47,42 +50,96 @@ class KQLQueryHandler:
             collection_name="elastic_ecs_docs",
         )
 
+        # if vector_db._collection.count() == 0:
+        #     print("NO CHROMA DATABASE EXISTS, Creating one!")
+        #     DOCS_DIRECTORY = os.path.join(".", "ecs-corpus")
+        #     loader = DirectoryLoader(
+        #         DOCS_DIRECTORY,
+        #         glob="**/*.md",
+        #         loader_cls=TextLoader,
+        #         loader_kwargs={"encoding": "utf-8"},
+        #         use_multithreading=True,
+        #         show_progress=True,
+        #     )
+
+        #     documents = loader.load()
+        #     print(f"Loaded {len(documents)} markdown files.")
+
+        #     text_splitter = RecursiveCharacterTextSplitter(
+        #         chunk_size=1500,
+        #         chunk_overlap=150,
+        #         separators=["\n## ", "\n### ", "\n\n", "\n", " ", ""],
+        #     )
+            
+        #     chunked_docs = text_splitter.split_documents(documents)
+        #     print(f"Split into {len(chunked_docs)} chunks.")
+
+        #     BATCH_SIZE = 100
+        #     batches = [
+        #         chunked_docs[i : i + BATCH_SIZE]
+        #         for i in range(0, len(chunked_docs), BATCH_SIZE)
+        #     ]
+
+        #     def add_batch(batch):
+        #         vector_db.add_documents(documents=batch)
+
+        #     with ThreadPoolExecutor(max_workers=5) as executor:
+        #         list(executor.map(add_batch, batches))
+
+        #     print(f"Added {len(chunked_docs)} chunks to vector store.")
+
         if vector_db._collection.count() == 0:
             print("NO CHROMA DATABASE EXISTS, Creating one!")
             DOCS_DIRECTORY = os.path.join(".", "ecs-corpus")
-            loader = DirectoryLoader(
-                DOCS_DIRECTORY,
-                glob="**/*.md",
-                loader_cls=TextLoader,
-                loader_kwargs={"encoding": "utf-8"},
-                use_multithreading=True,
-                show_progress=True,
-            )
 
-            documents = loader.load()
+            # Find all target markdown files
+            file_paths = glob.glob(os.path.join(DOCS_DIRECTORY, "**/*.md"), recursive=True)
+
+            # Initialize native Docling DocumentConverter
+            converter = DocumentConverter()
+
+            # Convert documents using native Docling batch conversion
+            print(f"Parsing {len(file_paths)} files with native Docling...")
+            conv_results = converter.convert_all(file_paths)
+
+            # Wrap Docling outputs into standard LangChain Document objects
+            documents = []
+            for result in conv_results:
+                if result.document:
+                    # Export the parsed Docling structure as markdown
+                    md_content = result.document.export_to_markdown()
+
+                    # Preserve original metadata
+                    metadata = {"source": str(result.input.file)}
+
+                    documents.append(
+                        Document(page_content=md_content, metadata=metadata)
+                    )
+
             print(f"Loaded {len(documents)} markdown files.")
-
+    
+            # Split documents using RecursiveCharacterTextSplitter
             text_splitter = RecursiveCharacterTextSplitter(
                 chunk_size=1500,
                 chunk_overlap=150,
                 separators=["\n## ", "\n### ", "\n\n", "\n", " ", ""],
             )
-            
+    
             chunked_docs = text_splitter.split_documents(documents)
             print(f"Split into {len(chunked_docs)} chunks.")
-
+    
             BATCH_SIZE = 100
             batches = [
                 chunked_docs[i : i + BATCH_SIZE]
                 for i in range(0, len(chunked_docs), BATCH_SIZE)
             ]
-
+    
             def add_batch(batch):
                 vector_db.add_documents(documents=batch)
-
+    
             with ThreadPoolExecutor(max_workers=5) as executor:
                 list(executor.map(add_batch, batches))
-
+    
             print(f"Added {len(chunked_docs)} chunks to vector store.")
 
         return vector_db
@@ -105,11 +162,9 @@ class KQLQueryHandler:
 
         # Alternate Method Of Retrieval
         retriever = vector_db.as_retriever(
-    search_type="mmr",
+    search_type="similarity",
     search_kwargs={
-        "k": 5,
-        "fetch_k": 15,
-        "lambda_mult": 0.5,
+        "k": 8,
     }
 )
 
@@ -124,18 +179,14 @@ class KQLQueryHandler:
         template = """
 You are given reference documentation describing available log fields:
 
+Convert the scenario below into a valid  KQL (Kibana Query Language) query using only the valid ECS fields present in the context provided.
+====== CONTEXT ==========
 {context}
-
-Convert the scenario below into a single KQL (Kibana Query Language) query using only fields present in the documentation above.
-
-IMPORTANT: Always use the full, exact field name as it appears after "Field:" in the documentation — never shorten it to just the field set name.
-Correct: user.name: "John"
-Incorrect: user: "John"
-Correct: host.name: "SYS-01"
-Incorrect: host: "SYS-01"
+=========================
 
 Scenario: {question}
 
+You will always use the ":" after a valid term but Never use an alternative like "=" or "=="
 Respond with ONLY the raw KQL query. No JSON. No explanations. No markdown or code blocks. No labels like "Query:". Your entire response must be a single line containing nothing but the KQL query itself.
 """
         prompt = ChatPromptTemplate.from_template(template)

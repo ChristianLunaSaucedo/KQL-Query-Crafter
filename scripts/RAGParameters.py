@@ -1,19 +1,18 @@
 import os
+import configparser
 
 # A class for simply holding parameters for Backend RAG System
 class Parameters():
         
         def __init__(self):
+             
                 current_file_dir = os.path.dirname(os.path.abspath(__file__))
-                self.embedding_model = "None"
+                self.embedding_model = "hf.co/SandLogicTechnologies/granite-embedding-311m-multilingual-r2-GGUF:IQ4_NL"
 
                 self.embeddings_save_dir = "Broken"
 
                 
-                data_path = os.path.join(current_file_dir, "..", "data", "ECSFieldsCSV.csv")
-                self.doc_path = data_path
-                
-                self.ollama_model = "None"
+                self.ollama_model = "kibana-ai"
                 
                 # Personalizing Backend LLM Settings (Can be improved)
                 self.template = """ You are an expert Kibana Query Language (KQL) query generator for Security Operations Center (SOC), Host Analysis, Network Analysis, Threat Hunting, and Incident Response workflows.
