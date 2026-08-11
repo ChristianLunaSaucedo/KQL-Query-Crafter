@@ -1,5 +1,4 @@
 import os
-import configparser
 
 # A class for simply holding parameters for Backend RAG System
 class Parameters():
@@ -11,7 +10,6 @@ class Parameters():
 
                 self.embeddings_save_dir = "Broken"
 
-                
                 self.ollama_model = "kibana-ai"
                 
                 # Personalizing Backend LLM Settings (Can be improved)

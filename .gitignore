@@ -11,8 +11,6 @@ __pycache__/
 # Rebuilt by `bootstrap.py --build-index <model>` or lazily on first query.
 # Large, binary, machine-specific, and keyed to the embedding model that
 # produced them.
-chroma_databases/
-chrome_langchain_db/
 chroma_ecs_db
 # Qt / QML build artifacts
 *.qmlc

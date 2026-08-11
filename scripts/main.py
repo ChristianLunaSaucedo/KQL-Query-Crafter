@@ -1,41 +1,35 @@
-import sys
-import os
+import streamlit as st
+from KQLQueryBackend import KQLQueryHandler
+from RAGParameters import Parameters
+from datetime import datetime
 
-from PyQt6.QtGui import QGuiApplication, QIcon
-from PyQt6.QtQml import QQmlApplicationEngine
+st.title("KQL Query Crafter")
+st.set_page_config(page_title="KQL Query Crafter",page_icon="💻", layout="wide")
+st.divider()
 
-from SystemController import SystemController
-from SettingsManager import SettingsManager
-from AssetsManager import AssetsManager
 
-if __name__ == "__main__":
-    app = QGuiApplication(sys.argv)
-    app.setWindowIcon(QIcon(os.path.join("assets", "icon.png")))
+user_prompt = st.text_input("Describe your scenario to query:", placeholder="Scenario goes here...")
+st.caption("Query will be generated when scenario is provided (Be as specific as possible)")
 
-    # Create Python Classes
-    systemController = SystemController()
-    settingsManager = SettingsManager()
-    assetsManager = AssetsManager()
+is_querying = False
+user_button = st.button("Generate Query", disabled=is_querying)
 
-    # Create the QML application engine
-    engine = QQmlApplicationEngine()
-    engine.quit.connect(app.quit)
+st.divider()
+user_response = ""
 
-    # Connecting Python & QML
-    engine.rootContext().setContextProperty("systemController", systemController)
-    engine.rootContext().setContextProperty("settingsManager", settingsManager)
-    engine.rootContext().setContextProperty("assetsManager", assetsManager)
-    
+parameters = Parameters()
+kql_query_handler = KQLQueryHandler(parameters)
 
-    # Specify Default Styling
-    os.environ["QT_QUICK_CONTROLS_STYLE"] = "Fusion"
 
-    # Get the path to the main QML File (Change This If Issues Found)
-    current_file_dir = os.path.dirname(os.path.abspath(__file__))
-    execution_path = os.path.join(current_file_dir, "..", "qml", "main.qml")
 
-    # Load the QML file
-    engine.load(execution_path)
-    
-    # Start the event loop
-    sys.exit(app.exec())
+
+if user_button or user_prompt.strip() != "":
+    is_querying = True
+    st.write(datetime.now())
+    with st.spinner("Generating query..."):
+        user_response = kql_query_handler.AskQuestion(user_prompt)
+    with st.chat_message("ai"):
+        st.header("Query:")
+        st.subheader(user_response)
+    is_querying = False
+    st.write(datetime.now())
