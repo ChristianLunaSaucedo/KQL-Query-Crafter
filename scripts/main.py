@@ -20,13 +20,13 @@ parameters = Parameters()
 kql_query_handler = KQLQueryHandler(parameters)
 
 if user_button or user_prompt.strip() != "":
+    
     st.write("STARTED QUERY AT: ", "```", datetime.now().strftime("%H:%M:%S"), "```")
     with st.spinner("Generating query..."):
         is_querying = True
         user_response = kql_query_handler.AskQuestion(user_prompt)
         is_querying = False
     with st.chat_message("ai"):
-        st.header("Query:")
         st.subheader(user_response)
-    is_querying = False
+        st.caption("AI may make mistakes. Please double check your responses.")
     st.write("ENDED QUERY AT: ", "```", datetime.now().strftime("%H:%M:%S"), "```")
