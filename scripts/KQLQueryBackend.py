@@ -1,4 +1,6 @@
 import os
+import glob
+
 from ollama import ResponseError
 from RAGParameters import Parameters
 
@@ -7,13 +9,11 @@ from langchain_ollama.llms import OllamaLLM
 
 from langchain_core.documents import Document
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_community.document_loaders import DirectoryLoader, TextLoader
 
-from langchain_text_splitters import RecursiveCharacterTextSplitter, CharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_chroma import Chroma
 
 from docling.document_converter import DocumentConverter
-import glob
 
 class KQLQueryHandler:
     def __init__(self, kqlParameters):

@@ -6,6 +6,4 @@ langchain_ollama==1.1.0
 langchain_text_splitters==1.1.2
 ollama==0.6.2
 pandas==3.0.5
-PyQt6==6.11.0
-pyqt6_sip==13.11.1
 streamlit==1.60.0
