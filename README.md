@@ -76,6 +76,7 @@
 * Writing Kibana queries during an incident can be tedious and slow, so this tool cuts out the syntax headaches and lets you find the logs you need by simply typing your scenario in plain English. The entire project runs locally, ensuring data privacy all around.
 ### Built With
 * [![Python][Python]][Python-url]
+* [![Streamlit][Streamlit]][Streamlit-url]
 * [![Ollama][Ollama]][Ollama-url]
 * [![Langchain][Langchain]][Langchain-url]
 
@@ -212,9 +213,14 @@ Project Link: [https://github.com/ChristianLunaSaucedo/KQL-Query-Crafter](https:
 
 
 [Python]: https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=fff
-[Python-url]: https://www.python.org/ 
+[Python-url]: https://www.python.org/
+
+[Streamlit]: https://img.shields.io/badge/-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white
+[Streamlit-url]: https://streamlit.io/
+
 [Ollama]: https://img.shields.io/badge/Ollama-fff?style=for-the-badge&logo=ollama&logoColor=000
 [Ollama-url]: https://ollama.com/
+
 [Langchain]: https://img.shields.io/badge/LangChain-1c3c3c.svg?style=for-the-badge&logo=langchain&logoColor=white
 [Langchain-url]: https://www.langchain.com/
 
