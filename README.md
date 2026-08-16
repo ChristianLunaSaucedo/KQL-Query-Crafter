@@ -1,6 +1,8 @@
 <a id="readme-top"></a>
 
-
+<!-- PROJECT SHIELDS -->
+[![Contributors][contributors-shield]][contributors-url]
+[![project_license][license-shield]][license-url]
 
 
 
@@ -216,4 +218,8 @@ Project Link: [https://github.com/ChristianLunaSaucedo/KQL-Query-Crafter](https:
 [Langchain]: https://img.shields.io/badge/LangChain-1c3c3c.svg?style=for-the-badge&logo=langchain&logoColor=white
 [Langchain-url]: https://www.langchain.com/
 
+[contributors-shield]: https://img.shields.io/github/contributors/ChristianLunaSaucedo/KQL-Query-Crafter.svg?style=for-the-badge
+[contributors-url]: https://github.com/ChristianLunaSaucedo/KQL-Query-Crafter/graphs/contributors
 
+[license-url]: https://github.com/ChristianLunaSaucedo/KQL-Query-Crafter/blob/master/LICENSE.txt
+[license-shield]: https://img.shields.io/github/license/ChristianLunaSaucedo/KQL-Query-Crafter.svg?style=for-the-badge
