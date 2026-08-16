@@ -190,7 +190,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@ChristianLunaSaucedo](https://linkedin.com/in/christian-luna-saucedo) - christianlunasaucedo@gmail.com
+Christian Luna Saucedo - [@ChristianLunaSaucedo](https://linkedin.com/in/christian-luna-saucedo) - christianlunasaucedo@gmail.com
 
 Project Link: [https://github.com/ChristianLunaSaucedo/KQL-Query-Crafter](https://github.com/ChristianLunaSaucedo/KQL-Query-Crafter)
 
