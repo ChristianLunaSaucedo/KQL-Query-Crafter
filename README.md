@@ -135,7 +135,16 @@ This is an example of how to list things you need to use the software and how to
   ```sh
   streamlit run scripts/main.py
   ```
-  
+
+#### Example 1
+<img width="2155" height="1175" alt="KQL1" src="https://github.com/user-attachments/assets/a268e969-02f1-41d0-9242-7b0f4a1655f4" />
+
+#### Example 2
+<img width="2155" height="1175" alt="KQL2" src="https://github.com/user-attachments/assets/51cce03f-54d7-4a96-8801-09fd7d5ea4c8" />
+
+#### Example 3
+<img width="2155" height="1175" alt="KQL3" src="https://github.com/user-attachments/assets/8126aa1b-f750-42b9-b2eb-0ca8cac9305a" />
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
