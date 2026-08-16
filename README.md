@@ -94,7 +94,6 @@
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
 * uv
   ```sh
   pip install uv
@@ -137,7 +136,7 @@ This is an example of how to list things you need to use the software and how to
   ```
 
 #### Example 1
-<img width="2155" height="1175" alt="KQL1" src="https://github.com/user-attachments/assets/a268e969-02f1-41d0-9242-7b0f4a1655f4" />
+<img width="2155" height="1175" alt="KQL1" src="https://github.com/user-attachments/assets/a6fa160d-5df1-4fb6-8ad5-a76b88ef91ad" />
 
 #### Example 2
 <img width="2155" height="1175" alt="KQL2" src="https://github.com/user-attachments/assets/51cce03f-54d7-4a96-8801-09fd7d5ea4c8" />
