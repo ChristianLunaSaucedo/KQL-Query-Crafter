@@ -10,18 +10,6 @@
 
 
 
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-[![Issues][issues-shield]][issues-url]
-[![MIT][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
 
 
 <!-- PROJECT LOGO -->
@@ -35,7 +23,7 @@
 <h1 align="center">KQL Query Crafter</h3>
 
   <p align="center">
-    A Local LLM Designed To Assist In Incident Response Situations Involving The Kibana Query Language (KQL)
+    A local, AI-powered tool built for Incident Responders that translates natural language scenarios into production-ready Kibana log queries.
     <br />
     <a href="https://github.com/ChristianLunaSaucedo/KQL-Query-Crafter"><strong>Explore the docs »</strong></a>
     <br />
@@ -57,6 +45,7 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#background-information">Background Information</a></li>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
@@ -85,16 +74,15 @@
 
 
 
-Here's a blank template to get started. To avoid retyping too much info, do a search and replace with your text editor for the following: `ChristianLunaSaucedo`, `KQL-Query-Crafter`, `twitter_handle`, `christian-luna-saucedo`, `gmail`, `christianlunasaucedo`, `KQL Query Crafter`, `project_description`, `MIT`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
+### Background Information
+* Writing Kibana queries during an incident can be tedious and slow, so this tool cuts out the syntax headaches and lets you find the logs you need by simply typing your scenario in plain English. The entire project runs locally, ensuring data privacy all around.
 ### Built With
 * [![Python][Python]][Python-url]
 * [![Ollama][Ollama]][Ollama-url]
-
+* [![Langchain][Langchain]][Langchain-url]
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -103,9 +91,6 @@ Here's a blank template to get started. To avoid retyping too much info, do a se
 
 <!-- GETTING STARTED -->
 ## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
@@ -146,8 +131,6 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
 * Launch The Webpage To Get Started
   ```sh
   streamlit run scripts/main.py
@@ -165,9 +148,10 @@ Use this space to show useful examples of how a project can be used. Additional 
 - [x] Add Basic Frontend
 - [ ] Add Copy Query Button
 - [ ] Add Improved Styling To Frontend
-- [ ] Add Advanced Kibana Query Language (KQL) Comprehension
+- [ ] Add Advanced Kibana Query Language (KQL) Comprehension To Mitigate Hallucinations
     - [ ] RAG Reranking
     - [ ] Additional Markdown Files For More Context
+    - [ ] Improved Modelfile
 
 See the [open issues](https://github.com/ChristianLunaSaucedo/KQL-Query-Crafter/issues) for a full list of proposed features (and known issues).
 
@@ -179,7 +163,7 @@ See the [open issues](https://github.com/ChristianLunaSaucedo/KQL-Query-Crafter/
 ## Contributing
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
@@ -189,18 +173,12 @@ Don't forget to give the project a star! Thanks again!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Top contributors:
-
-<a href="https://github.com/ChristianLunaSaucedo/KQL-Query-Crafter/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=ChristianLunaSaucedo/KQL-Query-Crafter" alt="contrib.rocks image" />
-</a>
-
 
 
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT. See `LICENSE.txt` for more information.
+Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -227,19 +205,12 @@ Project Link: [https://github.com/ChristianLunaSaucedo/KQL-Query-Crafter](https:
 
 
 
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[issues-shield]: https://img.shields.io/github/issues/ChristianLunaSaucedo/KQL-Query-Crafter.svg?style=for-the-badge
-[issues-url]: https://github.com/ChristianLunaSaucedo/KQL-Query-Crafter/issues
-[license-shield]: https://img.shields.io/github/license/ChristianLunaSaucedo/KQL-Query-Crafter.svg?style=for-the-badge
-[license-url]: https://github.com/ChristianLunaSaucedo/KQL-Query-Crafter/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/christian-luna-saucedo
-[product-screenshot]: images/screenshot.png
-<!-- Shields.io badges. You can a comprehensive list with many more badges at: https://github.com/inttter/md-badges -->
+
 [Python]: https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff
 [Python-url]: https://www.python.org/ 
 [Ollama]: https://img.shields.io/badge/Ollama-fff?logo=ollama&logoColor=000
 [Ollama-url]: https://ollama.com/
+[Langchain]: https://img.shields.io/badge/LangChain-1c3c3c.svg?logo=langchain&logoColor=white
+[Langchain-url]: https://www.langchain.com/
 
 
