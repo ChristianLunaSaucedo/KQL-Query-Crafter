@@ -207,6 +207,8 @@ Project Link: [https://github.com/ChristianLunaSaucedo/KQL-Query-Crafter](https:
 ## Acknowledgments
 
 * [Ollama Models](https://ollama.com/search)
+* [Kibana Query Language Documentation](https://www.elastic.co/docs/explore-analyze/query-filter/languages/kql)
+
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
