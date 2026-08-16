@@ -18,11 +18,8 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![project_license][license-shield]][license-url]
+[![MIT][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 
@@ -30,14 +27,15 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
+  <!-- <a href="https://www.flaticon.com/free-icons/viewpoint" title="viewpoint icons">Viewpoint icons created by VectorPortal - Flaticon</a> -->
   <a href="https://github.com/ChristianLunaSaucedo/KQL-Query-Crafter">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">KQL Query Crafter</h3>
+<h1 align="center">KQL Query Crafter</h3>
 
   <p align="center">
-    project_description
+    A Local LLM Designed To Assist In Incident Response Situations Involving The Kibana Query Language (KQL)
     <br />
     <a href="https://github.com/ChristianLunaSaucedo/KQL-Query-Crafter"><strong>Explore the docs »</strong></a>
     <br />
@@ -78,14 +76,16 @@
   </ol>
 </details>
 
+<img width="3840" height="2160" alt="image" src="https://github.com/user-attachments/assets/16e3a265-2354-47e7-b75e-ba818d7d541b" />
 
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Here's a blank template to get started. To avoid retyping too much info, do a search and replace with your text editor for the following: `ChristianLunaSaucedo`, `KQL-Query-Crafter`, `twitter_handle`, `christian-luna-saucedo`, `gmail`, `christianlunasaucedo`, `KQL Query Crafter`, `project_description`, `project_license`
+
+
+Here's a blank template to get started. To avoid retyping too much info, do a search and replace with your text editor for the following: `ChristianLunaSaucedo`, `KQL-Query-Crafter`, `twitter_handle`, `christian-luna-saucedo`, `gmail`, `christianlunasaucedo`, `KQL Query Crafter`, `project_description`, `MIT`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -134,6 +134,10 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    uv pip install -r requirements.txt
    ```
+4. Create The Custom Generation Model
+   ```sh
+   ollama create kibana-ai -f Modelfile.txt
+   ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -144,7 +148,11 @@ This is an example of how to list things you need to use the software and how to
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+* Launch The Webpage To Get Started
+  ```sh
+  streamlit run scripts/main.py
+  ```
+  
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -153,10 +161,13 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
+- [x] Add Basic Kibana Query Language (KQL) Comprehension
+- [x] Add Basic Frontend
+- [ ] Add Copy Query Button
+- [ ] Add Improved Styling To Frontend
+- [ ] Add Advanced Kibana Query Language (KQL) Comprehension
+    - [ ] RAG Reranking
+    - [ ] Additional Markdown Files For More Context
 
 See the [open issues](https://github.com/ChristianLunaSaucedo/KQL-Query-Crafter/issues) for a full list of proposed features (and known issues).
 
@@ -166,8 +177,6 @@ See the [open issues](https://github.com/ChristianLunaSaucedo/KQL-Query-Crafter/
 
 <!-- CONTRIBUTING -->
 ## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 Don't forget to give the project a star! Thanks again!
@@ -191,7 +200,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Distributed under the project_license. See `LICENSE.txt` for more information.
+Distributed under the MIT. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -200,7 +209,7 @@ Distributed under the project_license. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - christianlunasaucedo@gmail.com
+Your Name - [@ChristianLunaSaucedo](https://linkedin.com/in/christian-luna-saucedo) - christianlunasaucedo@gmail.com
 
 Project Link: [https://github.com/ChristianLunaSaucedo/KQL-Query-Crafter](https://github.com/ChristianLunaSaucedo/KQL-Query-Crafter)
 
@@ -211,9 +220,8 @@ Project Link: [https://github.com/ChristianLunaSaucedo/KQL-Query-Crafter](https:
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
-* []()
-* []()
+* [Ollama Models](https://ollama.com/search)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -221,12 +229,6 @@ Project Link: [https://github.com/ChristianLunaSaucedo/KQL-Query-Crafter](https:
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/ChristianLunaSaucedo/KQL-Query-Crafter.svg?style=for-the-badge
-[contributors-url]: https://github.com/ChristianLunaSaucedo/KQL-Query-Crafter/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/ChristianLunaSaucedo/KQL-Query-Crafter.svg?style=for-the-badge
-[forks-url]: https://github.com/ChristianLunaSaucedo/KQL-Query-Crafter/network/members
-[stars-shield]: https://img.shields.io/github/stars/ChristianLunaSaucedo/KQL-Query-Crafter.svg?style=for-the-badge
-[stars-url]: https://github.com/ChristianLunaSaucedo/KQL-Query-Crafter/stargazers
 [issues-shield]: https://img.shields.io/github/issues/ChristianLunaSaucedo/KQL-Query-Crafter.svg?style=for-the-badge
 [issues-url]: https://github.com/ChristianLunaSaucedo/KQL-Query-Crafter/issues
 [license-shield]: https://img.shields.io/github/license/ChristianLunaSaucedo/KQL-Query-Crafter.svg?style=for-the-badge
