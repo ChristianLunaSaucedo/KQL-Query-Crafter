@@ -136,7 +136,7 @@
   ```
 
 #### Example 1
-<img width="2155" height="1175" alt="KQL1" src="https://github.com/user-attachments/assets/a6fa160d-5df1-4fb6-8ad5-a76b88ef91ad" />
+<img width="2155" height="1175" alt="KQL1" src="https://github.com/user-attachments/assets/2dd7a7fb-10a3-4846-a167-ccde33b417d3" />
 
 #### Example 2
 <img width="2155" height="1175" alt="KQL2" src="https://github.com/user-attachments/assets/51cce03f-54d7-4a96-8801-09fd7d5ea4c8" />
@@ -216,11 +216,11 @@ Project Link: [https://github.com/ChristianLunaSaucedo/KQL-Query-Crafter](https:
 
 
 
-[Python]: https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff
+[Python]: https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=fff
 [Python-url]: https://www.python.org/ 
-[Ollama]: https://img.shields.io/badge/Ollama-fff?logo=ollama&logoColor=000
+[Ollama]: https://img.shields.io/badge/Ollama-fff?style=for-the-badge&logo=ollama&logoColor=000
 [Ollama-url]: https://ollama.com/
-[Langchain]: https://img.shields.io/badge/LangChain-1c3c3c.svg?logo=langchain&logoColor=white
+[Langchain]: https://img.shields.io/badge/LangChain-1c3c3c.svg?style=for-the-badge&logo=langchain&logoColor=white
 [Langchain-url]: https://www.langchain.com/
 
 
